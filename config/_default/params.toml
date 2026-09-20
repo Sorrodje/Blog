@@ -34,14 +34,19 @@ fingerprintAlgorithm = "sha256"
 
   [[homepage.sections]]
     name = "Articles"
+    pageRef = "posts"
+    badge = false
     description = "Des retours d'expérience travaillés et un peu longs : tutos, découvertes, récits."
 
   [[homepage.sections]]
     name = "Trucs et astuces"
+    pageRef = "trucs-et-astuces"
     description = "Des solutions concrètes à des problèmes concrets, notées au fil de la pratique."
 
   [[homepage.sections]]
     name = "Opinions"
+    pageRef = "opinions"
+    badge = false
     description = "Ma vision sur l'IA, l'admin sys et l'informatique en général — pas des vérités, des points de vue."
 
 [article]

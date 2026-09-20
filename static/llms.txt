@@ -10,7 +10,7 @@ Le site est hébergé et géré en Europe. Le contenu est produit en collaborati
 ## Navigation
 - [Accueil](https://sorrodje.alter-it.org/)
 - [À propos](https://sorrodje.alter-it.org/about/)
-- [Archives des articles](https://sorrodje.alter-it.org/posts/)
+- [Archives des articles](https://sorrodje.alter-it.org/posts/ (articles) — /opinions/ (opinions) — /trucs-et-astuces/ (trucs et astuces))
 - [Flux RSS](https://sorrodje.alter-it.org/index.xml)
 ## Contenu principal
 - [Pourquoi ce blog](https://sorrodje.alter-it.org/posts/pourquoi-ce-blog/) — Reprise de service : pourquoi l'auteur revient, comment il compte faire, et ce qu'on y trouvera. Premier article et repère du projet.
