@@ -30,3 +30,4 @@ jobs:
           remote_host: ${{ secrets.SSH_HOST }}
           remote_user: ${{ secrets.SSH_USER }}
           remote_key: ${{ secrets.SSH_KEY }}
+          remote_known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
