@@ -1,0 +1,57 @@
+{{- /*
+  Override projet de l'index de recherche (thème Congo).
+  ------------------------------------------------------------------
+  POURQUOI CE FICHIER EXISTE
+  Le template d'origine (themes/congo/layouts/index.json) indexe le
+  contenu via .Plain et .Summary sans décoder les entités HTML. L'index
+  contenait donc des "&rsquo;" littéraux et des "#" de titres collés au
+  texte. Or la recherche (assets/js/search.js) utilise Fuse.js avec
+  threshold: 0.0 — donc match EXACT. Chercher "l'infra" ne trouvait rien.
+  De plus, les pages sans contenu (tags, sections vides) étaient
+  indexées et remontaient des résultats fantômes.
+
+  STRATÉGIE D'ÉCHAPPEMENT (point délicat, à ne pas "simplifier")
+  Hugo échappe automatiquement toute apostrophe droite en &#39; et tout
+  guillemet en &#34; dès qu'une valeur est écrite dans un contexte HTML
+  ou via jsonify global. safeJS ne corrige pas cela.
+  La seule méthode fiable trouvée : passer CHAQUE champ par "jsonify"
+  individuellement, ce qui produit une chaîne JSON correctement échappée
+  (apostrophes et accents préservés), puis assembler le tableau JSON à la
+  main avec ces fragments déjà sérialisés.
+  NE PAS revenir à un "dict ... | jsonify" global : cela réintroduit
+  l'échappement HTML des apostrophes.
+
+  NORMALISATION TYPOGRAPHIQUE
+  Voir layouts/_partials/search-normalize.html (apostrophes courbes,
+  tirets longs, guillemets français, nettoyage des "#"). Les ACCENTS sont
+  volontairement préservés.
+
+  Ce fichier est un OVERRIDE PROJET : il vit dans /layouts (pas dans
+  /themes/congo), donc il survit aux mises à jour du thème.
+
+  VÉRIFICATION : après build, inspecter public/index.json — aucune entité
+  HTML (&#39;, &rsquo;, etc.) ne doit y apparaître.
+*/ -}}
+
+{{- $entries := slice -}}
+{{- range .Site.Pages -}}
+  {{- $plain := .Plain | htmlUnescape -}}
+  {{- if gt (len $plain) 0 -}}
+    {{- $section := .Site.GetPage "section" .Section -}}
+    {{- $showDate := .Params.showDate | default .Site.Params.article.showDate -}}
+    {{- $dateVal := "" -}}
+    {{- if and .IsPage $showDate -}}
+      {{- $dateVal = .Date | time.Format (site.Params.dateFormat | default ":date_long") -}}
+    {{- end -}}
+    {{- $fields := slice
+      (printf "\"date\":%s" ($dateVal | jsonify))
+      (printf "\"title\":%s" (partial "search-normalize.html" (.Title | emojify)))
+      (printf "\"section\":%s" (partial "search-normalize.html" ($section.Title | emojify)))
+      (printf "\"summary\":%s" (partial "search-normalize.html" (.Summary | emojify)))
+      (printf "\"content\":%s" (partial "search-normalize.html" $plain))
+      (printf "\"permalink\":%s" (.Permalink | jsonify))
+    -}}
+    {{- $entries = $entries | append (printf "{%s}" (delimit $fields ",")) -}}
+  {{- end -}}
+{{- end -}}
+[{{ delimit $entries "," }}]

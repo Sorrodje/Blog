@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Versions claires du cuivre — fond froid</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0a0a0e;
+      color: #e6e6ea;
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      padding: 3rem 1.5rem;
+      line-height: 1.6;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .intro {
+      text-align: center;
+      color: #8a8a96;
+      margin-bottom: 3rem;
+      font-size: 0.95rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 1900px;
+      margin: 0 auto;
+    }
+    .frame {
+      background: #14141a;
+      border: 1px solid #262631;
+      border-radius: 6px;
+      overflow: hidden;
+      height: 900px;
+      display: flex;
+      flex-direction: column;
+    }
+    .frame-header {
+      background: #1a1a22;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #262631;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .tag { color: #c87f4a; }
+    iframe {
+      flex: 1;
+      border: none;
+      width: 100%;
+    }
+    @media (max-width: 1400px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Versions claires du cuivre — fond froid</h1>
+  <p class="intro">Trois fonds neutres froids, accent cuivre identique sur les trois.</p>
+
+  <div class="grid">
+    <div class="frame">
+      <div class="frame-header">
+        <span><span class="tag">●</span> B4 — Gris froid léger</span>
+        <span style="color: #8a8a96; font-weight: normal;">#e8eaef</span>
+      </div>
+      <iframe src="B4-clair-froid.html" loading="lazy"></iframe>
+    </div>
+
+    <div class="frame">
+      <div class="frame-header">
+        <span><span class="tag">●</span> B5 — Blanc cassé froid</span>
+        <span style="color: #8a8a96; font-weight: normal;">#f0f2f5</span>
+      </div>
+      <iframe src="B5-clair-blanc.html" loading="lazy"></iframe>
+    </div>
+
+    <div class="frame">
+      <div class="frame-header">
+        <span><span class="tag">●</span> B6 — Gris pierre</span>
+        <span style="color: #8a8a96; font-weight: normal;">#d4d4d8</span>
+      </div>
+      <iframe src="B6-clair-pierre.html" loading="lazy"></iframe>
+    </div>
+  </div>
+</body>
+</html>

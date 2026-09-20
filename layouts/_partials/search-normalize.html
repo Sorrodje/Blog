@@ -1,0 +1,39 @@
+{{- /*
+  Normalisation du texte pour l'index de recherche.
+  ------------------------------------------------------------------
+  Appliquée à chaque champ indexé (title, section, summary, content).
+  Retourne une chaîne JSON échappée (guillemets compris), à insérer telle
+  quelle dans layouts/index.json. Ne PAS re-jsonifier ni re-échapper.
+
+  Objectif : aligner le texte indexé sur ce qu'un visiteur tape au
+  clavier, pour que la recherche Fuse.js (threshold 0.0 = match exact)
+  trouve réellement ce qu'elle indexe.
+
+  Traitements, dans l'ordre :
+  1. htmlUnescape  : &rsquo; -> ’ (avant normalisation typographique).
+  2. Apostrophes courbes (’ U+2019, ‘ U+2018) -> ' droite.
+  3. Tirets longs (— U+2014, – U+2013) -> - court.
+  4. Guillemets français (« ») -> " droits.
+  5. Nettoyage des "#" de titres Markdown collés au texte
+     (ex : "L’infra #Une seule machine" -> "L'infra Une seule machine").
+
+  Ce qui n'est PAS touché : les accents (é, è, à...). Les normaliser
+  dégraderait la recherche de mots accentués sans rien apporter.
+
+  POINT DÉLICAT : la sortie passe par "jsonify" et NON par safeJS.
+  safeJS ne protège pas contre l'échappement HTML de Hugo, qui transforme
+  les apostrophes en &#39;. jsonify produit une chaîne JSON correcte
+  (apostrophes et accents intacts), et le fichier index.json est un
+  contexte JSON — c'est donc le bon échappement.
+*/ -}}
+
+{{- $s := . | string -}}
+{{- $s = $s | htmlUnescape -}}
+{{- $s = $s | replaceRE "’" "'" -}}
+{{- $s = $s | replaceRE "‘" "'" -}}
+{{- $s = $s | replaceRE "—" "-" -}}
+{{- $s = $s | replaceRE "–" "-" -}}
+{{- $s = $s | replaceRE "«" "\"" -}}
+{{- $s = $s | replaceRE "»" "\"" -}}
+{{- $s = $s | replaceRE `\s*#\s*` " " -}}
+{{- $s | jsonify -}}

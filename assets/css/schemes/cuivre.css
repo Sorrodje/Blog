@@ -1,0 +1,42 @@
+/* Cuivre scheme — palette sorrodje */
+/* Centre primary autour de #c87f4a, secondary autour de #8a5430 (cuivre brulé) */
+
+:root {
+  --color-neutral: 255, 255, 255;
+  /* Zinc (repris de congo.css — palette de gris neutres) */
+  --color-neutral-50: 250, 250, 250;
+  --color-neutral-100: 244, 244, 245;
+  --color-neutral-200: 228, 228, 231;
+  --color-neutral-300: 212, 212, 216;
+  --color-neutral-400: 161, 161, 170;
+  --color-neutral-500: 113, 113, 122;
+  --color-neutral-600: 82, 82, 91;
+  --color-neutral-700: 63, 63, 70;
+  --color-neutral-800: 39, 39, 42;
+  --color-neutral-900: 24, 24, 27;
+  --color-neutral-950: 3, 7, 18;
+
+  /* Cuivre — primary */
+  --color-primary-50: 252, 244, 234;
+  --color-primary-100: 248, 230, 208;
+  --color-primary-200: 240, 207, 171;
+  --color-primary-300: 228, 178, 130;
+  --color-primary-400: 215, 148, 92;
+  --color-primary-500: 200, 127, 74;
+  --color-primary-600: 178, 105, 56;
+  --color-primary-700: 148, 82, 42;
+  --color-primary-800: 116, 62, 32;
+  --color-primary-900: 82, 44, 22;
+
+  /* Cuivre brulé — secondary */
+  --color-secondary-50: 248, 236, 224;
+  --color-secondary-100: 236, 212, 188;
+  --color-secondary-200: 214, 178, 144;
+  --color-secondary-300: 184, 138, 96;
+  --color-secondary-400: 152, 100, 60;
+  --color-secondary-500: 138, 84, 48;
+  --color-secondary-600: 118, 68, 36;
+  --color-secondary-700: 96, 54, 28;
+  --color-secondary-800: 74, 40, 20;
+  --color-secondary-900: 52, 28, 14;
+}

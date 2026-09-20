@@ -1,0 +1,22 @@
+{
+  "name": "sorrodje.alter-it.org",
+  "short_name": "sorrodje",
+  "description": "Informatique pour êtres humains — retours d'expérience terrain sur l'IA générative et l'admin sys.",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#c87f4a",
+  "background_color": "#0f0f14",
+  "display": "standalone"
+}

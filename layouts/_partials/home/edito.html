@@ -1,0 +1,29 @@
+{{/* Page d'accueil éditoriale custom — accroche + articles récents + rubriques */}}
+<section class="prose prose-lg dark:prose-invert max-w-none">
+  {{ .Content | emojify }}
+</section>
+
+{{ if .Site.Params.homepage.showRecent | default false }}
+  <h2 class="edito-section-titre">{{ i18n "shortcode.recent_articles" | emojify }}</h2>
+  {{ range first .Site.Params.homepage.recentLimit (.Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) .Site.Params.homepage.recentLimit).Pages }}
+    {{ partial "article-link.html" . }}
+  {{ end }}
+{{ end }}
+
+{{/* Rubriques — présentation en texte des sections du blog */}}
+{{ if .Site.Params.homepage.showSections | default false }}
+  <h2 class="edito-section-titre">{{ i18n "home.sections" | default "Rubriques" }}</h2>
+  <div class="mt-6 grid gap-6 sm:grid-cols-2">
+    {{ range .Site.Params.homepage.sections }}
+      <div class="edito-rubrique">
+        <div class="flex items-center justify-between">
+          <h3 class="edito-rubrique-titre">{{ .name | markdownify }}</h3>
+          {{ if .badge | default true }}
+            <span class="ms-2 rounded-full border border-primary-400 px-2 py-0.5 text-xs text-primary-600 dark:border-primary-600 dark:text-primary-400">{{ i18n "home.in_progress" | default "En cours" }}</span>
+          {{ end }}
+        </div>
+        <p class="mt-2 text-neutral-500 dark:text-neutral-400">{{ .description | markdownify }}</p>
+      </div>
+    {{ end }}
+  </div>
+{{ end }}

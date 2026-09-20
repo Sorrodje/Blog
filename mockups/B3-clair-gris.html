@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B3 — Cuivre sur gris chaud</title>
+  <style>
+    :root {
+      --bg: #e8e2d4;
+      --bg-elevated: #ddd6c5;
+      --bg-code: #d2cab6;
+      --border: #c4bba0;
+      --text: #2d3142;
+      --text-muted: #6a6c7a;
+      --accent: #c87f4a;
+      --accent-warm: #a8693e;
+      --accent-soft: rgba(200, 127, 74, 0.18);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      line-height: 1.7;
+      font-size: 16px;
+      padding: 4rem 1.5rem;
+    }
+
+    .container { max-width: 720px; margin: 0 auto; }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    header .brand { color: var(--accent); font-weight: 600; letter-spacing: 0.02em; }
+
+    .direction-label {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent-warm);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.625rem;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      line-height: 1.2;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .meta {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .meta .tag {
+      background: var(--accent-soft);
+      color: var(--accent-warm);
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      font-weight: 500;
+    }
+
+    .chapeau {
+      font-size: 1.125rem;
+      color: var(--text);
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+      margin-bottom: 2.5rem;
+      font-style: italic;
+      opacity: 0.92;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 2.5rem 0 1rem;
+      color: var(--accent-warm);
+      padding-left: 0.75rem;
+      border-left: 3px solid var(--accent);
+    }
+
+    p { margin-bottom: 1.25rem; }
+
+    a {
+      color: var(--accent-warm);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--accent);
+      transition: border-color 0.15s, background 0.15s;
+      padding: 0 2px;
+    }
+    a:hover { background: var(--accent-soft); }
+
+    blockquote {
+      background: var(--bg-elevated);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      color: var(--text);
+      font-style: italic;
+      border-radius: 0 4px 4px 0;
+    }
+
+    code {
+      background: var(--bg-code);
+      color: var(--accent-warm);
+      padding: 0.125rem 0.375rem;
+      border-radius: 3px;
+      font-family: ui-monospace, "Cascadia Code", "Fira Code", monospace;
+      font-size: 0.9em;
+      border: 1px solid var(--border);
+    }
+
+    pre {
+      background: var(--bg-code);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    pre code { background: none; border: none; padding: 0; color: var(--text); }
+
+    .swatch-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .swatch {
+      flex: 1;
+      height: 48px;
+      border-radius: 3px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      font-family: ui-monospace, monospace;
+      font-size: 0.7rem;
+      padding-bottom: 0.25rem;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="brand">sorrodje</span>
+      <span>8 septembre 2026 · 6 min</span>
+    </header>
+
+    <span class="direction-label">B3 — Cuivre sur gris chaud</span>
+
+    <h1>Reconstruire un serveur de A à Z, et ce que ça m'a appris</h1>
+
+    <div class="meta"><span class="tag">Infrastructure</span><span class="tag">Debian</span><span class="tag">KISS</span></div>
+
+    <p class="chapeau">
+      Six mois après avoir tout reconstruit sur un Kimsufi nu, voici ce qui a tenu,
+      ce qui a cédé, et les quelques choix que je referais sans hésiter.
+    </p>
+
+    <p>
+      Le point de départ était simple : un vieux VPS hérité, trois années de couches
+      successives, et l'impression diffuse que plus rien n'était sous contrôle. Plutôt
+      que de continuer à empiler des rustines, j'ai tout effacé et recommencé — d'abord
+      la question, ensuite l'outillage.
+    </p>
+
+    <p>
+      La première chose qui m'a frappé, c'est à quel point <a href="#">un Debian nu</a>
+      fait déjà beaucoup de travail. Le réflexe naturel aurait été de partir sur Docker,
+      Compose, une stack complète. Je l'ai fait, puis je l'ai défait.
+    </p>
+
+    <h2>Ce qui a changé concrètement</h2>
+
+    <p>
+      Trois services en moins, zéro dépendance exotique, des logs qu'on peut relire à
+      3h du matin sans diplôme en YAML. Ce n'est pas sexy, mais ça tient.
+    </p>
+
+    <blockquote>
+      La complexité n'est pas un signe de compétence. C'est, la plupart du temps, un
+      signe qu'on n'a pas encore trouvé le bon découpage.
+    </blockquote>
+
+    <p>
+      Le bloc code ci-dessous, c'est littéralement ce qui tourne toutes les nuits sur
+      le serveur. Pas de magie, pas d'orchestrateur caché :
+    </p>
+
+    <pre><code>borgmatic create --stats
+borgmatic check --only data
+borgmatic prune --keep-daily 7 --keep-weekly 4</code></pre>
+
+    <p>
+      Voilà, c'est tout. Ça fait le travail. Si vous voulez voir l'infra complète,
+      elle est <a href="#">documentée ici</a>.
+    </p>
+
+    <div class="swatch-row">
+      <div class="swatch" style="background: #e8e2d4;">#e8e2d4</div>
+      <div class="swatch" style="background: #2d3142; color: #e8e2d4;">#2d3142</div>
+      <div class="swatch" style="background: #a8693e; color: #e8e2d4;">#a8693e</div>
+      <div class="swatch" style="background: #c87f4a;">#c87f4a</div>
+      <div class="swatch" style="background: #c4bba0;">#c4bba0</div>
+    </div>
+  </div>
+</body>
+</html>

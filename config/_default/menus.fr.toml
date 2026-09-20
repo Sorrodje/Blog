@@ -1,0 +1,18 @@
+# -- Menu principal --
+# Affiché dans l'en-tête en haut de chaque page.
+
+[[main]]
+  name = "Archives"
+  pageRef = "posts"
+  weight = 10
+
+[[main]]
+  name = "À propos"
+  pageRef = "about"
+  weight = 20
+
+[[main]]
+  identifier = "search"
+  weight = 99
+  [main.params]
+    action = "search"

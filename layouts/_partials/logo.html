@@ -1,0 +1,42 @@
+{{- /* Header du site — override projet.
+  Arbre PCB à gauche, marque + sous-titre à droite.
+  Le parent (thème Congo, header/basic.html) fournit déjà
+  un <div class="flex flex-row items-center"> autour de ce partial :
+  ne pas rajouter de conteneur flex ici.
+  Le logo est déclaré dans params.toml (header.logo / header.logoDark).
+  Cet override survit aux MAJ de Congo.
+*/ -}}
+{{- if .Site.Params.header.logo }}
+  {{- $logo := resources.Get .Site.Params.header.logo }}
+  {{- $logo_dark := resources.Get .Site.Params.header.logoDark }}
+  {{- if $logo }}
+    <a href="{{ "" | relLangURL }}" class="site-header-logo me-4" aria-label="{{ .Site.Title }}">
+      <img
+        src="{{ $logo.RelPermalink }}"
+        width="{{ $logo.Width }}"
+        height="{{ $logo.Height }}"
+        class="logo-clair"
+        alt="{{ .Site.Title }}"
+      />
+      {{- if $logo_dark }}
+        <img
+          src="{{ $logo_dark.RelPermalink }}"
+          width="{{ $logo_dark.Width }}"
+          height="{{ $logo_dark.Height }}"
+          class="logo-sombre"
+          alt=""
+          aria-hidden="true"
+        />
+      {{- end }}
+    </a>
+  {{- end }}
+{{- end }}
+{{- if .Site.Params.header.showTitle | default true }}
+  <a class="site-header-titre" rel="me" href="{{ "" | relLangURL }}">
+    {{- $brand := .Site.Params.header.brand | default .Site.Title }}
+    <span class="site-header-marque">{{ $brand | markdownify | emojify }}</span>
+    {{- with .Site.Params.header.subtitle }}
+      <span class="site-header-soustitre">{{ . | markdownify | emojify }}</span>
+    {{- end }}
+  </a>
+{{- end }}

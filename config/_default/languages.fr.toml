@@ -1,0 +1,21 @@
+# -- Langue française --
+
+locale = "fr-FR"
+label = "Français"
+direction = "ltr"
+weight = 1
+
+title = "sorrodje"
+copyright = "&copy; 2026 sorrodje"
+
+[params]
+  dateFormat = "2 January 2006"
+
+  mainSections = ["posts"]
+  description = "Retours d'expérience terrain sur l'usage de l'IA."
+
+[params.author]
+  name = "sorrodje"
+  headline = "Retours d'expérience terrain sur l'usage de l'IA."
+  bio = ""
+  links = []

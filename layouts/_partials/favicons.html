@@ -1,0 +1,11 @@
+{{- /* Favicons — override projet (Session 7).
+  Congo détecte ce partial et l'utilise à la place de son défaut
+  (themes/congo/layouts/_partials/head.html, lignes 106-111).
+  Image : arbre PCB recadré, même source que le logo.
+  Fichiers générés dans static/.
+*/ -}}
+<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32.png" | relURL }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16.png" | relURL }}">
+<link rel="shortcut icon" href="{{ "favicon.ico" | relURL }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
+<link rel="manifest" href="{{ "site.webmanifest" | relURL }}">

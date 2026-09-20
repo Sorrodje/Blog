@@ -1,0 +1,75 @@
+# -- Options du thème Congo --
+
+colorScheme = "cuivre"
+defaultAppearance = "light"
+autoSwitchAppearance = true
+
+enableSearch = true
+enableCodeCopy = true
+enableImageLazyLoading = true
+enableImageWebp = true
+enableQuicklink = true
+
+fingerprintAlgorithm = "sha256"
+
+[header]
+  layout = "basic"
+  showTitle = true
+  logo = "img/logo-arbre.png"
+  logoDark = "img/logo-arbre-dark.png"
+  brand = "sorrodje.alter-it.org"
+  subtitle = "Informatique pour êtres humains"
+
+[footer]
+  showCopyright = true
+  showThemeAttribution = false
+  showAppearanceSwitcher = true
+  showScrollToTop = true
+
+[homepage]
+  layout = "edito"
+  showRecent = true
+  recentLimit = 5
+  showSections = true
+
+  [[homepage.sections]]
+    name = "Articles"
+    description = "Des retours d'expérience travaillés et un peu longs : tutos, découvertes, récits."
+
+  [[homepage.sections]]
+    name = "Trucs et astuces"
+    description = "Des solutions concrètes à des problèmes concrets, notées au fil de la pratique."
+
+  [[homepage.sections]]
+    name = "Opinions"
+    description = "Ma vision sur l'IA, l'admin sys et l'informatique en général — pas des vérités, des points de vue."
+
+[article]
+  showDate = true
+  showDateUpdated = false
+  showAuthor = false
+  showBreadcrumbs = true
+  showDraftLabel = true
+  showEdit = false
+  showHeadingAnchors = true
+  showPagination = true
+  invertPagination = false
+  showReadingTime = true
+  showTableOfContents = true
+  showTaxonomies = true
+  showWordCount = false
+  showComments = false
+
+[list]
+  showBreadcrumbs = true
+  showSummary = true
+  showTableOfContents = false
+  showTaxonomies = true
+  groupByYear = true
+  paginationWidth = 1
+
+[sitemap]
+  excludedKinds = ["taxonomy", "term"]
+
+[taxonomy]
+  showTermCount = true
