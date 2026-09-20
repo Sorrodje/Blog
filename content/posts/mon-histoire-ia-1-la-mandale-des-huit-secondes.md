@@ -10,9 +10,9 @@ weight: 1
 
 ## Le besoin
 
-<!--more-->
-
 Tout commence dans mon club de VTT. La com et l'organisation passent par Facebook depuis des années — moi qui déteste ce truc et tous les réseaux sociaux, je supporte. Plus récemment, un groupe WhatsApp est venu s'ajouter pour annoncer les entraînements officiels, et je suppose que le bureau et les coaches en utilisent un autre pour s'organiser entre eux. Bref : c'est devenu un peu le bordel pour savoir quoi surveiller, et tout le monde est à peu près d'accord sur le sujet.
+
+<!--more-->
 
 J'en touche un mot à un collègue de club qui siège au bureau, en lui disant que ça serait pas mal d'améliorer ça. Bingo : c'est pile poil en projet. Ils regardent les outils existants, ils consultent des développeurs pour un outil spécifique, tout ça. Je propose de le fournir de manière bénévole, j'aurais quelques idées et quelques compétences pour ça. Re Bingo : ça les intéresse.
 

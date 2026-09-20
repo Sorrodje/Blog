@@ -10,9 +10,9 @@ weight: 5
 
 ## Un mois de taf
 
-<!--more-->
-
 Ça m'a pris un mois de revoir de fond en comble mes méthodes, pour me construire un environnement sur lequel j'ai la main. J'auto-héberge ma propre solution de chatbot — Open WebUI, open source. Toutes mes données sont sur mon propre serveur, et j'y branche le modèle IA que je veux, quand je veux.
+
+<!--more-->
 
 ## La GS en LOA
 

@@ -11,9 +11,9 @@ weight: 3
 
 ## Le panier
 
-<!--more-->
-
 Je monte un max de mon activité pro sur la base d'un outil unique. Tous mes œufs dans le même panier — et je n'aime pas ça. Donc tout en bossant avec Claude, je garde un œil attentif sur les autres offres du marché, pour vérifier que je peux basculer sans souci si un problème survient.
+
+<!--more-->
 
 Quel problème, me direz-vous ?
 

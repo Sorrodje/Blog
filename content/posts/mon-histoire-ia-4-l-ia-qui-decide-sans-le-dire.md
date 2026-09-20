@@ -11,9 +11,9 @@ weight: 4
 
 ## Le projet
 
-<!--more-->
-
 Le projet de test, c'est un petit outil de permutations. Le principe : on prend un agent qui habite près d'un site A mais qui bosse sur un site B ; on cherche un autre agent qui fait exactement le contraire — il bosse sur A et habite près de B ; et on propose aux deux de permuter. Tout le monde y gagne en kilomètres, l'organisation ne bouge pas d'un homme. Un cas d'usage propre, avec de la donnée réelle en entrée et des résultats vérifiables.
+
+<!--more-->
 
 Je fais tourner ça avec Claude. Il me sort 130 possibilités. Nickel.
 
