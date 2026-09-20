@@ -3,6 +3,7 @@ title: "Mon histoire IA — 5. La GS en LOA et la rampe FCR"
 date: 2026-09-20T00:00:00+02:00
 draft: false
 description: "Cinquième et dernier billet de la série. Le quatrième s'arrêtait sur les ruines : l'outil sur lequel reposait mon activité, viré d'une décision."
+summary: "Cinquième et dernier billet de la série. Le quatrième s'arrêtait sur les ruines : l'outil sur lequel reposait mon activité, viré d'une décision."
 tags: ["IA", "retour d'expérience"]
 series: "Mon histoire IA"
 weight: 5
@@ -11,8 +12,6 @@ weight: 5
 ## Un mois de taf
 
 Ça m'a pris un mois de revoir de fond en comble mes méthodes, pour me construire un environnement sur lequel j'ai la main. J'auto-héberge ma propre solution de chatbot — Open WebUI, open source. Toutes mes données sont sur mon propre serveur, et j'y branche le modèle IA que je veux, quand je veux.
-
-<!--more-->
 
 ## La GS en LOA
 

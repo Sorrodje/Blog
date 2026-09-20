@@ -3,6 +3,7 @@ title: "Mon histoire IA — 1. La mandale des huit secondes"
 date: 2026-09-16T00:00:00+02:00
 draft: false
 description: "Il y a quelques mois, je n'avais jamais causé à une IA de ma vie. Aujourd'hui, développer des solutions avec des IA occupe l'essentiel de mon activité professionnelle. Cette série raconte comment on passe de l'un à l'autre en quelques mois."
+summary: "Il y a quelques mois, je n'avais jamais causé à une IA de ma vie. Aujourd'hui, développer des solutions avec des IA occupe l'essentiel de mon activité professionnelle. Cette série raconte comment on passe de l'un à l'autre en quelques mois."
 tags: ["IA", "retour d'expérience"]
 series: "Mon histoire IA"
 weight: 1
@@ -11,8 +12,6 @@ weight: 1
 ## Le besoin
 
 Tout commence dans mon club de VTT. La com et l'organisation passent par Facebook depuis des années — moi qui déteste ce truc et tous les réseaux sociaux, je supporte. Plus récemment, un groupe WhatsApp est venu s'ajouter pour annoncer les entraînements officiels, et je suppose que le bureau et les coaches en utilisent un autre pour s'organiser entre eux. Bref : c'est devenu un peu le bordel pour savoir quoi surveiller, et tout le monde est à peu près d'accord sur le sujet.
-
-<!--more-->
 
 J'en touche un mot à un collègue de club qui siège au bureau, en lui disant que ça serait pas mal d'améliorer ça. Bingo : c'est pile poil en projet. Ils regardent les outils existants, ils consultent des développeurs pour un outil spécifique, tout ça. Je propose de le fournir de manière bénévole, j'aurais quelques idées et quelques compétences pour ça. Re Bingo : ça les intéresse.
 

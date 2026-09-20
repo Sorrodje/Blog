@@ -3,14 +3,13 @@ title: "Mon histoire IA — 2. Le prestataire"
 date: 2026-09-17T00:00:00+02:00
 draft: false
 description: "Deuxième billet de la série. Le premier s'arrêtait sur un « bye ChatGPT »."
+summary: "Deuxième billet de la série. Le premier s'arrêtait sur un « bye ChatGPT »."
 tags: ["IA", "retour d'expérience"]
 series: "Mon histoire IA"
 weight: 2
 ---
 
 Mais quand même. Le signe était trop gros pour m'arrêter là. Je repense à Claude, le chat d'Anthropic, dont j'avais entendu parler à l'occasion d'une passe d'armes avec l'armée américaine sur l'usage de leur IA. Le nom m'était resté.
-
-<!--more-->
 
 Je tente. Même contexte, même commande que celle qui avait embourbé ChatGPT. Déjà, le truc me parle comme à un adulte — j'apprécie. Surtout, il ne fonce pas : une fois la commande passée, il pose des questions pour affiner sa production, et valide point par point avec moi, comme si j'avais un prestataire en face de moi. Puis huit secondes : le script, et le pas à pas pour l'installer. Je déploie sur mon serveur, mes erreurs de débutant habituelles comprises — et ça marche. Direct.
 

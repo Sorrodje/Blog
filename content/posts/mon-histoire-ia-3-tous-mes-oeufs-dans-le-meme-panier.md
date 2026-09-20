@@ -4,6 +4,7 @@ slug: "mon-histoire-ia-3-tous-mes-oeufs-dans-le-meme-panier"
 date: 2026-09-18T00:00:00+02:00
 draft: false
 description: "Troisième billet de la série. Le deuxième s'arrêtait sur un constat : ça marche trop bien."
+summary: "Troisième billet de la série. Le deuxième s'arrêtait sur un constat : ça marche trop bien."
 tags: ["IA", "retour d'expérience"]
 series: "Mon histoire IA"
 weight: 3
@@ -12,8 +13,6 @@ weight: 3
 ## Le panier
 
 Je monte un max de mon activité pro sur la base d'un outil unique. Tous mes œufs dans le même panier — et je n'aime pas ça. Donc tout en bossant avec Claude, je garde un œil attentif sur les autres offres du marché, pour vérifier que je peux basculer sans souci si un problème survient.
-
-<!--more-->
 
 Quel problème, me direz-vous ?
 

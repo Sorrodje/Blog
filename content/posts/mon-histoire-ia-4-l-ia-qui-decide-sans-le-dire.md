@@ -4,6 +4,7 @@ slug: "mon-histoire-ia-4-l-ia-qui-decide-sans-le-dire"
 date: 2026-09-19T00:00:00+02:00
 draft: false
 description: "Quatrième billet de la série. Le troisième s'arrêtait sur l'idée de tester la concurrence, même cahier des charges pour tout le monde."
+summary: "Quatrième billet de la série. Le troisième s'arrêtait sur l'idée de tester la concurrence, même cahier des charges pour tout le monde."
 tags: ["IA", "retour d'expérience"]
 series: "Mon histoire IA"
 weight: 4
@@ -12,8 +13,6 @@ weight: 4
 ## Le projet
 
 Le projet de test, c'est un petit outil de permutations. Le principe : on prend un agent qui habite près d'un site A mais qui bosse sur un site B ; on cherche un autre agent qui fait exactement le contraire — il bosse sur A et habite près de B ; et on propose aux deux de permuter. Tout le monde y gagne en kilomètres, l'organisation ne bouge pas d'un homme. Un cas d'usage propre, avec de la donnée réelle en entrée et des résultats vérifiables.
-
-<!--more-->
 
 Je fais tourner ça avec Claude. Il me sort 130 possibilités. Nickel.
 
