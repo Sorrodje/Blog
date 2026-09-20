@@ -6,7 +6,6 @@ description: "Reprise de service de sorrodje.alter-it.org : pourquoi je reviens,
 summary: "Reprise de service de sorrodje.alter-it.org : pourquoi je reviens, comment je compte faire, et ce qu'on y trouvera."
 tags: ["intro", "blog"]
 ---
-
 Il y a quelques années, j'avais un blog. Il s'appelait « Informatique pour les êtres humains par un être humain », il vivait à l'adresse sorrodje.alter-it.org, et j'y partageais des astuces d'admin sys — des découvertes, des bidouilles, des solutions à des problèmes que j'avais rencontrés en auto-hébergeant mes services. Le genre de choses qu'on cherche à 3h du matin quand rien ne marche et que les forums sont secs. Puis j'ai lâché l'affaire. Moins de temps passé sur l'admin sys, d'autres centres d'intérêt, la vie. Le blog est resté là, endormi, sans que personne s'en plaigne — moi non plus, d'ailleurs.
 
 ## Le retour
