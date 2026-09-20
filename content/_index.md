@@ -1,6 +1,6 @@
 ---
 title: "Accueil"
-description: "sorrodje.alter-it.org — Retours d'expérience d'un professionnel de l'informatique sur l'IA générative et l'admin sys."
+description: "Retours d'expérience sur l'IA générative et l'admin sys — écrits à la main, issus de la pratique, au travail comme à la maison."
 ---
 
 Parce que le web se remplit de texte généré, quelqu'un doit continuer à écrire à la main. Ce blog s'y emploie : des retours d'expérience sur l'IA générative et l'admin sys, issus de la pratique — au travail comme à la maison.
