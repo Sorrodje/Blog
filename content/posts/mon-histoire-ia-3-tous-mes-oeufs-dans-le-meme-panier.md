@@ -5,6 +5,7 @@ date: 2026-09-18T00:00:00+02:00
 draft: false
 description: "Troisième billet de la série. Le deuxième s'arrêtait sur un constat : ça marche trop bien."
 summary: "Troisième billet de la série. Le deuxième s'arrêtait sur un constat : ça marche trop bien."
+author: "Sorrodje"
 tags: ["IA", "retour d'expérience"]
 series: "Mon histoire IA"
 weight: 3

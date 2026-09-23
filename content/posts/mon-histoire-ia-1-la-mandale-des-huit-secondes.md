@@ -4,6 +4,7 @@ date: 2026-09-16T00:00:00+02:00
 draft: false
 description: "Il y a quelques mois, je n'avais jamais causé à une IA de ma vie. Aujourd'hui, développer des solutions avec des IA occupe l'essentiel de mon activité professionnelle. Cette série raconte comment on passe de l'un à l'autre en quelques mois."
 summary: "Il y a quelques mois, je n'avais jamais causé à une IA de ma vie. Aujourd'hui, développer des solutions avec des IA occupe l'essentiel de mon activité professionnelle. Cette série raconte comment on passe de l'un à l'autre en quelques mois."
+author: "Sorrodje"
 tags: ["IA", "retour d'expérience"]
 series: "Mon histoire IA"
 weight: 1

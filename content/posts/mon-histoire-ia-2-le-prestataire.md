@@ -4,6 +4,7 @@ date: 2026-09-17T00:00:00+02:00
 draft: false
 description: "Deuxième billet de la série. Le premier s'arrêtait sur un « bye ChatGPT »."
 summary: "Deuxième billet de la série. Le premier s'arrêtait sur un « bye ChatGPT »."
+author: "Sorrodje"
 tags: ["IA", "retour d'expérience"]
 series: "Mon histoire IA"
 weight: 2

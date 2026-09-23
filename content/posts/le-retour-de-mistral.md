@@ -4,6 +4,7 @@ date: 2026-09-23T00:00:00+02:00
 draft: false
 description: "Après la bascule vers l'auto-hébergement racontée dans « Mon histoire IA », je gardais un œil sur le Chat Mistral. Entre un Medium 3.5 calamiteux, l'hébergement de GLM 5.2 dans l'UE et une clé API qui passe là où on ne l'attendait pas, retour sur un mois de retournement complet."
 summary: "Après la bascule vers l'auto-hébergement racontée dans « Mon histoire IA », je gardais un œil sur le Chat Mistral. Entre un Medium 3.5 calamiteux, l'hébergement de GLM 5.2 dans l'UE et une clé API qui passe là où on ne l'attendait pas, retour sur un mois de retournement complet."
+author: "Sorrodje"
 tags: ["IA", "retour d'expérience"]
 ---
 
