@@ -156,3 +156,32 @@ header.site-header {
 }
 
 .dark .edito-rubrique-titre { color: #c87f4a; }
+
+/* === Home deux colonnes — édito (étroite) + articles (large) ===
+ * Empilé sur mobile et tablette, deux colonnes à partir de 1024px.
+ */
+.edito-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .edito-grid {
+    grid-template-columns: 1fr 2fr;
+    gap: 3.5rem;
+  }
+
+  /* L'édito colle au sommet quand la colonne d'articles est plus haute. */
+  .edito-col-accroche {
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  /* Le titre de section des articles ne doit pas être repoussé par le liseré
+     de marge haute prévu pour un flux pleine largeur. */
+  .edito-col-articles .edito-section-titre {
+    margin-top: 0;
+  }
+}

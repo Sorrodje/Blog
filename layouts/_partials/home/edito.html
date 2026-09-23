@@ -1,14 +1,20 @@
-{{/* Page d'accueil éditoriale custom — accroche + articles récents + rubriques */}}
-<section class="prose prose-lg dark:prose-invert max-w-none">
-  {{ .Content | emojify }}
-</section>
+{{/* Page d'accueil éditoriale custom — deux colonnes : accroche (étroite) + articles récents (large), rubriques pleine largeur */}}
+<div class="edito-grid">
+  <div class="edito-col-accroche">
+    <section class="prose prose-base dark:prose-invert max-w-none">
+      {{ .Content | emojify }}
+    </section>
+  </div>
 
-{{ if .Site.Params.homepage.showRecent | default false }}
-  <h2 class="edito-section-titre">{{ i18n "shortcode.recent_articles" | emojify }}</h2>
-  {{ range first .Site.Params.homepage.recentLimit (sort (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) "Date" "desc") }}
-    {{ partial "article-link.html" . }}
+  {{ if .Site.Params.homepage.showRecent | default false }}
+    <div class="edito-col-articles">
+      <h2 class="edito-section-titre">{{ i18n "shortcode.recent_articles" | emojify }}</h2>
+      {{ range first .Site.Params.homepage.recentLimit (sort (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) "Date" "desc") }}
+        {{ partial "article-link.html" . }}
+      {{ end }}
+    </div>
   {{ end }}
-{{ end }}
+</div>
 
 {{/* Rubriques — présentation en texte des sections du blog */}}
 {{ if .Site.Params.homepage.showSections | default false }}
