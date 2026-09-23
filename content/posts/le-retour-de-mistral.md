@@ -27,7 +27,7 @@ Outre le fait que je préférais le nom le Chat à Vibe, la distinction entre de
 
 Bref, un désastre — qui commençait à sérieusement me faire douter de pouvoir l'utiliser dans mon job.
 
-Pendant ce temps, je mettais en place ma stack OpenWebUI, LiteLLM et OpenTerminal, et j'étais donc en pleine recherche d'un fournisseur d'API IA serverless compétent, grâce auquel je pourrais congédier Claude AI sans que ça me coûte deux fois le prix de l'abonnement Max. J'ai tourné et retourné entre Scaleway et TensorX pour trouver un modèle où le prompt caching fonctionne suffisamment correctement. Je me stabilise sur MiniMax M3 et GLM 5.2, servis disons correctement chez TensorX. Scaleway avait bien un Qwen compétent, mais sans prompt caching implémenté, la facture s'est avérée salée…
+Pendant ce temps, je mettais en place [ma stack OpenWebUI, LiteLLM et OpenTerminal](/posts/ma-stack-ia-actuelle/), et j'étais donc en pleine recherche d'un fournisseur d'API IA serverless compétent, grâce auquel je pourrais congédier Claude AI sans que ça me coûte deux fois le prix de l'abonnement Max. J'ai tourné et retourné entre Scaleway et TensorX pour trouver un modèle où le prompt caching fonctionne suffisamment correctement. Je me stabilise sur MiniMax M3 et GLM 5.2, servis disons correctement chez TensorX. Scaleway avait bien un Qwen compétent, mais sans prompt caching implémenté, la facture s'est avérée salée…
 
 ## Le coup de théâtre
 
