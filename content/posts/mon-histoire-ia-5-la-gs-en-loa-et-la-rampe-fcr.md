@@ -4,6 +4,7 @@ date: 2026-09-20T00:00:00+02:00
 draft: false
 description: "Cinquième et dernier billet de la série. Le quatrième s'arrêtait sur les ruines : l'outil sur lequel reposait mon activité, viré d'une décision."
 summary: "Cinquième et dernier billet de la série. Le quatrième s'arrêtait sur les ruines : l'outil sur lequel reposait mon activité, viré d'une décision."
+author: "Sorrodje"
 tags: ["IA", "retour d'expérience"]
 series: "Mon histoire IA"
 weight: 5

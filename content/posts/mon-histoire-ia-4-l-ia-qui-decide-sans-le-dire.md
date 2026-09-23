@@ -5,6 +5,7 @@ date: 2026-09-19T00:00:00+02:00
 draft: false
 description: "Quatrième billet de la série. Le troisième s'arrêtait sur l'idée de tester la concurrence, même cahier des charges pour tout le monde."
 summary: "Quatrième billet de la série. Le troisième s'arrêtait sur l'idée de tester la concurrence, même cahier des charges pour tout le monde."
+author: "Sorrodje"
 tags: ["IA", "retour d'expérience"]
 series: "Mon histoire IA"
 weight: 4

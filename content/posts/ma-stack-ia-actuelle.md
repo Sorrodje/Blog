@@ -4,6 +4,7 @@ date: 2026-09-23T00:00:00+02:00
 draft: false
 description: "Open WebUI, LiteLLM, Open Terminal, des hébergeurs EU : la stack auto-hébergée qui remplace Claude AI sans y perdre. Retour d'usage, pas tutoriel."
 summary: "Open WebUI, LiteLLM, Open Terminal, des hébergeurs EU : la stack auto-hébergée qui remplace Claude AI sans y perdre. Retour d'usage, pas tutoriel."
+author: "Sorrodje"
 tags: ["IA", "retour d'expérience"]
 ---
 

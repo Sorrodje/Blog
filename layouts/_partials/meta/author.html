@@ -1,0 +1,5 @@
+{{ $author := .Params.author | default .Site.Language.Params.Author.name }}
+<span title="{{ i18n "author.byline_title" }}">
+  {{- $author -}}
+</span>
+{{- /* Trim EOF */ -}}
