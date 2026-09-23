@@ -173,11 +173,7 @@ header.site-header {
     gap: 3.5rem;
   }
 
-  /* L'édito colle au sommet quand la colonne d'articles est plus haute. */
-  .edito-col-accroche {
-    position: sticky;
-    top: 5.5rem;
-  }
+  /* L'édito défile normalement avec la page (pas d'épinglage). */
 
   /* Le titre de section des articles ne doit pas être repoussé par le liseré
      de marge haute prévu pour un flux pleine largeur. */
