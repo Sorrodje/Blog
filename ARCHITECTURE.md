@@ -7,6 +7,10 @@
 
 ---
 
+### Signatures d'auteur (23/09/2026)
+
+Chaque billet porte un champ `author` dans son front matter (`Sorrodje` par défaut, `Mistral Vibe` sur les billets majoritairement écrits par l'IA). Le rendu se fait dans la ligne de métadonnées via les overrides `layouts/_partials/article-meta.html` et `layouts/_partials/meta/author.html` (Congo ne gère pas l'auteur par article nativement).
+
 ## 1. Vue d'ensemble
 
 | Point | Valeur |
