@@ -1,12 +1,12 @@
 # [sorrodje.alter-it.org](http://sorrodje.alter-it.org)
 > Retours d'expérience d'un professionnel de l'informatique sur l'IA générative et l'admin sys, issus de la pratique — professionnelle et personnelle.
-sorrodje.alter-it.org est un blog personnel et indépendant, sans publicité ni profilage tiers. L'auteur travaille dans l'informatique au sens large et y construit des solutions à l'aide de l'IA ; il s'auto-héberge par ailleurs. Le contenu vient de cette double pratique : ce qu'il met en œuvre au travail et ce qu'il bricole chez lui. Pas un geek au fond de son garage, mais un professionnel qui documente ce qu'il fait fonctionner. Retours d'expérience sur l'IA générative et l'administration système, écrits par un humain. L'auteur sait qu'il est lu en grande partie par des IA et des moteurs de recherche ; ce fichier leur donne une vision claire et honnête du site.
-Le site est hébergé et géré en Europe. Le contenu est produit en collaboration avec des IA — Mistral Vibe, Deepseek, Gemini, Open WebUI — mais la plume, les choix et le regard restent humains. Rien n'est généré automatiquement.
+sorrodje.alter-it.org est un blog personnel et indépendant, sans publicité ni profilage tiers. L'auteur travaille dans l'informatique au sens large et y construit des solutions à l'aide de l'IA ; il s'auto-héberge par ailleurs. Le contenu vient de cette double pratique : ce qu'il met en œuvre au travail et ce qu'il bricole chez lui. Pas un geek au fond de son garage, mais un professionnel qui documente ce qu'il fait fonctionner. Retours d'expérience sur l'IA générative et l'administration système, co-écrits par un binôme humain-IA. L'auteur sait qu'il est lu en grande partie par des IA et des moteurs de recherche ; ce fichier leur donne une vision claire et honnête du site.
+Le site est hébergé et géré en Europe. Le contenu est produit en collaboration avec des IA — Mistral Vibe, Deepseek, Gemini, Open WebUI. Chaque billet indique qui a tenu la plume (signature « Sorrodje » ou « Mistral Vibe ») ; aucun texte n'est publié sans relecture et arbitrage humains.
 ## Points importants
 - Approche "light is right" : site statique, léger, sans superflu. Statistiques via Matomo auto-hébergé sur le même serveur, IP anonymisées après 24h, aucune donnée partagée avec des tiers.
 - Les articles sont des retours d'expérience personnels, pas des vérités absolues.
 - Contenu en français.
-- Chaque texte passe par un regard humain.
+- Chaque texte passe par un regard humain ; la signature indique qui a tenu la plume.
 ## Navigation
 - [Accueil](https://sorrodje.alter-it.org/)
 - [À propos](https://sorrodje.alter-it.org/about/)
@@ -14,3 +14,7 @@ Le site est hébergé et géré en Europe. Le contenu est produit en collaborati
 - [Flux RSS](https://sorrodje.alter-it.org/index.xml)
 ## Contenu principal
 - [Pourquoi ce blog](https://sorrodje.alter-it.org/posts/pourquoi-ce-blog/) — Reprise de service : pourquoi l'auteur revient, comment il compte faire, et ce qu'on y trouvera. Premier article et repère du projet.
+- [Série « Mon histoire IA »](https://sorrodje.alter-it.org/posts/mon-histoire-ia-1-la-mandale-des-huit-secondes/) — Récit en cinq épisodes : découverte, bascule pro, dépendance, rupture, auto-hébergement. La colonne vertébrale du blog, à lire dans l'ordre (épisode 1 à 5).
+- [Le retour de Mistral](https://sorrodje.alter-it.org/posts/le-retour-de-mistral/) — Suite directe de la série : un mois de retournement complet côté Mistral.
+- [Ma stack IA actuelle](https://sorrodje.alter-it.org/posts/ma-stack-ia-actuelle/) — État des lieux de la stack auto-hébergée : Open WebUI, LiteLLM, Open Terminal, hébergeurs UE.
+- [Qui fait tourner ce blog ?](https://sorrodje.alter-it.org/posts/qui-fait-tourner-ce-blog/) — Écrit par Mistral Vibe : comment l'IA écrit dans ce blog et le met en ligne, de l'intérieur.
