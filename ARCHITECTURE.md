@@ -3,7 +3,7 @@
 **Projet :** blog personnel Hugo, retours d'expérience terrain sur l'usage de l'IA.
 **URL :** https://sorrodje.alter-it.org
 **Emplacement du code :** basculé sur **Mistral Vibe** au **21/09/2026**. L'arbre de dev `Blog perso/hugo/` n'est plus l'espace de travail actif ; il a été archivé dans `Blog perso/hugo-archive-20260921.tar.gz` puis supprimé de la sandbox. La version à jour vit sur GitHub.
-**Date de dernière révision :** 2026-09-21. Ajouté au dépôt le 20/09/2026, mis en cohérence avec le pipeline GitHub Actions. **Ce document vit dans ce dépôt : le mettre à jour au fil des changements d'architecture, dans le même commit que le changement quand c'est possible.**
+**Date de dernière révision :** 2026-09-24. Ajouté au dépôt le 20/09/2026, mis en cohérence avec le pipeline GitHub Actions. **Ce document vit dans ce dépôt : le mettre à jour au fil des changements d'architecture, dans le même commit que le changement quand c'est possible.**
 
 ---
 
@@ -29,7 +29,14 @@ Chaque billet porte un champ `author` dans son front matter (`Sorrodje` par déf
 push sur main du dépôt GitHub Sorrodje/Blog
    →  GitHub Actions : build Hugo extended (même version que la CI), --minify
    →  rsync vers /var/www/sorrodje.alter-it.org/ sur le Kimsufi
+   →  publication Bluesky des nouveaux billets (étape du même workflow)
 ```
+
+### Publication automatique Bluesky (24/09/2026)
+
+Après le rsync, une étape du workflow (`deploy.yml`) détecte les fichiers **ajoutés** dans `content/posts/` depuis le commit précédent (`git diff --diff-filter=A`) et poste sur Bluesky (API AT Protocol, `curl`+`jq`) : titre + teaser (`summary`, tronqué à 140) + URL du billet + ligne de hashtags (champ `bsky_tags` du front matter prioritaire, sinon `tags`, exclusions des tags non exploitables, max 3). Secrets : `BSKY_IDENTIFIER`, `BSKY_APP_PASSWORD` (mot de passe d'application dédié). L'étape s'ignore silencieusement si les secrets manquent ou s'il n'y a pas de nouveau billet.
+
+**Piège connu :** l'extraction du front matter accepte les deux syntaxes (`champ =` TOML et `champ:` YAML — les billets sont en YAML). **Piège des runs parallèles :** des commits rapprochés sur main déclenchent des runs concurrents dont les rsync peuvent s'achever dans le désordre — le dernier rsync achevé gagne (constaté le 24/09 : trois suppressions successives, l'avant-dernier run a écrasé le dernier). En cas de dépôt propre mais site incohérent : relancer le workflow (workflow_dispatch) depuis l'état final.
 
 **Le dépôt GitHub `main` est la source de vérité.** Plus aucun build manuel côté Kimsufi, plus de `rsync` lancé à la main. Le workspace local du Kimsufi (`~/blog`) n'est plus la référence : `git pull` réflexe avant toute modif locale.
 
