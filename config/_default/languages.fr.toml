@@ -18,4 +18,6 @@ copyright = "&copy; 2026 sorrodje"
   name = "sorrodje"
   headline = "Retours d'expérience terrain sur l'usage de l'IA."
   bio = ""
-  links = { bluesky = "https://bsky.app/profile/sorrodje.bsky.social" }
+
+  [[params.author.links]]
+    bluesky = "https://bsky.app/profile/sorrodje.bsky.social"
