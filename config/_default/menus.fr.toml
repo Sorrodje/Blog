@@ -11,6 +11,13 @@
   pageRef = "about"
   weight = 20
 
+# Icône Bluesky seule (pas de nom affiché), à droite de « À propos »
+[[main]]
+  identifier = "bluesky"
+  pre = "bluesky"
+  url = "https://bsky.app/profile/sorrodje.bsky.social"
+  weight = 30
+
 [[main]]
   identifier = "search"
   weight = 99

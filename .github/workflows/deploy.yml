@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -31,3 +33,83 @@ jobs:
           remote_user: ${{ secrets.SSH_USER }}
           remote_key: ${{ secrets.SSH_KEY }}
           remote_known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+
+      - name: Publication Bluesky des nouveaux billets
+        if: github.event_name == 'push'
+        env:
+          BSKY_IDENTIFIER: ${{ secrets.BSKY_IDENTIFIER }}
+          BSKY_PASSWORD: ${{ secrets.BSKY_APP_PASSWORD }}
+        run: |
+          set -euo pipefail
+          if [ -z "${BSKY_IDENTIFIER:-}" ] || [ -z "${BSKY_PASSWORD:-}" ]; then
+            echo "Secrets Bluesky manquants — étape ignorée."
+            exit 0
+          fi
+          BEFORE="${{ github.event.before }}"
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            BEFORE="$(git hash-object -t tree /dev/null)"
+          fi
+          NEW_POSTS="$(git diff --name-only --diff-filter=A "$BEFORE" "$GITHUB_SHA" -- 'content/posts/*.md' || true)"
+          if [ -z "$NEW_POSTS" ]; then
+            echo "Aucun nouveau billet — rien à publier sur Bluesky."
+            exit 0
+          fi
+          TOKEN="$(curl -sf -X POST https://bsky.social/xrpc/com.atproto.server.createSession \
+            -H 'Content-Type: application/json' \
+            -d "$(jq -n --arg id "$BSKY_IDENTIFIER" --arg pw "$BSKY_PASSWORD" '{identifier:$id, password:$pw}')" \
+            | jq -r .accessJwt)"
+
+          # Tags exclus : trop génériques ou non exploitables en hashtag
+          is_excluded_tag() {
+            case "$1" in
+              "retour d'expérience"|"retour expérience"|"retours d'expérience") return 0 ;;
+              *) return 1 ;;
+            esac
+          }
+          # Tag -> hashtag : suppression des espaces, les accents sont conservés
+          tag_to_hashtag() {
+            printf '#%s' "$(printf '%s' "$1" | tr -d ' ')"
+          }
+
+          for f in $NEW_POSTS; do
+            TITLE="$(awk -F'"' '/^title[[:space:]]*=/{print $2; exit}' "$f")"
+            if [ -z "$TITLE" ]; then
+              TITLE="$(awk -F= '/^title[[:space:]]*=/{sub(/^[^=]*=[[:space:]]*/, ""); print; exit}' "$f")"
+            fi
+            TEASER="$(awk -F'"' '/^summary[[:space:]]*=/{print $2; exit}' "$f")"
+            TEASER="$(printf '%s' "$TEASER" | jq -Rr '.[0:140]')"
+
+            # Hashtags : champ bsky_tags prioritaire, sinon tags du front matter
+            TAG_LINE=""
+            RAW_TAGS="$(awk -F'"' '/^bsky_tags[[:space:]]*=/{print $2; exit}' "$f")"
+            if [ -z "$RAW_TAGS" ]; then
+              RAW_TAGS="$(awk -F'[][]' '/^tags[[:space:]]*=/{print $2; exit}' "$f")"
+            fi
+            if [ -n "$RAW_TAGS" ]; then
+              HT=""
+              IFS=',' read -ra PARTS <<< "$RAW_TAGS"
+              for t in "${PARTS[@]}"; do
+                t="$(printf '%s' "$t" | xargs)"
+                [ -z "$t" ] && continue
+                is_excluded_tag "$t" && continue
+                H="$(tag_to_hashtag "$t")"
+                case " $HT " in *" $H "*) continue ;; esac
+                if [ -n "$HT" ]; then HT="$HT $H"; else HT="$H"; fi
+                N="$(echo "$HT" | wc -w)"
+                [ "$N" -ge 3 ] && break
+              done
+              TAG_LINE="$HT"
+            fi
+
+            SLUG="$(basename "$f" .md)"
+            URL="https://sorrodje.alter-it.org/posts/$SLUG/"
+            TEXT="$(jq -rn --arg t "Nouveau billet : « $TITLE »" --arg s "$TEASER" --arg u "$URL" --arg g "$TAG_LINE" \
+              'if ($g == "") then ($t + "\n\n" + $s + "\n\n" + $u) else ($t + "\n\n" + $s + "\n\n" + $u + "\n\n" + $g) end')"
+            echo "Publication Bluesky : $URL (tags: ${TAG_LINE:-aucun})"
+            jq -n --arg text "$TEXT" --arg repo "$BSKY_IDENTIFIER" \
+              --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+              '{repo: $repo, collection: "app.bsky.feed.post",
+                record: {text: $text, createdAt: $ts, langs: ["fr"]}}' \
+              | curl -sf -X POST https://bsky.social/xrpc/com.atproto.repo.createRecord \
+                  -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/json' -d @- > /dev/null
+          done
