@@ -80,7 +80,7 @@ jobs:
             if [ -z "$TEASER" ]; then
               TEASER="$(awk '/^summary[[:space:]]*[=:]/{sub(/^[^=:]*[=:][[:space:]]*/, ""); print; exit}' "$f")"
             fi
-            TEASER="$(printf '%s' "$TEASER" | awk '{ if (length($0) > 140) { s = substr($0, 1, 140); sub(/ [^ ]*$/, "", s); print s "\u2026" } else print }')"
+            TEASER="$(printf '%s' "$TEASER" | awk '{ if (length($0) > 140) { s = substr($0, 1, 140); sub(/ [^ ]*$/, "", s); print s "…" } else print }')"
 
             # Hashtags : champ bsky_tags prioritaire, sinon tags du front matter
             TAG_LINE=""
