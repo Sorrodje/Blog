@@ -56,8 +56,7 @@ jobs:
           fi
           TOKEN="$(curl -sf -X POST https://bsky.social/xrpc/com.atproto.server.createSession \
             -H 'Content-Type: application/json' \
-            -d "$(jq -n --arg id "$BSKY_IDENTIFIER" --arg pw "$BSKY_PASSWORD" '{identifier:$id, password:$p
-w}')" \
+            -d "$(jq -n --arg id "$BSKY_IDENTIFIER" --arg pw "$BSKY_PASSWORD" '{identifier:$id, password:$pw}')" \
             | jq -r .accessJwt)"
 
           # Tags exclus : trop génériques ou non exploitables en hashtag
@@ -107,8 +106,7 @@ w}')" \
 
             SLUG="$(basename "$f" .md)"
             URL="https://sorrodje.alter-it.org/posts/$SLUG/"
-            TEXT="$(jq -rn --arg t "Nouve
-au billet : « $TITLE »" --arg s "$TEASER" --arg u "$URL" --arg g "$TAG_LINE" \
+            TEXT="$(jq -rn --arg t "Nouveau billet : « $TITLE »" --arg s "$TEASER" --arg u "$URL" --arg g "$TAG_LINE" \
               'if ($g == "") then ($t + "\n\n" + $s + "\n\n" + $u) else ($t + "\n\n" + $s + "\n\n" + $u + "\n\n" + $g) end')"
             echo "Publication Bluesky : $URL (tags: ${TAG_LINE:-aucun})"
             jq -n --arg text "$TEXT" --arg repo "$BSKY_IDENTIFIER" \
