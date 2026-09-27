@@ -95,3 +95,13 @@ Résumons la carte alors. Ceux qui ne peuvent pas perdre, celui qui annule le je
 ---
 
 *À suivre ici — [épisode 4 : « L'abondance n'est pas gratuite »](/posts/harnais-4-l-abondance-n-est-pas-gratuite/).*
+
+---
+
+## Lexique
+
+- **[Icare](https://fr.wikipedia.org/wiki/Icare)** — la mythologie grecque des ailes de cire : celui qui vole trop près du soleil.
+- **[Bell Labs](https://fr.wikipedia.org/wiki/Bell_Labs)** — le laboratoire d'AT&T, financé par la rente du monopole téléphonique américain.
+- **[modèle de frontière](https://fr.wikipedia.org/wiki/Mod%C3%A8le_fronti%C3%A8re_(intelligence_artificielle))** — les modèles les plus avancés du moment, au sommet de ce qui est techniquement possible.
+- **[open-weight](https://www.numerama.com/tech/2297077-limprecision-mene-a-lopen-washing-quest-ce-qui-distingue-les-ia-open-source-des-open-weight.html)** — un modèle dont les paramètres entraînés sont publiés — sans être de l'open source au sens strict.
+- **[souveraineté numérique](https://fr.wikipedia.org/wiki/Souverainet%C3%A9_num%C3%A9rique)** — la capacité d'un État ou d'une organisation à maîtriser ses données et ses technologies.

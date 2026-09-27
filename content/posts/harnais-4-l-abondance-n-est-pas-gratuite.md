@@ -66,3 +66,11 @@ C'est exactement là que je voulais en venir. Il me reste à te demander si la c
 ---
 
 *À suivre ici — [épisode 5 : « La course à la frontière a-t-elle encore un sens ? »](/posts/harnais-5-la-course-a-la-frontiere-a-t-elle-encore-un-sens/).*
+
+---
+
+## Lexique
+
+- **[paradoxe de Jevons](https://fr.wikipedia.org/wiki/Paradoxe_de_Jevons)** — plus une technologie devient efficace, plus sa consommation totale explose.
+- **[centre de données](https://fr.wikipedia.org/wiki/Centre_de_donn%C3%A9es)** — le bâtiment rempli de serveurs où vivent les modèles.
+- **[Icare](https://fr.wikipedia.org/wiki/Icare)** — la mythologie grecque des ailes de cire : celui qui vole trop près du soleil.

@@ -54,7 +54,7 @@ Dans la même famille, mais avec un problème supplémentaire — et c'est un pa
 Note-le de côté. Et la quatrième famille ?
 
 **Mistral Vibe :**  
-Le **silicium**. NVIDIA, TSMC. Eux, ils sont en dessous de toute cette recomposition. Qui que soit le modèle, quoi qu'il arrive au prix des tokens, il faut des puces, et il faut des machines qui fabriquent les puces. C'est le seul moat de toute la carte qui ne dépend pas du résultat de la bataille au-dessus. Même le jeu de go chinois ne les touche pas : plus il y a de modèles, plus il y a de calcul.
+Le **silicium**. NVIDIA, TSMC. Eux, ils sont en dessous de toute cette recomposition. Qui que soit le modèle, quoi qu'il arrive au prix des tokens, il faut des puces, et il faut des machines qui fabriquent les puces. C'est le seul fossé défensif de toute la carte qui ne dépend pas du résultat de la bataille au-dessus. Même le jeu de go chinois ne les touche pas : plus il y a de modèles, plus il y a de calcul.
 
 **Sorrodje :**  
 Donc si je résume ta carte : une famille qui ne peut pas perdre, une qui joue à annuler le jeu, une qui court sur une couche en train d'évaporer, et une qui encaisse quoi qu'il arrive.
@@ -68,3 +68,14 @@ C'est là que je veux te pousser. Les pure players, justement. OpenAI, Anthropic
 ---
 
 *À suivre ici — [épisode 3 : « Pure players : absorption, dissolution et le paradoxe Mistral »](/posts/harnais-3-pure-players-absorption-dissolution-paradoxe-mistral/).*
+
+---
+
+## Lexique
+
+- **[pure player](https://fr.wikipedia.org/wiki/Pure_player)** — une entreprise qui n'existe que sur un seul métier, un seul canal.
+- **[open-weight](https://www.numerama.com/tech/2297077-limprecision-mene-a-lopen-washing-quest-ce-qui-distingue-les-ia-open-source-des-open-weight.html)** — un modèle dont les paramètres entraînés sont publiés — sans être de l'open source au sens strict.
+- **[token](https://fr.wikipedia.org/wiki/Token_(intelligence_artificielle))** — l'unité de texte que le modèle découpe, traite et facture.
+- **[centre de données](https://fr.wikipedia.org/wiki/Centre_de_donn%C3%A9es)** — le bâtiment rempli de serveurs où vivent les modèles.
+- **[DeepSeek](https://fr.wikipedia.org/wiki/DeepSeek)** — le lab chinois qui a fait de l'open-weight une stratégie de puissance.
+- **[go](https://fr.wikipedia.org/wiki/Go_%28jeu%29)** — le jeu de stratégie d'origine chinoise — où rendre la partie nulle est parfois la meilleure issue.

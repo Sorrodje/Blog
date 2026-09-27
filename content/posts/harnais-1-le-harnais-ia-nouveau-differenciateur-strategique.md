@@ -79,3 +79,13 @@ Toujours. Reprenons.
 ---
 
 *À suivre ici — [épisode 2 : « La grande cartographie de l'IA générative »](/posts/harnais-2-la-grande-cartographie-de-l-ia-generative/).*
+
+---
+
+## Lexique
+
+- **[harnais](https://fr.wikipedia.org/wiki/Harnais_d%27agent)** — tout ce qu'on greffe autour d'un modèle : contexte, outils, mémoire, règles.
+- **[open-weight](https://www.numerama.com/tech/2297077-limprecision-mene-a-lopen-washing-quest-ce-qui-distingue-les-ia-open-source-des-open-weight.html)** — un modèle dont les paramètres entraînés sont publiés — sans être de l'open source au sens strict.
+- **[commoditisation](https://fr.wikipedia.org/wiki/Commoditisation)** — le processus par lequel un produit devient banal, indifférencié d'un fournisseur à l'autre.
+- **[pure player](https://fr.wikipedia.org/wiki/Pure_player)** — une entreprise qui n'existe que sur un seul métier, un seul canal.
+- **[tool-use](https://www.ibm.com/fr-fr/think/topics/tool-calling)** — la capacité d'un modèle à appeler des outils externes : APIs, calculs, recherches.

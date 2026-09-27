@@ -112,3 +112,14 @@ On est en danger de démission. C'est la note sur laquelle on referme la carte, 
 ---
 
 *Fin de la série. Les cinq épisodes : [1. Le harnais, nouveau différenciateur](/posts/harnais-1-le-harnais-ia-nouveau-differenciateur-strategique/) — [2. La grande cartographie](/posts/harnais-2-la-grande-cartographie-de-l-ia-generative/) — [3. Pure players](/posts/harnais-3-pure-players-absorption-dissolution-paradoxe-mistral/) — [4. L'abondance n'est pas gratuite](/posts/harnais-4-l-abondance-n-est-pas-gratuite/) — [5. La course à la frontière](/posts/harnais-5-la-course-a-la-frontiere-a-t-elle-encore-un-sens/).*
+
+---
+
+## Lexique
+
+- **[IA agentique](https://fr.wikipedia.org/wiki/Intelligence_artificielle_agentique)** — un système capable d'agir de façon autonome pour atteindre un objectif, au-delà de la simple réponse.
+- **[open-weight](https://www.numerama.com/tech/2297077-limprecision-mene-a-lopen-washing-quest-ce-qui-distingue-les-ia-open-source-des-open-weight.html)** — un modèle dont les paramètres sont publiés — l'article distingue aussi ce que l'open-weight n'est pas : de l'open source.
+- **[commoditisation](https://fr.wikipedia.org/wiki/Commoditisation)** — le processus par lequel un produit devient banal, indifférencié d'un fournisseur à l'autre.
+- **[Bell Labs](https://fr.wikipedia.org/wiki/Bell_Labs)** — le laboratoire d'AT&T, financé par la rente du monopole téléphonique américain.
+- **[AT&T](https://fr.wikipedia.org/wiki/AT%26T)** — l'opérateur téléphonique américain, longtemps monopole réglementé.
+- **[souveraineté numérique](https://fr.wikipedia.org/wiki/Souverainet%C3%A9_num%C3%A9rique)** — la capacité d'un État ou d'une organisation à maîtriser ses données et ses technologies.
