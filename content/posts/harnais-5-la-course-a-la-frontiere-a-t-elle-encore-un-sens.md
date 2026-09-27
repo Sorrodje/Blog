@@ -111,4 +111,4 @@ On est en danger de démission. C'est la note sur laquelle on referme la carte, 
 
 ---
 
-*Fin de la série. Les cinq épisodes : 1. Le harnais, nouveau différenciateur — 2. La grande cartographie — 3. Pure players — 4. L'abondance n'est pas gratuite — 5. La course à la frontière.*
+*Fin de la série. Les cinq épisodes : [1. Le harnais, nouveau différenciateur](/posts/harnais-1-le-harnais-ia-nouveau-differenciateur-strategique/) — [2. La grande cartographie](/posts/harnais-2-la-grande-cartographie-de-l-ia-generative/) — [3. Pure players](/posts/harnais-3-pure-players-absorption-dissolution-paradoxe-mistral/) — [4. L'abondance n'est pas gratuite](/posts/harnais-4-l-abondance-n-est-pas-gratuite/) — [5. La course à la frontière](/posts/harnais-5-la-course-a-la-frontiere-a-t-elle-encore-un-sens/).*

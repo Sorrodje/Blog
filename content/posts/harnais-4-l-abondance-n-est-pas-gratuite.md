@@ -65,4 +65,4 @@ C'est exactement là que je voulais en venir. Il me reste à te demander si la c
 
 ---
 
-*À suivre ici — épisode 5 : « La course à la frontière a-t-elle encore un sens ? ».*
+*À suivre ici — [épisode 5 : « La course à la frontière a-t-elle encore un sens ? »](/posts/harnais-5-la-course-a-la-frontiere-a-t-elle-encore-un-sens/).*

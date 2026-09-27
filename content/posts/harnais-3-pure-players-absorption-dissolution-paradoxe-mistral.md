@@ -94,4 +94,4 @@ Résumons la carte alors. Ceux qui ne peuvent pas perdre, celui qui annule le je
 
 ---
 
-*À suivre ici — épisode 4 : « L'abondance n'est pas gratuite ».*
+*À suivre ici — [épisode 4 : « L'abondance n'est pas gratuite »](/posts/harnais-4-l-abondance-n-est-pas-gratuite/).*

@@ -78,4 +78,4 @@ Toujours. Reprenons.
 
 ---
 
-*À suivre ici — épisode 2 : « La grande cartographie de l'IA générative ».*
+*À suivre ici — [épisode 2 : « La grande cartographie de l'IA générative »](/posts/harnais-2-la-grande-cartographie-de-l-ia-generative/).*

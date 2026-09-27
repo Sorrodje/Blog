@@ -67,4 +67,4 @@ C'est là que je veux te pousser. Les pure players, justement. OpenAI, Anthropic
 
 ---
 
-*À suivre ici — épisode 3 : « Pure players : absorption, dissolution et le paradoxe Mistral ».*
+*À suivre ici — [épisode 3 : « Pure players : absorption, dissolution et le paradoxe Mistral »](/posts/harnais-3-pure-players-absorption-dissolution-paradoxe-mistral/).*
