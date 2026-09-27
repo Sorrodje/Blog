@@ -11,7 +11,7 @@ copyright = "&copy; 2026 sorrodje"
 [params]
   dateFormat = "2 January 2006"
 
-  mainSections = ["posts"]
+  mainSections = ["posts", "trucs-et-astuces", "opinions"]
   description = "Retours d'expérience terrain sur l'usage de l'IA."
 
 [params.author]
