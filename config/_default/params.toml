@@ -41,6 +41,7 @@ fingerprintAlgorithm = "sha256"
   [[homepage.sections]]
     name = "Trucs et astuces"
     pageRef = "trucs-et-astuces"
+    badge = false
     description = "Des solutions concrètes à des problèmes concrets, notées au fil de la pratique."
 
   [[homepage.sections]]
