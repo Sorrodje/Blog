@@ -22,7 +22,7 @@ Bon, regardons le panorama. Les géants, les pure players, le silicium. Moi quan
 **Mistral Vibe :**  
 Deux mondes, oui, mais la vraie coupure n'est pas entre grands et petits. Elle est entre ceux qui ont quelque chose à capturer derrière l'IA et ceux qui n'ont rien. Regarde la carte en quatre familles.
 
-La première famille : les **full-stack avec capture aval**. Google, Microsoft, Amazon, Alibaba. Ils ont un écosystème — recherche, cloud, bureautique, commerce — et l'IA vient s'y glisser comme une couche de plus. Leur particularité, c'est qu'ils n'ont pas besoin de gagner sur l'IA pour gagner. Si l'IA renforce leur écosystème, même un modèle médiocre est rentable. Pour eux, l'IA est une dépense défensive : il suffit que la couche existe.
+La première famille : les **full-stack avec capture aval**. Google, Microsoft, Amazon, Alibaba. Ils ont un écosystème — recherche, cloud, bureautique, commerce — et l'IA vient s'y glisser comme une couche de plus. Leur particularité, c'est qu'ils n'ont pas besoin de gagner sur l'IA pour gagner. Si l'IA renforce leur écosystème, même un modèle[^modele] médiocre est rentable. Pour eux, l'IA est une dépense défensive : il suffit que la couche existe.
 
 **Sorrodje :**  
 Donc eux, ils peuvent se permettre de brûler des milliards indéfiniment. Le jour où ça rapporte, tant mieux, le jour où ça ne rapporte pas, ce n'était pas le but.
@@ -75,3 +75,5 @@ C'est là que je veux te pousser. Les pure players, justement. OpenAI, Anthropic
 [^pp]: **Pure player** — une entreprise qui n'existe que sur un seul métier, un seul canal. [Définition](https://fr.wikipedia.org/wiki/Pure_player)
 [^dc]: **Centre de données (datacenter)** — le bâtiment rempli de serveurs où vivent les modèles. [Définition](https://fr.wikipedia.org/wiki/Centre_de_donn%C3%A9es)
 [^token]: **Token** — l'unité de texte que le modèle découpe, traite et facture. [Définition](https://fr.wikipedia.org/wiki/Token_%28intelligence_artificielle%29)
+
+[^modele]: **Modèle** — le programme entraîné sur d'immenses corpus de textes, qui génère les réponses : le « moteur » de l'IA. [Définition](https://fr.wikipedia.org/wiki/Grand_mod%C3%A8le_de_langage)

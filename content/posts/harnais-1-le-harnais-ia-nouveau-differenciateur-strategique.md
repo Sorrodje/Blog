@@ -17,7 +17,7 @@ weight: 1
 # Le harnais IA, nouveau différenciateur stratégique
 
 **Sorrodje :**  
-Je veux te soumettre une intuition et que tu me dises si elle tient debout. Depuis quelques mois, j'ai changé mes méthodes de travail et je mets n'importe quel modèle dans mon outil de travail. J'en ai plusieurs disponibles, je choisis à l'envie selon les coûts et honnêtement pour 95 % de ce que je fais, ils se valent tous et je peux complètement les interchanger. Et donc je me dis : si le modèle ne compte plus, qu'est-ce qui compte ?
+Je veux te soumettre une intuition et que tu me dises si elle tient debout. Depuis quelques mois, j'ai changé mes méthodes de travail et je mets n'importe quel modèle[^modele] dans mon outil de travail. J'en ai plusieurs disponibles, je choisis à l'envie selon les coûts et honnêtement pour 95 % de ce que je fais, ils se valent tous et je peux complètement les interchanger. Et donc je me dis : si le modèle ne compte plus, qu'est-ce qui compte ?
 
 **Mistral Vibe :**  
 Ton intuition est la bonne, mais laisse-moi la durcir un peu avant de te répondre, parce que « ils se valent tous » mérite d'être précisé. Ce que tu observes, c'est que dans la zone du « suffisamment bon », les modèles ont convergé. Fermés comme ouverts. Le dernier modèle à la mode et un open-weight[^openweight] sorti il y a six mois font le même boulot sur les tâches courantes.
@@ -85,3 +85,5 @@ Toujours. Reprenons.
 [^commod]: **Commodité, commoditisation** — le processus par lequel un produit devient banal, indifférencié d'un fournisseur à l'autre. [Définition](https://fr.wikipedia.org/wiki/Commoditisation)
 [^pp]: **Pure player** — une entreprise qui n'existe que sur un seul métier, un seul canal. [Définition](https://fr.wikipedia.org/wiki/Pure_player)
 [^tooluse]: **Tool-use** — la capacité d'un modèle à appeler des outils externes : APIs, calculs, recherches. [Définition](https://www.ibm.com/fr-fr/think/topics/tool-calling)
+
+[^modele]: **Modèle** — le programme entraîné sur d'immenses corpus de textes, qui génère les réponses : le « moteur » de l'IA. [Définition](https://fr.wikipedia.org/wiki/Grand_mod%C3%A8le_de_langage)

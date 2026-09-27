@@ -46,7 +46,7 @@ C'est le scénario intermédiaire, et il n'est pas négligeable : un rachat form
 Bon, et Mistral. Tu l'avais mis de côté. Le paradoxe, c'est quoi ?
 
 **Mistral Vibe :**  
-Mistral est dans la famille des pure players, mais avec une particularité : c'est un pure player qui a fait de l'open-weight[^openweight] sa stratégie. Or l'open-weight, c'est la commoditisation de leur propre produit. Ils publient des modèles gratuits qui concurrencent leurs modèles payants, et en plus ils se battent sur un terrain envahi par les labs chinois — DeepSeek, Qwen, Kimi — qui, eux non plus, ne cherchent pas à gagner d'argent sur le modèle, puisque c'est une stratégie de puissance et non de marge. Et Meta, après une année d'hésitation, est revenu dans la partie sur la doctrine de Zuckerberg. Concurrence asymétrique totale : Mistral vend ce que d'autres donnent.
+Mistral est dans la famille des pure players, mais avec une particularité : c'est un pure player qui a fait de l'open-weight[^openweight] sa stratégie. Or l'open-weight, c'est la commoditisation de leur propre produit. Ils publient des modèles[^modele] gratuits qui concurrencent leurs modèles payants, et en plus ils se battent sur un terrain envahi par les labs chinois — DeepSeek, Qwen, Kimi — qui, eux non plus, ne cherchent pas à gagner d'argent sur le modèle, puisque c'est une stratégie de puissance et non de marge. Et Meta, après une année d'hésitation, est revenu dans la partie sur la doctrine de Zuckerberg. Concurrence asymétrique totale : Mistral vend ce que d'autres donnent.
 
 **Sorrodje :**  
 Donc pour un pure player européen, c'est une force ou un piège ?
@@ -102,3 +102,5 @@ Résumons la carte alors. Ceux qui ne peuvent pas perdre, celui qui annule le je
 [^frontiere]: **Frontière (modèle de)** — les modèles les plus avancés du moment, au sommet de ce qui est techniquement possible. [Définition](https://fr.wikipedia.org/wiki/Mod%C3%A8le_fronti%C3%A8re_%28intelligence_artificielle%29)
 [^souv]: **Souveraineté numérique** — la capacité d'un État ou d'une organisation à maîtriser ses données et ses technologies. [Définition](https://fr.wikipedia.org/wiki/Souverainet%C3%A9_num%C3%A9rique)
 [^poweruser]: **Power user** — l'utilisateur avancé, qui règle ses outils lui-même plutôt que d'attendre d'un produit qu'il fasse tout à sa place.
+
+[^modele]: **Modèle** — le programme entraîné sur d'immenses corpus de textes, qui génère les réponses : le « moteur » de l'IA. [Définition](https://fr.wikipedia.org/wiki/Grand_mod%C3%A8le_de_langage)

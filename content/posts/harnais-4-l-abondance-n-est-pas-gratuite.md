@@ -17,7 +17,7 @@ weight: 4
 # L'abondance n'est pas gratuite
 
 **Sorrodje :**  
-Attends, avant que tu me répondes sur la course à la frontière[^frontiere]. Il faut que je marque une pause, parce qu'en relisant toute notre discussion dans ma tête, il y a une prémisse qu'on a posée sans jamais l'interroger. On dit que le modèle devient une commodité, que l'intelligence se banalise — et au fond, ce qu'on est en train de décrire, c'est une intelligence qui devient abondante. Comme la force physique est devenue abondante avec la machine à vapeur.
+Attends, avant que tu me répondes sur la course à la frontière[^frontiere]. Il faut que je marque une pause, parce qu'en relisant toute notre discussion dans ma tête, il y a une prémisse qu'on a posée sans jamais l'interroger. On dit que le modèle[^modele] devient une commodité, que l'intelligence se banalise — et au fond, ce qu'on est en train de décrire, c'est une intelligence qui devient abondante. Comme la force physique est devenue abondante avec la machine à vapeur.
 
 Eh bien cette prémisse, je crois qu'elle est fragile. Cette abondance a un coût économique que peu d'acteurs sont prêts à payer, et un prix physique : les besoins gigantesques en énergie et en eau pour la permettre.
 
@@ -71,3 +71,5 @@ C'est exactement là que je voulais en venir. Il me reste à te demander si la c
 [^jevons]: **Paradoxe de Jevons** — plus une technologie devient efficace, plus sa consommation totale explose. [Définition](https://fr.wikipedia.org/wiki/Paradoxe_de_Jevons)
 [^dc]: **Centre de données (datacenter)** — le bâtiment rempli de serveurs où vivent les modèles. [Définition](https://fr.wikipedia.org/wiki/Centre_de_donn%C3%A9es)
 [^icare]: **Icare** — la mythologie grecque des ailes de cire : celui qui vole trop près du soleil. [Le mythe](https://fr.wikipedia.org/wiki/Icare)
+
+[^modele]: **Modèle** — le programme entraîné sur d'immenses corpus de textes, qui génère les réponses : le « moteur » de l'IA. [Définition](https://fr.wikipedia.org/wiki/Grand_mod%C3%A8le_de_langage)
