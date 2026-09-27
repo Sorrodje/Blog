@@ -17,7 +17,7 @@ weight: 3
 # Pure players : absorption, dissolution et le paradoxe Mistral
 
 **Sorrodje :**  
-Donc on y vient. Les pure players. Explique-moi comment OpenAI peut tenir. Ils brûlent du cash à un rythme industriel, ils ne maîtrisent pas leur compute, et leur produit se commoditise sous leurs pieds.
+Donc on y vient. Les pure players[^pp]. Explique-moi comment OpenAI peut tenir. Ils brûlent du cash à un rythme industriel, ils ne maîtrisent pas leur compute, et leur produit se commoditise sous leurs pieds.
 
 **Mistral Vibe :**  
 Le tableau est encore plus serré que ça. Prends OpenAI : le grand public est subventionné par le capital, pas par le revenu. Ils n'ont pas la maîtrise de leur calcul. Et surtout, regarde bien leur rapport avec leur propre distributeur : Microsoft. OpenAI dépend de Microsoft pour l'infrastructure, et Microsoft vend Copilot, qui concurrence directement ce qu'OpenAI vend. Ton distributeur est ton concurrent, et il te tient par l'infrastructure.
@@ -28,7 +28,7 @@ Icare[^icare]. Ils ont voulu toucher le soleil, les ailes fondent, et celui qui 
 **Mistral Vibe :**  
 L'image est jolie, mais je vais la nuancer tout de suite, parce qu'elle est trop rassurante. Quand Icare tombe, les ailes restent. Regarde les bulles d'infrastructure du passé : les compagnies ferroviaires britanniques des années 1840 ont ruiné leurs investisseurs, mais les voies sont restées et ont nourri la croissance suivante. La fibre de la fin des années 90 a fait faillite en masse, et Google, Netflix et YouTube ont prospéré sur ces câbles rachetés pour rien.
 
-La chute des pure players, si elle vient, n'arrêtera pas l'histoire. Elle ouvrira le chapitre suivant : les centres de calcul surdimensionnés bradés, rachetés par ceux qui avaient déjà tout le reste.
+La chute des pure players, si elle vient, n'arrêtera pas l'histoire. Elle ouvrira le chapitre suivant : les centres de calcul[^dc] surdimensionnés bradés, rachetés par ceux qui avaient déjà tout le reste.
 
 **Sorrodje :**  
 Donc ton scénario, c'est l'absorption ?
@@ -46,7 +46,7 @@ C'est le scénario intermédiaire, et il n'est pas négligeable : un rachat form
 Bon, et Mistral. Tu l'avais mis de côté. Le paradoxe, c'est quoi ?
 
 **Mistral Vibe :**  
-Mistral est dans la famille des pure players, mais avec une particularité : c'est un pure player qui a fait de l'open-weight[^openweight] sa stratégie. Or l'open-weight, c'est la commoditisation de leur propre produit. Ils publient des modèles[^modele] gratuits qui concurrencent leurs modèles payants, et en plus ils se battent sur un terrain envahi par les labs chinois — DeepSeek, Qwen, Kimi — qui, eux non plus, ne cherchent pas à gagner d'argent sur le modèle, puisque c'est une stratégie de puissance et non de marge. Et Meta, après une année d'hésitation, est revenu dans la partie sur la doctrine de Zuckerberg. Concurrence asymétrique totale : Mistral vend ce que d'autres donnent.
+Mistral est dans la famille des pure players, mais avec une particularité : c'est un pure player qui a fait de l'open-weight[^openweight] sa stratégie. Or l'open-weight, c'est la commoditisation[^commod] de leur propre produit. Ils publient des modèles[^modele] gratuits qui concurrencent leurs modèles payants, et en plus ils se battent sur un terrain envahi par les labs chinois[^chinois] — DeepSeek, Qwen, Kimi — qui, eux non plus, ne cherchent pas à gagner d'argent sur le modèle, puisque c'est une stratégie de puissance et non de marge. Et Meta, après une année d'hésitation, est revenu dans la partie sur la doctrine de Zuckerberg. Concurrence asymétrique totale : Mistral vend ce que d'autres donnent.
 
 **Sorrodje :**  
 Donc pour un pure player européen, c'est une force ou un piège ?
@@ -58,7 +58,7 @@ Les deux, et c'est ça le paradoxe. Force : l'open-weight leur donne l'adoption,
 Et leur parade ?
 
 **Mistral Vibe :**  
-Celle qui se dessine, si on regarde leurs mouvements : open-weight pour l'adoption, petits modèles spécialisés pour la marge, le harnais power user[^poweruser] en B2B, le calcul, et rester sous le radar des géants. Ne jamais devenir assez menaçant pour qu'un full-stack s'occupe de toi. C'est une stratégie de survie, pas de domination.
+Celle qui se dessine, si on regarde leurs mouvements : open-weight pour l'adoption, petits modèles spécialisés pour la marge, le harnais[^harnais] power user[^poweruser] en B2B, le calcul, et rester sous le radar des géants. Ne jamais devenir assez menaçant pour qu'un full-stack s'occupe de toi. C'est une stratégie de survie, pas de domination.
 
 Et d'ailleurs, leur vrai produit n'est sans doute pas le modèle. C'est la manière d'intégrer l'IA de façon sûre et souveraine, avec plusieurs options au choix : leur cloud européen, l'installation on-premise chez le client, ou l'ingénierie d'entraînement — le client affine le modèle sur ses propres données, sans qu'elles sortent jamais de chez lui. C'est exactement ce que réclame une administration ou une banque européenne : l'IA sans livrer ses données. OpenAI et Anthropic ne peuvent pas proposer ça, leurs modèles ne quittent pas leurs serveurs. Mistral, lui, apporte le modèle chez toi.
 
@@ -104,3 +104,8 @@ Résumons la carte alors. Ceux qui ne peuvent pas perdre, celui qui annule le je
 [^poweruser]: **Power user** — l'utilisateur avancé, qui règle ses outils lui-même plutôt que d'attendre d'un produit qu'il fasse tout à sa place.
 
 [^modele]: **Modèle** — le programme entraîné sur d'immenses corpus de textes, qui génère les réponses : le « moteur » de l'IA. [Définition](https://fr.wikipedia.org/wiki/Grand_mod%C3%A8le_de_langage)
+[^harnais]: **Harnais** — tout ce qu'on greffe autour d'un modèle : contexte, outils, mémoire, règles. [Définition](https://fr.wikipedia.org/wiki/Harnais_d%27agent)
+[^pp]: **Pure player** — une entreprise qui n'existe que sur un seul métier, un seul canal. [Définition](https://fr.wikipedia.org/wiki/Pure_player)
+[^chinois]: **Labs chinois** — DeepSeek, Qwen, Kimi : les acteurs qui dominent aujourd'hui l'open-weight de haut niveau. [DeepSeek](https://fr.wikipedia.org/wiki/DeepSeek)
+[^dc]: **Centre de données (datacenter)** — le bâtiment rempli de serveurs où vivent les modèles. [Définition](https://fr.wikipedia.org/wiki/Centre_de_donn%C3%A9es)
+[^commod]: **Commodité, commoditisation** — le processus par lequel un produit devient banal, indifférencié d'un fournisseur à l'autre. [Définition](https://fr.wikipedia.org/wiki/Commoditisation)

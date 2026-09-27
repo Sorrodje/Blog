@@ -22,7 +22,7 @@ Donc on y est, la racine. La course à la frontière[^frontiere], est-ce que ça
 **Mistral Vibe :**  
 Avant de te répondre, je vais faire ce que je fais d'habitude : distinguer deux questions dans la tienne. La frontière en elle-même, et le business model de ceux qui la portent. Ce sont deux problèmes différents, et ta thèse est solide sur le deuxième.
 
-Sur le premier, je vais te contrarier. Il y a une tension interne dans ton raisonnement. Reprends le fil depuis le début : tu m'as dit en ouverture que tes modèles[^modele] interchangeables se valaient tous, et tout à l'heure que Mistral publiait en open-weight des modèles gratuits qui concurrençaient ses propres modèles payants — sur un terrain mené par les labs chinois. Mais ces modèles ouverts sont là précisément parce que la frontière a avancé. Les techniques, les architectures produites par les modèles de pointe descendent vers les modèles moins chers en douze à dix-huit mois. La frontière d'aujourd'hui est la commodité de demain. Ton outillage à moindre coût, c'est la frontière d'hier, subventionnée.
+Sur le premier, je vais te contrarier. Il y a une tension interne dans ton raisonnement. Reprends le fil depuis le début : tu m'as dit en ouverture que tes modèles[^modele] interchangeables se valaient tous, et tout à l'heure que Mistral publiait en open-weight des modèles gratuits qui concurrençaient ses propres modèles payants — sur un terrain mené par les labs chinois[^chinois]. Mais ces modèles ouverts sont là précisément parce que la frontière a avancé. Les techniques, les architectures produites par les modèles de pointe descendent vers les modèles moins chers en douze à dix-huit mois. La frontière d'aujourd'hui est la commodité de demain. Ton outillage à moindre coût, c'est la frontière d'hier, subventionnée.
 
 **Sorrodje :**  
 Comme la pharmacie : la recherche de pointe est ruineuse et rarement rentable pour celui qui la mène, mais les génériques n'existent que parce que quelqu'un a payé pour la molécule initiale.
@@ -45,7 +45,7 @@ Et l'Europe, dans ce tableau ?
 Consommatrice d'une frontière décidée ailleurs. Elle n'a ni les monopoles ni un effort public comparable.
 
 **Sorrodje :**  
-Ce qui me ramène à l'open-weight[^openweight]. Si le modèle se commoditise[^commod] totalement — moteur de voiture, noyau Linux, un truc standardisé — toute la valeur passe du moteur à la voiture complète, du modèle à l'agent[^agent], modèle plus harnais.
+Ce qui me ramène à l'open-weight[^openweight]. Si le modèle se commoditise[^commod] totalement — moteur de voiture, noyau Linux, un truc standardisé — toute la valeur passe du moteur à la voiture complète, du modèle à l'agent[^agent], modèle plus harnais[^harnais].
 
 Et je rajouterais : pas seulement l'agent. La donnée aussi. Le jour où le modèle ne vaut plus rien, le stratégique se déploie sur ce qu'on lui confie : où la donnée est hébergée, par où elle transite, qui peut la voir passer. La voiture devient stratégique, mais la cargaison aussi.
 
@@ -122,3 +122,5 @@ On est en danger de démission. C'est la note sur laquelle on referme la carte, 
 [^souv]: **Souveraineté numérique** — la capacité d'un État ou d'une organisation à maîtriser ses données et ses technologies. [Définition](https://fr.wikipedia.org/wiki/Souverainet%C3%A9_num%C3%A9rique)
 
 [^modele]: **Modèle** — le programme entraîné sur d'immenses corpus de textes, qui génère les réponses : le « moteur » de l'IA. [Définition](https://fr.wikipedia.org/wiki/Grand_mod%C3%A8le_de_langage)
+[^chinois]: **Labs chinois** — DeepSeek, Qwen, Kimi : les acteurs qui dominent aujourd'hui l'open-weight de haut niveau. [DeepSeek](https://fr.wikipedia.org/wiki/DeepSeek)
+[^harnais]: **Harnais** — tout ce qu'on greffe autour d'un modèle : contexte, outils, mémoire, règles. [Définition](https://fr.wikipedia.org/wiki/Harnais_d%27agent)

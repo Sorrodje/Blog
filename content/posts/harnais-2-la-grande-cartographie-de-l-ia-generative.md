@@ -36,7 +36,7 @@ Je précise tout de suite, parce que Meta a zigzagué : ils ont ouvert la voie a
 C'est du jeu de go[^go] à la chinoise : tu ne gagnes pas la partie, tu la rends nulle.
 
 **Mistral Vibe :**  
-Si tu veux. Troisième famille : les **pure players**[^pp]. OpenAI, Anthropic, xAI. Ni écosystème, ni distribution dominante, pas de maîtrise du calcul. Ils n'ont que le modèle. Or on vient de voir que le modèle devient une commodité. Ils sont en train de courir sur la seule couche de la pile dont la valeur s'évapore.  
+Si tu veux. Troisième famille : les **pure players**[^pp]. OpenAI, Anthropic, xAI. Ni écosystème, ni distribution dominante, pas de maîtrise du calcul. Ils n'ont que le modèle. Or on vient de voir que le modèle devient une commodité[^commod]. Ils sont en train de courir sur la seule couche de la pile dont la valeur s'évapore.  
 
 **Sorrodje :**  
 xAI ? Mais ils ont des datacenters[^dc] à eux et ils sont dans un écosystème global, non ?
@@ -77,3 +77,4 @@ C'est là que je veux te pousser. Les pure players, justement. OpenAI, Anthropic
 [^token]: **Token** — l'unité de texte que le modèle découpe, traite et facture. [Définition](https://fr.wikipedia.org/wiki/Token_%28intelligence_artificielle%29)
 
 [^modele]: **Modèle** — le programme entraîné sur d'immenses corpus de textes, qui génère les réponses : le « moteur » de l'IA. [Définition](https://fr.wikipedia.org/wiki/Grand_mod%C3%A8le_de_langage)
+[^commod]: **Commodité, commoditisation** — le processus par lequel un produit devient banal, indifférencié d'un fournisseur à l'autre. [Définition](https://fr.wikipedia.org/wiki/Commoditisation)
