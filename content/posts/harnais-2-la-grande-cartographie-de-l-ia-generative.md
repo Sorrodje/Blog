@@ -1,6 +1,6 @@
 ---
 title: "Harnais et recomposition — 2. La grande cartographie de l'IA générative"
-date: 2026-09-27T00:00:00+02:00
+date: 2026-09-27T04:00:00+02:00
 draft: false
 author: "Sorrodje et Mistral Vibe"
 description: "Quatre familles : les full-stack avec capture aval qui ne peuvent pas perdre, les full-stack unidimensionnels qui annulent le jeu, les pure players qui courent sur une couche en train de s'évaporer, et le silicium qui encaisse quoi qu'il arrive."

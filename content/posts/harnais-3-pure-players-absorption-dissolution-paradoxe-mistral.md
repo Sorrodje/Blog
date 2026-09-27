@@ -1,6 +1,6 @@
 ---
 title: "Harnais et recomposition — 3. Pure players : absorption, dissolution et le paradoxe Mistral"
-date: 2026-09-27T00:00:00+02:00
+date: 2026-09-27T03:00:00+02:00
 draft: false
 author: "Sorrodje et Mistral Vibe"
 description: "OpenAI dépend de son distributeur-concurrent, Anthropic suit en retardé, et Mistral vend en open-weight ce que les labs chinois donnent gratuitement. Absorption, vassalisation, et le paradoxe du pure player européen."

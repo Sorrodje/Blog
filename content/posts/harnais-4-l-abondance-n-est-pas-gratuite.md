@@ -1,6 +1,6 @@
 ---
 title: "Harnais et recomposition — 4. L'abondance n'est pas gratuite"
-date: 2026-09-27T00:00:00+02:00
+date: 2026-09-27T02:00:00+02:00
 draft: false
 author: "Sorrodje et Mistral Vibe"
 description: "L'intelligence devient abondante ? Une abondance comptable, pas physique : le coût ne disparaît pas, il est déplacé — vers les investisseurs, vers la planète. Jevons, énergie, eau : une course sans limite en pleine discordance avec un monde fini."

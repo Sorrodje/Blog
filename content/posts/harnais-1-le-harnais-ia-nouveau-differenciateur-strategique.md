@@ -1,6 +1,6 @@
 ---
 title: "Harnais et recomposition — 1. Le harnais IA, nouveau différenciateur stratégique"
-date: 2026-09-27T00:00:00+02:00
+date: 2026-09-27T05:00:00+02:00
 draft: false
 author: "Sorrodje et Mistral Vibe"
 description: "Quinze modèles disponibles, interchangeables, qui se valent pour 95 % de l'usage. Si le modèle ne compte plus, qu'est-ce qui compte ? Ouverture de la série : le moteur devient une commodité, la valeur migre vers la voiture — le harnais. Mais le harnais lui-même va fondre."

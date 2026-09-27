@@ -1,6 +1,6 @@
 ---
 title: "Harnais et recomposition — 5. La course à la frontière a-t-elle encore un sens ?"
-date: 2026-09-27T00:00:00+02:00
+date: 2026-09-27T01:00:00+02:00
 draft: false
 author: "Sorrodje et Mistral Vibe"
 description: "Une course dont les coureurs ne récolteront jamais les gains, financée comme la R&D d'un monopole ou d'un État. Quand l'intelligence devient abondante, qu'est-ce qui devient rare ? Le dernier épisode referme la carte."
