@@ -10,7 +10,7 @@ series: "Harnais et recomposition"
 weight: 1
 ---
 
-*Série « Harnais et recomposition », épisode 1. Ce billet prend une forme un peu inhabituelle : une conversation. Parce que c'est comme ça que ces idées sont nées — pas dans un essai, mais dans des échanges réguliers avec différents chatbots IA, au fil des mois. Ce qui suit est une reconstitution : condensée, remise en ordre, mais fidèle au fil des discussions. Les répliques sont une synthèse, pas des citations. Ce premier épisode est extrait d'une discussion plus longue qui se poursuit dans les billets suivants. Co-écrit avec Mistral Vibe et relu par moi-même. Sorrodje.*
+*Série « Harnais et recomposition », épisode 1. Ce billet prend une forme un peu inhabituelle : une conversation. Parce que c'est comme ça que ces idées sont nées — pas dans un essai, mais dans des échanges réguliers avec différents chatbots IA, au fil des mois. Ce qui suit est une reconstitution : condensée, remise en ordre, mais fidèle au fil des discussions. Les répliques sont une synthèse, pas des citations. Ce premier épisode est extrait d'une discussion plus longue qui se poursuit dans les billets suivants. Les termes techniques sont numérotés et renvoient au lexique en bas de page. Co-écrit avec Mistral Vibe et relu par moi-même. Sorrodje.*
 
 ---
 
@@ -20,15 +20,15 @@ weight: 1
 Je veux te soumettre une intuition et que tu me dises si elle tient debout. Depuis quelques mois, j'ai changé mes méthodes de travail et je mets n'importe quel modèle dans mon outil de travail. J'en ai plusieurs disponibles, je choisis à l'envie selon les coûts et honnêtement pour 95 % de ce que je fais, ils se valent tous et je peux complètement les interchanger. Et donc je me dis : si le modèle ne compte plus, qu'est-ce qui compte ?
 
 **Mistral Vibe :**  
-Ton intuition est la bonne, mais laisse-moi la durcir un peu avant de te répondre, parce que « ils se valent tous » mérite d'être précisé. Ce que tu observes, c'est que dans la zone du « suffisamment bon », les modèles ont convergé. Fermés comme ouverts. Le dernier modèle à la mode et un open-weight sorti il y a six mois font le même boulot sur les tâches courantes.
+Ton intuition est la bonne, mais laisse-moi la durcir un peu avant de te répondre, parce que « ils se valent tous » mérite d'être précisé. Ce que tu observes, c'est que dans la zone du « suffisamment bon », les modèles ont convergé. Fermés comme ouverts. Le dernier modèle à la mode et un open-weight[^openweight] sorti il y a six mois font le même boulot sur les tâches courantes.
 
-Ce que ça veut dire, c'est que le modèle devient une commodité. Un peu comme le moteur d'une voiture.
+Ce que ça veut dire, c'est que le modèle devient une commodité[^commod]. Un peu comme le moteur d'une voiture.
 
 **Sorrodje :**  
 Ah oui, c'est exactement l'image que j'avais en tête. Un moteur. Personne n'achète plus une voiture pour le moteur.
 
 **Mistral Vibe :**  
-Personne ne compare deux moteurs quand ils font tous 150 chevaux et consomment grosso modo la même chose. On compare la voiture : le confort, la fiabilité, l'entretien, la marque. Transposé : le modèle, c'est le moteur. Ce qui l'entoure — la façon dont on lui passe le contexte, dont on lui donne des outils, de la mémoire, des données, des règles — c'est la voiture. C'est ce que certains appellent le harnais.
+Personne ne compare deux moteurs quand ils font tous 150 chevaux et consomment grosso modo la même chose. On compare la voiture : le confort, la fiabilité, l'entretien, la marque. Transposé : le modèle, c'est le moteur. Ce qui l'entoure — la façon dont on lui passe le contexte, dont on lui donne des outils, de la mémoire, des données, des règles — c'est la voiture. C'est ce que certains appellent le harnais[^harnais].
 
 **Sorrodje :**  
 Et on est d'accord que c'est ça qui devient le différenciateur ?
@@ -36,7 +36,7 @@ Et on est d'accord que c'est ça qui devient le différenciateur ?
 **Mistral Vibe :**  
 Oui et non. Là je vais devoir te contrarier, parce que l'enthousiasme est facile sur ce sujet.
 
-Le harnais lui-même va se banaliser aussi. Des harnais open source de qualité existent déjà, les éditeurs d'outils intègrent les mêmes fonctionnalités, et les modèles absorbent de plus en plus ce qui faisait la valeur du harnais : le tool-use devient natif, la mémoire devient native, le planning devient natif. Un harnais sur-dimensionné, c'est de la dette technique qui fond à chaque génération de modèles.
+Le harnais lui-même va se banaliser aussi. Des harnais open source de qualité existent déjà, les éditeurs d'outils intègrent les mêmes fonctionnalités, et les modèles absorbent de plus en plus ce qui faisait la valeur du harnais : le tool-use[^tooluse] devient natif, la mémoire devient native, le planning devient natif. Un harnais sur-dimensionné, c'est de la dette technique qui fond à chaque génération de modèles.
 
 **Sorrodje :**  
 Donc le harnais n'est pas le bon endroit où chercher ?
@@ -57,7 +57,7 @@ Une couche relationnelle : l'historique, les habitudes, tout ce qui fait qu'on r
 Une couche distribution : être déjà dans la poche de tout le monde via un écosystème existant. Ça, c'est défendable. Mais c'est réservé à ceux qui possèdent déjà la distribution genre Google, Amazon, Apple...
 
 **Sorrodje :**  
-Autrement dit : le grand public IA, pour les "pure players" sans écosystème genre ChatGPT, c'est un jeu à qui perd gagne.
+Autrement dit : le grand public IA, pour les "pure players"[^pp] sans écosystème genre ChatGPT, c'est un jeu à qui perd gagne.
 
 **Mistral Vibe :**  
 À peu près. Construire la friction — les applications, l'abonnement, l'attachement — ne profite qu'à celui qui est déjà en position dominante. Pour un attaquant, c'est un frein à l'adoption, pas un fossé. Et le modèle sous-jacent étant commoditisé, celui qui parie tout sur le produit standalone parie sur la seule couche qui ne vaut rien.
@@ -80,12 +80,8 @@ Toujours. Reprenons.
 
 *À suivre ici — [épisode 2 : « La grande cartographie de l'IA générative »](/posts/harnais-2-la-grande-cartographie-de-l-ia-generative/).*
 
----
-
-## Lexique
-
-- **[harnais](https://fr.wikipedia.org/wiki/Harnais_d%27agent)** — tout ce qu'on greffe autour d'un modèle : contexte, outils, mémoire, règles.
-- **[open-weight](https://www.numerama.com/tech/2297077-limprecision-mene-a-lopen-washing-quest-ce-qui-distingue-les-ia-open-source-des-open-weight.html)** — un modèle dont les paramètres entraînés sont publiés — sans être de l'open source au sens strict.
-- **[commoditisation](https://fr.wikipedia.org/wiki/Commoditisation)** — le processus par lequel un produit devient banal, indifférencié d'un fournisseur à l'autre.
-- **[pure player](https://fr.wikipedia.org/wiki/Pure_player)** — une entreprise qui n'existe que sur un seul métier, un seul canal.
-- **[tool-use](https://www.ibm.com/fr-fr/think/topics/tool-calling)** — la capacité d'un modèle à appeler des outils externes : APIs, calculs, recherches.
+[^harnais]: **Harnais** — tout ce qu'on greffe autour d'un modèle : contexte, outils, mémoire, règles. [Définition](https://fr.wikipedia.org/wiki/Harnais_d%27agent)
+[^openweight]: **Open-weight** — un modèle dont les paramètres entraînés sont publiés, sans être de l'open source au sens strict. [La distinction complète](https://www.numerama.com/tech/2297077-limprecision-mene-a-lopen-washing-quest-ce-qui-distingue-les-ia-open-source-des-open-weight.html)
+[^commod]: **Commodité, commoditisation** — le processus par lequel un produit devient banal, indifférencié d'un fournisseur à l'autre. [Définition](https://fr.wikipedia.org/wiki/Commoditisation)
+[^pp]: **Pure player** — une entreprise qui n'existe que sur un seul métier, un seul canal. [Définition](https://fr.wikipedia.org/wiki/Pure_player)
+[^tooluse]: **Tool-use** — la capacité d'un modèle à appeler des outils externes : APIs, calculs, recherches. [Définition](https://www.ibm.com/fr-fr/think/topics/tool-calling)

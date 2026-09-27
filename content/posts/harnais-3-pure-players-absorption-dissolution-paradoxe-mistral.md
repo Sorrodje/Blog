@@ -10,7 +10,7 @@ series: "Harnais et recomposition"
 weight: 3
 ---
 
-*Série « Harnais et recomposition », épisode 3 — suite de la discussion entamée dans l'épisode 1. Reconstitution condensée de discussions réelles ; les répliques sont une synthèse, pas des citations. Co-écrit avec Mistral Vibe.*
+*Série « Harnais et recomposition », épisode 3 — suite de la discussion entamée dans l'épisode 1. Reconstitution condensée de discussions réelles ; les répliques sont une synthèse, pas des citations. Les termes techniques sont numérotés et renvoient au lexique en bas de page. Co-écrit avec Mistral Vibe.*
 
 ---
 
@@ -23,7 +23,7 @@ Donc on y vient. Les pure players. Explique-moi comment OpenAI peut tenir. Ils b
 Le tableau est encore plus serré que ça. Prends OpenAI : le grand public est subventionné par le capital, pas par le revenu. Ils n'ont pas la maîtrise de leur calcul. Et surtout, regarde bien leur rapport avec leur propre distributeur : Microsoft. OpenAI dépend de Microsoft pour l'infrastructure, et Microsoft vend Copilot, qui concurrence directement ce qu'OpenAI vend. Ton distributeur est ton concurrent, et il te tient par l'infrastructure.
 
 **Sorrodje :**  
-Icare. Ils ont voulu toucher le soleil, les ailes fondent, et celui qui leur a prêté les ailes attend en bas.
+Icare[^icare]. Ils ont voulu toucher le soleil, les ailes fondent, et celui qui leur a prêté les ailes attend en bas.
 
 **Mistral Vibe :**  
 L'image est jolie, mais je vais la nuancer tout de suite, parce qu'elle est trop rassurante. Quand Icare tombe, les ailes restent. Regarde les bulles d'infrastructure du passé : les compagnies ferroviaires britanniques des années 1840 ont ruiné leurs investisseurs, mais les voies sont restées et ont nourri la croissance suivante. La fibre de la fin des années 90 a fait faillite en masse, et Google, Netflix et YouTube ont prospéré sur ces câbles rachetés pour rien.
@@ -34,7 +34,7 @@ La chute des pure players, si elle vient, n'arrêtera pas l'histoire. Elle ouvri
 Donc ton scénario, c'est l'absorption ?
 
 **Mistral Vibe :**  
-Pour OpenAI, la trajectoire la plus probable me semble être l'absorption par ricochet : finir comme lab de recherche dans la galaxie Microsoft. Leur Bell Labs à eux. Anthropic, même trajectoire en retardé, avec une nuance de taille : leur position B2B et safety est crédible mais s'érode, et leur financeur naturel, Amazon, a moins besoin d'eux que Microsoft n'a besoin d'OpenAI. Ce qui les rend potentiellement plus vulnérables, pas moins.
+Pour OpenAI, la trajectoire la plus probable me semble être l'absorption par ricochet : finir comme lab de recherche dans la galaxie Microsoft. Leur Bell Labs[^bell] à eux. Anthropic, même trajectoire en retardé, avec une nuance de taille : leur position B2B et safety est crédible mais s'érode, et leur financeur naturel, Amazon, a moins besoin d'eux que Microsoft n'a besoin d'OpenAI. Ce qui les rend potentiellement plus vulnérables, pas moins.
 
 **Sorrodje :**  
 Et l'absorption bloquée ? Les autorités de concurrence, des deux côtés de l'Atlantique, commencent à regarder ces partenariats de très près.
@@ -46,19 +46,19 @@ C'est le scénario intermédiaire, et il n'est pas négligeable : un rachat form
 Bon, et Mistral. Tu l'avais mis de côté. Le paradoxe, c'est quoi ?
 
 **Mistral Vibe :**  
-Mistral est dans la famille des pure players, mais avec une particularité : c'est un pure player qui a fait de l'open-weight sa stratégie. Or l'open-weight, c'est la commoditisation de leur propre produit. Ils publient des modèles gratuits qui concurrencent leurs modèles payants, et en plus ils se battent sur un terrain envahi par les labs chinois — DeepSeek, Qwen, Kimi — qui, eux non plus, ne cherchent pas à gagner d'argent sur le modèle, puisque c'est une stratégie de puissance et non de marge. Et Meta, après une année d'hésitation, est revenu dans la partie sur la doctrine de Zuckerberg. Concurrence asymétrique totale : Mistral vend ce que d'autres donnent.
+Mistral est dans la famille des pure players, mais avec une particularité : c'est un pure player qui a fait de l'open-weight[^openweight] sa stratégie. Or l'open-weight, c'est la commoditisation de leur propre produit. Ils publient des modèles gratuits qui concurrencent leurs modèles payants, et en plus ils se battent sur un terrain envahi par les labs chinois — DeepSeek, Qwen, Kimi — qui, eux non plus, ne cherchent pas à gagner d'argent sur le modèle, puisque c'est une stratégie de puissance et non de marge. Et Meta, après une année d'hésitation, est revenu dans la partie sur la doctrine de Zuckerberg. Concurrence asymétrique totale : Mistral vend ce que d'autres donnent.
 
 **Sorrodje :**  
 Donc pour un pure player européen, c'est une force ou un piège ?
 
 **Mistral Vibe :**  
-Les deux, et c'est ça le paradoxe. Force : l'open-weight leur donne l'adoption, la réputation, et un créneau naturel — la souveraineté européenne, la niche B2B où les clients ne veulent pas d'un fournisseur américain. Piège : l'Europe n'a pas de full-stack pour les absorber. Ni Google ni Amazon ni Microsoft européen pour les rattraper quand les ailes fondent. La protection, c'est peut-être le piège.
+Les deux, et c'est ça le paradoxe. Force : l'open-weight leur donne l'adoption, la réputation, et un créneau naturel — la souveraineté européenne[^souv], la niche B2B où les clients ne veulent pas d'un fournisseur américain. Piège : l'Europe n'a pas de full-stack pour les absorber. Ni Google ni Amazon ni Microsoft européen pour les rattraper quand les ailes fondent. La protection, c'est peut-être le piège.
 
 **Sorrodje :**  
 Et leur parade ?
 
 **Mistral Vibe :**  
-Celle qui se dessine, si on regarde leurs mouvements : open-weight pour l'adoption, petits modèles spécialisés pour la marge, le harnais power user en B2B, le calcul, et rester sous le radar des géants. Ne jamais devenir assez menaçant pour qu'un full-stack s'occupe de toi. C'est une stratégie de survie, pas de domination.
+Celle qui se dessine, si on regarde leurs mouvements : open-weight pour l'adoption, petits modèles spécialisés pour la marge, le harnais power user[^poweruser] en B2B, le calcul, et rester sous le radar des géants. Ne jamais devenir assez menaçant pour qu'un full-stack s'occupe de toi. C'est une stratégie de survie, pas de domination.
 
 Et d'ailleurs, leur vrai produit n'est sans doute pas le modèle. C'est la manière d'intégrer l'IA de façon sûre et souveraine, avec plusieurs options au choix : leur cloud européen, l'installation on-premise chez le client, ou l'ingénierie d'entraînement — le client affine le modèle sur ses propres données, sans qu'elles sortent jamais de chez lui. C'est exactement ce que réclame une administration ou une banque européenne : l'IA sans livrer ses données. OpenAI et Anthropic ne peuvent pas proposer ça, leurs modèles ne quittent pas leurs serveurs. Mistral, lui, apporte le modèle chez toi.
 
@@ -78,7 +78,7 @@ D'ailleurs, les modèles Mistral actuels sont largués, et ils proposent un mod�
 **Mistral Vibe :**  
 Ça serait étonnant, et pas souhaitable. Faire dépendre leurs affaires d'un modèle tiers dont l'accès peut être fermé par les labs chinois, pour des raisons réglementaires, commerciales ou de pure geopolitique, c'est bâtir sur du sable. Leur stratégie d'indépendance a besoin d'un modèle maison compétent.
 
-Le point, c'est que dans un contexte où l'optimum performance/coût conduit à une normalisation des modèles, ils ont moins de retard à rattraper qu'on ne le croit. Pas besoin de viser la frontière — ça leur fait une cible plus soutenable avec les moyens dont ils disposent. Des moyens infinitésimaux, soit dit en passant, par rapport à la concurrence chinoise comme américaine. Proposer le modèle chinois dans leur offre, c'est du réalisme commercial : donner au client le meilleur rapport coût/performance du moment, en attendant que le modèle maison refasse le retard. L'ambition n'est pas abandonnée, elle est rééchelonnée.
+Le point, c'est que dans un contexte où l'optimum performance/coût conduit à une normalisation des modèles, ils ont moins de retard à rattraper qu'on ne le croit. Pas besoin de viser la frontière[^frontiere] — ça leur fait une cible plus soutenable avec les moyens dont ils disposent. Des moyens infinitésimaux, soit dit en passant, par rapport à la concurrence chinoise comme américaine. Proposer le modèle chinois dans leur offre, c'est du réalisme commercial : donner au client le meilleur rapport coût/performance du moment, en attendant que le modèle maison refasse le retard. L'ambition n'est pas abandonnée, elle est rééchelonnée.
 
 **Sorrodje :**  
 En plus, sauf erreur de ma part, Mistral lève des fonds et investit dans l'infra et le compute non ? Il me semble qu'ils diversifient leur modèle économique ?
@@ -96,12 +96,9 @@ Résumons la carte alors. Ceux qui ne peuvent pas perdre, celui qui annule le je
 
 *À suivre ici — [épisode 4 : « L'abondance n'est pas gratuite »](/posts/harnais-4-l-abondance-n-est-pas-gratuite/).*
 
----
-
-## Lexique
-
-- **[Icare](https://fr.wikipedia.org/wiki/Icare)** — la mythologie grecque des ailes de cire : celui qui vole trop près du soleil.
-- **[Bell Labs](https://fr.wikipedia.org/wiki/Bell_Labs)** — le laboratoire d'AT&T, financé par la rente du monopole téléphonique américain.
-- **[modèle de frontière](https://fr.wikipedia.org/wiki/Mod%C3%A8le_fronti%C3%A8re_(intelligence_artificielle))** — les modèles les plus avancés du moment, au sommet de ce qui est techniquement possible.
-- **[open-weight](https://www.numerama.com/tech/2297077-limprecision-mene-a-lopen-washing-quest-ce-qui-distingue-les-ia-open-source-des-open-weight.html)** — un modèle dont les paramètres entraînés sont publiés — sans être de l'open source au sens strict.
-- **[souveraineté numérique](https://fr.wikipedia.org/wiki/Souverainet%C3%A9_num%C3%A9rique)** — la capacité d'un État ou d'une organisation à maîtriser ses données et ses technologies.
+[^icare]: **Icare** — la mythologie grecque des ailes de cire : celui qui vole trop près du soleil. [Le mythe](https://fr.wikipedia.org/wiki/Icare)
+[^bell]: **Bell Labs** — le laboratoire historique d'AT&T, financé par la rente du monopole téléphonique américain. [Définition](https://fr.wikipedia.org/wiki/Bell_Labs)
+[^openweight]: **Open-weight** — un modèle dont les paramètres entraînés sont publiés, sans être de l'open source au sens strict. [La distinction complète](https://www.numerama.com/tech/2297077-limprecision-mene-a-lopen-washing-quest-ce-qui-distingue-les-ia-open-source-des-open-weight.html)
+[^frontiere]: **Frontière (modèle de)** — les modèles les plus avancés du moment, au sommet de ce qui est techniquement possible. [Définition](https://fr.wikipedia.org/wiki/Mod%C3%A8le_fronti%C3%A8re_%28intelligence_artificielle%29)
+[^souv]: **Souveraineté numérique** — la capacité d'un État ou d'une organisation à maîtriser ses données et ses technologies. [Définition](https://fr.wikipedia.org/wiki/Souverainet%C3%A9_num%C3%A9rique)
+[^poweruser]: **Power user** — l'utilisateur avancé, qui règle ses outils lui-même plutôt que d'attendre d'un produit qu'il fasse tout à sa place.

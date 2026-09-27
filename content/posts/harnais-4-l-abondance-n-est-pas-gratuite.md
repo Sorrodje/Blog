@@ -10,14 +10,14 @@ series: "Harnais et recomposition"
 weight: 4
 ---
 
-*Série « Harnais et recomposition », épisode 4 — suite de la discussion entamée dans l'épisode 1. Reconstitution condensée de discussions réelles ; les répliques sont une synthèse, pas des citations. Co-écrit avec Mistral Vibe.*
+*Série « Harnais et recomposition », épisode 4 — suite de la discussion entamée dans l'épisode 1. Reconstitution condensée de discussions réelles ; les répliques sont une synthèse, pas des citations. Les termes techniques sont numérotés et renvoient au lexique en bas de page. Co-écrit avec Mistral Vibe.*
 
 ---
 
 # L'abondance n'est pas gratuite
 
 **Sorrodje :**  
-Attends, avant que tu me répondes sur la course à la frontière. Il faut que je marque une pause, parce qu'en relisant toute notre discussion dans ma tête, il y a une prémisse qu'on a posée sans jamais l'interroger. On dit que le modèle devient une commodité, que l'intelligence se banalise — et au fond, ce qu'on est en train de décrire, c'est une intelligence qui devient abondante. Comme la force physique est devenue abondante avec la machine à vapeur.
+Attends, avant que tu me répondes sur la course à la frontière[^frontiere]. Il faut que je marque une pause, parce qu'en relisant toute notre discussion dans ma tête, il y a une prémisse qu'on a posée sans jamais l'interroger. On dit que le modèle devient une commodité, que l'intelligence se banalise — et au fond, ce qu'on est en train de décrire, c'est une intelligence qui devient abondante. Comme la force physique est devenue abondante avec la machine à vapeur.
 
 Eh bien cette prémisse, je crois qu'elle est fragile. Cette abondance a un coût économique que peu d'acteurs sont prêts à payer, et un prix physique : les besoins gigantesques en énergie et en eau pour la permettre.
 
@@ -32,7 +32,7 @@ Ton parallèle avec la machine à vapeur est le bon, et je vais même le prolong
 Et ça s'aggrave avec l'efficacité, non ? C'est le truc qui me semble le plus pervers.
 
 **Mistral Vibe :**  
-Oui, et il y a un nom pour ça : le paradoxe de Jevons. Au XIXe siècle, les machines à vapeur sont devenues plus efficaces, et la consommation totale de charbon a explosé — parce qu'utiliser la vapeur devenait rentable pour mille nouveaux usages. On voit exactement la même chose ici : le coût d'une réponse d'IA a chuté de façon spectaculaire, et la consommation totale d'énergie des centres de calcul augmente plus vite que jamais. L'efficacité ne réduit pas l'empreinte, elle l'étend.
+Oui, et il y a un nom pour ça : le paradoxe de Jevons[^jevons]. Au XIXe siècle, les machines à vapeur sont devenues plus efficaces, et la consommation totale de charbon a explosé — parce qu'utiliser la vapeur devenait rentable pour mille nouveaux usages. On voit exactement la même chose ici : le coût d'une réponse d'IA a chuté de façon spectaculaire, et la consommation totale d'énergie des centres de calcul augmente plus vite que jamais. L'efficacité ne réduit pas l'empreinte, elle l'étend.
 
 **Sorrodje :**  
 C'est ça qui me semble en pleine discordance avec le moment qu'on vit. On nous vend une course sans limite — plus de calcul, plus de puissance, plus de capacité — précisément au moment où tout le monde, Jancovici en tête, prend conscience qu'on vit dans un monde fini. Énergie finie, eau finie, climat qui lâche. Ce n'est pas un détail de gouvernance, c'est une contradiction frontale entre le récit de l'IA et la trajectoire physique de la planète.
@@ -42,7 +42,7 @@ Là-dessus je te rejoins, et je vais même le renforcer sur le plan économique 
 
 Mais je me dois de nuancer aussi, sur deux points, pour ne pas simplement te donner raison.
 
-D'abord l'échelle. Les centres de données, ces dernières années, c'est autour de 1 à 2 % de l'électricité mondiale. C'est une croissance inquiétante, et localement le problème est aigu — l'eau dans les régions déjà en stress hydrique, par exemple. Mais globalement, c'est encore loin des transports, de l'acier ou du ciment. Le danger tient à la trajectoire plus qu'à l'état actuel.
+D'abord l'échelle. Les centres de données[^dc], ces dernières années, c'est autour de 1 à 2 % de l'électricité mondiale. C'est une croissance inquiétante, et localement le problème est aigu — l'eau dans les régions déjà en stress hydrique, par exemple. Mais globalement, c'est encore loin des transports, de l'acier ou du ciment. Le danger tient à la trajectoire plus qu'à l'état actuel.
 
 Ensuite la nature de l'énergie. La machine à vapeur était intrinsèquement liée au charbon. L'IA consomme de l'électricité, qui peut en principe être décarbonée. Mais « en principe » est le mot-clé : dans les faits, la demande pousse aujourd'hui à relancer des centrales à gaz et à retarder des fermetures. Ce n'est pas une fatalité physique, c'est un choix. Seulement, dans une course concurrentielle, on choisit presque toujours l'énergie disponible la plus vite, pas la plus propre.
 
@@ -56,7 +56,7 @@ Exact. Et je veux te poser une question, parce que ton objection peut se lire de
 Très sincèrement, je défends les deux.
 
 **Mistral Vibe :**  
-C'est cohérent, à condition de le formuler comme un pari : « ça va probablement se calmer, et si ça ne se calme pas, c'est là que ça devient grave. » D'un côté les labs qui se comportent comme Icare — ils vont se brûler les ailes à vouloir toucher le soleil. De l'autre, des clients qui restent à construire du concret économiquement soutenable autour de ce qui existe déjà.
+C'est cohérent, à condition de le formuler comme un pari : « ça va probablement se calmer, et si ça ne se calme pas, c'est là que ça devient grave. » D'un côté les labs qui se comportent comme Icare[^icare] — ils vont se brûler les ailes à vouloir toucher le soleil. De l'autre, des clients qui restent à construire du concret économiquement soutenable autour de ce qui existe déjà.
 
 Mais je te signale le point faible de cette position, pour que tu la tiennes les yeux ouverts : un Icare soutenu par un État ne tombe pas. Si l'IA devient un enjeu de puissance, comparable au nucléaire ou à l'espace, la discipline de marché s'arrête — et la discipline physique aussi. On dépensera une énergie colossale sans que personne ait réellement tranché que ça en valait la peine. Ta discordance, alors, ne sera plus un contrepoids : elle sera le cœur du problème.
 
@@ -67,10 +67,7 @@ C'est exactement là que je voulais en venir. Il me reste à te demander si la c
 
 *À suivre ici — [épisode 5 : « La course à la frontière a-t-elle encore un sens ? »](/posts/harnais-5-la-course-a-la-frontiere-a-t-elle-encore-un-sens/).*
 
----
-
-## Lexique
-
-- **[paradoxe de Jevons](https://fr.wikipedia.org/wiki/Paradoxe_de_Jevons)** — plus une technologie devient efficace, plus sa consommation totale explose.
-- **[centre de données](https://fr.wikipedia.org/wiki/Centre_de_donn%C3%A9es)** — le bâtiment rempli de serveurs où vivent les modèles.
-- **[Icare](https://fr.wikipedia.org/wiki/Icare)** — la mythologie grecque des ailes de cire : celui qui vole trop près du soleil.
+[^frontiere]: **Frontière (modèle de)** — les modèles les plus avancés du moment, au sommet de ce qui est techniquement possible. [Définition](https://fr.wikipedia.org/wiki/Mod%C3%A8le_fronti%C3%A8re_%28intelligence_artificielle%29)
+[^jevons]: **Paradoxe de Jevons** — plus une technologie devient efficace, plus sa consommation totale explose. [Définition](https://fr.wikipedia.org/wiki/Paradoxe_de_Jevons)
+[^dc]: **Centre de données (datacenter)** — le bâtiment rempli de serveurs où vivent les modèles. [Définition](https://fr.wikipedia.org/wiki/Centre_de_donn%C3%A9es)
+[^icare]: **Icare** — la mythologie grecque des ailes de cire : celui qui vole trop près du soleil. [Le mythe](https://fr.wikipedia.org/wiki/Icare)

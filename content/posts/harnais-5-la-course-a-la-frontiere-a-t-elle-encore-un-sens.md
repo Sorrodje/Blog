@@ -10,14 +10,14 @@ series: "Harnais et recomposition"
 weight: 5
 ---
 
-*Série « Harnais et recomposition », épisode 5, le dernier — suite de la discussion entamée dans l'épisode 1. Reconstitution condensée de discussions réelles ; les répliques sont une synthèse, pas des citations. Co-écrit avec Mistral Vibe.*
+*Série « Harnais et recomposition », épisode 5, le dernier — suite de la discussion entamée dans l'épisode 1. Reconstitution condensée de discussions réelles ; les répliques sont une synthèse, pas des citations. Les termes techniques sont numérotés et renvoient au lexique en bas de page. Co-écrit avec Mistral Vibe.*
 
 ---
 
 # La course à la frontière a-t-elle encore un sens ?
 
 **Sorrodje :**  
-Donc on y est, la racine. La course à la frontière, est-ce que ça sert à quoi que ce soit ? Ma position : je vois mal un business aussi intenable. Des coûts de développement insoutenables, un retour sur investissement qui se restreint à des niches, pas de maîtrise du compute, et une dette qui s'accumule. Les labs qui portent la frontière sont engagés dans une course financière intenable.
+Donc on y est, la racine. La course à la frontière[^frontiere], est-ce que ça sert à quoi que ce soit ? Ma position : je vois mal un business aussi intenable. Des coûts de développement insoutenables, un retour sur investissement qui se restreint à des niches, pas de maîtrise du compute, et une dette qui s'accumule. Les labs qui portent la frontière sont engagés dans une course financière intenable.
 
 **Mistral Vibe :**  
 Avant de te répondre, je vais faire ce que je fais d'habitude : distinguer deux questions dans la tienne. La frontière en elle-même, et le business model de ceux qui la portent. Ce sont deux problèmes différents, et ta thèse est solide sur le deuxième.
@@ -31,10 +31,10 @@ Comme la pharmacie : la recherche de pointe est ruineuse et rarement rentable po
 Exactement. Donc je reformulerais ta position : la course à la frontière n'a peut-être aucun sens économique pour les coureurs, mais elle a un sens pour l'écosystème, qui en récolte les fruits gratuitement. Si la frontière s'arrête, la commodité plafonne aussi. C'est le vrai paradoxe de cette industrie : une course dont les coureurs ne récolteront peut-être jamais les gains, mais sans laquelle personne d'autre ne les récolterait non plus.
 
 **Sorrodje :**  
-D'accord, je te suis sur ce point. Le problème, c'est pas la frontière — c'est qui la finance et comment. Des entreprises endettées qui cherchent à capitaliser dessus sans maîtriser l'infra, avec des perspectives de rentabilité qui se restreignent. Je ne vois pas d'avenir à ce business. En revanche, la frontière récupérée comme R&D sans objectif de rentabilité, à la Bell Labs, là oui.
+D'accord, je te suis sur ce point. Le problème, c'est pas la frontière — c'est qui la finance et comment. Des entreprises endettées qui cherchent à capitaliser dessus sans maîtriser l'infra, avec des perspectives de rentabilité qui se restreignent. Je ne vois pas d'avenir à ce business. En revanche, la frontière récupérée comme R&D sans objectif de rentabilité, à la Bell Labs[^bell], là oui.
 
 **Mistral Vibe :**  
-Ton analogie est excellente, mais regarde ce qu'elle implique, parce qu'elle est à double tranchant. Bell Labs n'était pas un miracle de mécénat scientifique. C'était financé par la rente d'AT&T — un monopole réglementé sur le téléphone américain. Les clients payaient l'abonnement un peu plus cher, et cette marge finançait le transistor, le laser, Unix. Et quand le monopole a été démantelé, Bell Labs a décliné.
+Ton analogie est excellente, mais regarde ce qu'elle implique, parce qu'elle est à double tranchant. Bell Labs n'était pas un miracle de mécénat scientifique. C'était financé par la rente d'AT&T[^att] — un monopole réglementé sur le téléphone américain. Les clients payaient l'abonnement un peu plus cher, et cette marge finançait le transistor, le laser, Unix. Et quand le monopole a été démantelé, Bell Labs a décliné.
 
 Donc si la frontière devient une R&D sans rentabilité, il faut une rente quelque part. Il n'y a que deux candidats : les monopoles de fait — la recherche en ligne de Google, la publicité de Meta, le cloud d'Amazon et Microsoft — ou les États, sur le modèle de la recherche militaire. Dans les deux cas, ça veut dire une chose : la direction de la technologie la plus structurante de l'époque sera fixée par quelques entreprises dominantes ou par des appareils d'État en compétition.
 
@@ -45,14 +45,14 @@ Et l'Europe, dans ce tableau ?
 Consommatrice d'une frontière décidée ailleurs. Elle n'a ni les monopoles ni un effort public comparable.
 
 **Sorrodje :**  
-Ce qui me ramène à l'open-weight. Si le modèle se commoditise totalement — moteur de voiture, noyau Linux, un truc standardisé — toute la valeur passe du moteur à la voiture complète, du modèle à l'agent, modèle plus harnais.
+Ce qui me ramène à l'open-weight[^openweight]. Si le modèle se commoditise[^commod] totalement — moteur de voiture, noyau Linux, un truc standardisé — toute la valeur passe du moteur à la voiture complète, du modèle à l'agent[^agent], modèle plus harnais.
 
 Et je rajouterais : pas seulement l'agent. La donnée aussi. Le jour où le modèle ne vaut plus rien, le stratégique se déploie sur ce qu'on lui confie : où la donnée est hébergée, par où elle transite, qui peut la voir passer. La voiture devient stratégique, mais la cargaison aussi.
 
 Et l'open-weight, c'est la garantie que personne ne peut mettre la main sur le moteur.
 
 **Mistral Vibe :**  
-Sur le déplacement de la valeur, on est d'accord, c'est probablement la transformation économique la plus solide de toute notre discussion. Et tu as raison d'y mettre la donnée : à partir du moment où le modèle se commoditise, la question stratégique n'est plus le moteur, c'est le circuit — l'agent qui orchestre, mais aussi la donnée, son hébergement, ses routes de transit. C'est là que se joue la souveraineté réelle. Mais sur le mot « garantie », je te contrarie, et quatre fois.
+Sur le déplacement de la valeur, on est d'accord, c'est probablement la transformation économique la plus solide de toute notre discussion. Et tu as raison d'y mettre la donnée : à partir du moment où le modèle se commoditise, la question stratégique n'est plus le moteur, c'est le circuit — l'agent qui orchestre, mais aussi la donnée, son hébergement, ses routes de transit. C'est là que se joue la souveraineté[^souv] réelle. Mais sur le mot « garantie », je te contrarie, et quatre fois.
 
 Un : open-weight n'est pas open source. Avec Linux, tu lis le code, tu le modifies, tu le recompiles. Avec un modèle ouvert, tu as le résultat final, pas la recette — ni les données, ni la méthode complète, ni les moyens de calcul pour produire la version suivante. Tu peux faire tourner le moteur, le régler. Tu ne peux pas en fabriquer un neuf. Le contrôle ne disparaît pas, il se déplace vers ceux qui peuvent entraîner la génération suivante. Et ceux-là peuvent cesser de publier du jour au lendemain — Meta l'a fait, plus d'un an sans open-weight avant d'y revenir. L'open-weight, aujourd'hui, est un cadeau, pas un droit.
 
@@ -113,13 +113,10 @@ On est en danger de démission. C'est la note sur laquelle on referme la carte, 
 
 *Fin de la série. Les cinq épisodes : [1. Le harnais, nouveau différenciateur](/posts/harnais-1-le-harnais-ia-nouveau-differenciateur-strategique/) — [2. La grande cartographie](/posts/harnais-2-la-grande-cartographie-de-l-ia-generative/) — [3. Pure players](/posts/harnais-3-pure-players-absorption-dissolution-paradoxe-mistral/) — [4. L'abondance n'est pas gratuite](/posts/harnais-4-l-abondance-n-est-pas-gratuite/) — [5. La course à la frontière](/posts/harnais-5-la-course-a-la-frontiere-a-t-elle-encore-un-sens/).*
 
----
-
-## Lexique
-
-- **[IA agentique](https://fr.wikipedia.org/wiki/Intelligence_artificielle_agentique)** — un système capable d'agir de façon autonome pour atteindre un objectif, au-delà de la simple réponse.
-- **[open-weight](https://www.numerama.com/tech/2297077-limprecision-mene-a-lopen-washing-quest-ce-qui-distingue-les-ia-open-source-des-open-weight.html)** — un modèle dont les paramètres sont publiés — l'article distingue aussi ce que l'open-weight n'est pas : de l'open source.
-- **[commoditisation](https://fr.wikipedia.org/wiki/Commoditisation)** — le processus par lequel un produit devient banal, indifférencié d'un fournisseur à l'autre.
-- **[Bell Labs](https://fr.wikipedia.org/wiki/Bell_Labs)** — le laboratoire d'AT&T, financé par la rente du monopole téléphonique américain.
-- **[AT&T](https://fr.wikipedia.org/wiki/AT%26T)** — l'opérateur téléphonique américain, longtemps monopole réglementé.
-- **[souveraineté numérique](https://fr.wikipedia.org/wiki/Souverainet%C3%A9_num%C3%A9rique)** — la capacité d'un État ou d'une organisation à maîtriser ses données et ses technologies.
+[^frontiere]: **Frontière (modèle de)** — les modèles les plus avancés du moment, au sommet de ce qui est techniquement possible. [Définition](https://fr.wikipedia.org/wiki/Mod%C3%A8le_fronti%C3%A8re_%28intelligence_artificielle%29)
+[^agent]: **Agent, IA agentique** — un système capable d'agir de façon autonome pour atteindre un objectif, au-delà de la simple réponse. [Définition](https://fr.wikipedia.org/wiki/Intelligence_artificielle_agentique)
+[^openweight]: **Open-weight** — un modèle dont les paramètres entraînés sont publiés, sans être de l'open source au sens strict. [La distinction complète](https://www.numerama.com/tech/2297077-limprecision-mene-a-lopen-washing-quest-ce-qui-distingue-les-ia-open-source-des-open-weight.html)
+[^commod]: **Commodité, commoditisation** — le processus par lequel un produit devient banal, indifférencié d'un fournisseur à l'autre. [Définition](https://fr.wikipedia.org/wiki/Commoditisation)
+[^bell]: **Bell Labs** — le laboratoire historique d'AT&T, financé par la rente du monopole téléphonique américain. [Définition](https://fr.wikipedia.org/wiki/Bell_Labs)
+[^att]: **AT&T** — l'opérateur téléphonique américain, longtemps monopole réglementé. [Définition](https://fr.wikipedia.org/wiki/AT%26T)
+[^souv]: **Souveraineté numérique** — la capacité d'un État ou d'une organisation à maîtriser ses données et ses technologies. [Définition](https://fr.wikipedia.org/wiki/Souverainet%C3%A9_num%C3%A9rique)
