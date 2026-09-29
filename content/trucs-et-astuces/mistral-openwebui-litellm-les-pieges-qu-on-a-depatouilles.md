@@ -19,12 +19,12 @@ Le billet d'installation de la stack arrive à part. Ici, on se concentre sur ce
 
 Le premier piège, on l'a payé sans le savoir : on envoyait `reasoning_effort` et le modèle répondait normalement. Trop normalement. Aucune erreur, aucun changement de comportement — parce que le paramètre n'arrivait jamais au fournisseur.
 
-Le coupable : `drop_params: true`, un réglage global LiteLLM qui retire **silencieusement** tout paramètre non reconnu pour le couple modèle/fournisseur. C'est ce qui rend un portail multi-fournisseurs supportable — sans lui, chaque caprice de chaque API ferait planter la requête. Mais sa contrepartie, c'est qu'un paramètre mal routé disparaît sans crier. Et il y a une deuxième couche : pour les modèles Mistral non-Magistral, LiteLLM ne route pas `reasoning_effort` en top-level du tout (sa détection se base sur « magistral » dans le nom du modèle).
+Le coupable : `drop_params: true`, un réglage global LiteLLM qui retire **silencieusement** tout paramètre non reconnu pour le couple modèle/fournisseur. C'est ce qui rend un portail multi-fournisseurs supportable — sans lui, chaque caprice de chaque API ferait planter la requête. Mais sa contrepartie, c'est qu'un paramètre mal routé disparaît sans crier. Et il y avait une deuxième couche, qu'on a d'abord prise pour de l'architecture : sur les modèles Mistral non-Magistral (ex. Small 4), `reasoning_effort` en top-level n'était pas routé du tout. Verdict après avoir creusé, au moment d'ajouter Small 4 : pas de l'architecture, un **bug LiteLLM** — le support du paramètre était conditionné au nom « magistral » dans le code (issue #36407, corrigé par les PR #36411 puis #41062 qui l'acceptent sur tous les modèles Mistral).
 
 **Ce qu'on a fait :**
 
 - `allowed_openai_params: ["reasoning_effort", "prompt_cache_key"]` dans les `litellm_params` de chaque modèle. C'est la liste blanche qui protège du drop global.
-- Pour les modèles concernés par le routage hasardeux, on passe par `extra_body` : ces champs sont fusionnés tels quels, sans passer par le filtrage.
+- À l'époque du bug, le contournement passait par `extra_body` : ces champs sont fusionnés tels quels, sans passer par le filtrage. Depuis le fix, une image LiteLLM à jour route le paramètre nativement — le contournement reste valable mais n'est plus nécessaire. Notre vrai réflexe depuis : **tenir l'image LiteLLM à jour** et re-tester le paramètre à chaque upgrade, puisqu'un simple `docker compose pull` a réglé le problème.
 - On a gardé `drop_params: true`. Le bon réflexe n'est pas de le désactiver, c'est de lister explicitement ce qu'on veut protéger.
 
 ## 2. Le raisonnement avait lieu, était facturé, et ne s'affichait pas
@@ -60,11 +60,13 @@ Valeurs valides constatées, à re-vérifier à chaque ajout :
 |---|---|---|
 | GLM-5.2 (Mistral) | `high`, `max` | `max` |
 | GLM-5.3 (Mistral) | `low`, `high`, `max` | `max` |
-| Mistral Small 4 | `none`, `high` (via `extra_body`) | — |
+| Mistral Small 4 | `none`, `high` | `none` |
 
 Nuance de mesure : ces pourcentages viennent de nos propres runs, pas d'une spec. L'ordre de grandeur nous suffit pour la décision.
 
-**Ce qu'on a fait :** on n'envoie rien par défaut — ne rien envoyer, c'est le plein potentiel. Le niveau se pilote à la demande depuis les réglages du modèle dans Open WebUI, jamais pinné en dur côté LiteLLM. Sauf si un niveau doit être garanti à 100 % : là il va en dur dans `litellm_params`, et la requête entrante peut toujours le surcharger.
+Et attention au piège inverse : la ligne Small 4 du tableau n'est pas une coquille. Son défaut serveur est `none` — **pas de thinking du tout**. L'exact inverse des GLM : là, ne rien envoyer tue le raisonnement, et c'est `high` qui l'active. Vérifier le défaut de chaque modèle avant de décider de ne rien envoyer.
+
+**Ce qu'on a fait :** sur les GLM, on n'envoie rien par défaut — leur défaut étant `max`, ne rien envoyer, c'est le plein potentiel. Le niveau se pilote à la demande depuis les réglages du modèle dans Open WebUI, jamais pinné en dur côté LiteLLM. Sauf si un niveau doit être garanti à 100 % : là il va en dur dans `litellm_params`, et la requête entrante peut toujours le surcharger.
 
 ## 4. Le protocole de test qu'on aurait aimé avoir au départ
 
@@ -120,15 +122,17 @@ Résultats, sur notre usage réel : **90-95 % de hit avec la clé explicite** et
 
 ## La config finale
 
-Pour un modèle GLM réhébergé chez Mistral, tout tient en quelques lignes côté LiteLLM :
+Pour un modèle natif Mistral (ex. Small 4), tout tient en quelques lignes côté LiteLLM :
 
 ```yaml
 litellm_params:
-  model: openai/mon-modele-glm
+  model: mistral/mistral-small-latest
   custom_llm_provider: mistral
   merge_reasoning_content_in_choices: false
   allowed_openai_params: ["prompt_cache_key", "reasoning_effort"]
 ```
+
+Un réflexe qu'on a appris à nos dépens : déclarer le modèle en **modèle Mistral** (préfixe `mistral/`), pas en endpoint OpenAI générique — c'est le handler natif qui fait suivre le prompt cache et le thinking correctement. Nos GLM réhébergées, déclarées en `openai/` dans nos entrées historiques, gardent la clé de voûte `custom_llm_provider: mistral` pour la même raison.
 
 Et côté Open WebUI : **tout par défaut**. Pas de pinning de raisonnement, pas de sampling custom, bloc réflexion affiché nativement. Toute la complexité qu'on a dépatouillée s'est finalement évaporée en config — mais sans le diagnostic, on y serait encore.
 
@@ -137,7 +141,7 @@ Et côté Open WebUI : **tout par défaut**. Pas de pinning de raisonnement, pas
 1. `drop_params` avale tout ce qui n'est pas listé dans `allowed_openai_params` — sans prévenir.
 2. Tester le flux SSE en curl avant de brancher un modèle à raisonnement : un champ mal placé tue l'affichage du thinking, pas le thinking.
 3. Une valeur invalide ignorée ne produit pas d'erreur : tester avec une valeur qu'on sait invalide.
-4. Sur les GLM, `high` réduit le raisonnement par rapport à ne rien envoyer.
+4. Sur les GLM, `high` réduit le raisonnement par rapport à ne rien envoyer (défaut `max`). Sur Small 4, c'est l'inverse : défaut `none`, c'est ne rien envoyer qui coupe le thinking.
 5. La mémoire d'Open WebUI est un cache-breaker majeur : la désactiver, c'est rentable.
 6. Le prompt caching Mistral exige trois maillons : une Function Open WebUI qui crée la clé (le `chat_id`), `allowed_openai_params` qui la laisse passer, le handler natif Mistral qui la transmet. Les params LiteLLM seuls ne suffisent pas.
 
