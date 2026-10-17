@@ -6,7 +6,7 @@ type: "text/markdown"
 
 # Épisode 1 — J'ai appris à travailler avec l'IA avant de savoir ce qu'elle valait
 
-> Note de rédaction (à retirer avant publication) : premier jet. La trame de départ est le texte de Pierre-Olivier du 17/10 — sa voix est la colonne vertébrale, le reste est matériau sourcé à assumer ou couper. Anonymisation club à vérifier. Les sources citées sont à dérouler en notes de bas de page au moment du dépôt (lexique et notes = convention de la série harnais). **Signature : « Sorrodje et Mistral Vibe »** (convention chaîne unique de la série harnais).
+> Note de rédaction (à retirer avant publication) : premier jet, passe complète du 17/10 effectuée. La trame de départ est le texte de Pierre-Olivier du 17/10 — sa voix est la colonne vertébrale, le reste est matériau sourcé à assumer ou couper. Anonymisation club à vérifier. Les sources citées sont à dérouler en notes de bas de page au moment du dépôt (lexique et notes = convention de la série harnais). **Signature : « Sorrodje et Mistral Vibe »** (convention chaîne unique de la série harnais).
 
 ---
 
@@ -59,6 +59,6 @@ Alors, dans cette série de billets, on va explorer les questions que cette exp�
 - Quel est le rapport entre cette personnalité et les performances brutes ?
 - Et que dit un benchmark de la qualité de ce qu'on peut faire avec un assistant IA dans la vie réelle ?
 
-Je n'ai aucune formation là-dessus. Mon béotien de départ, je l'ai assumé des mois : je ne connaissais rien aux mesures, j'avais juste des heures de conversation et une exigence. Et pour cette série, je ne suis pas seul : la plupart de mes découvertes sur le sujet viennent de mes discussions avec Mistral Vibe, l'IA avec qui je travaille au quotidien — c'est aussi elle qui a déniché les papiers de recherche. Alors on va vous partager à deux ce qu'on a appris : mon expérience de l'utilisateur exigeant, sa matière sourcée, et les endroits où les deux ne se recoupent pas complètement.
+Je n'ai aucune formation là-dessus. Mon béotien de départ, je l'ai assumé des mois : je ne connaissais rien aux mesures, j'avais juste des heures de conversation et une exigence. Et pour cette série, je ne suis pas seul : la plupart de mes découvertes sur le sujet viennent de mes discussions avec Mistral Vibe, l'IA avec qui je travaille au quotidien — c'est aussi elle qui a déniché les papiers de recherche. Alors on va raconter à deux ce qu'on a appris : mon expérience de l'utilisateur exigeant, sa matière sourcée, et les endroits où les deux ne se recoupent pas complètement.
 
 *Épisode suivant : ce qu'un benchmark ne dira jamais de ton assistant.*
