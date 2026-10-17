@@ -48,5 +48,15 @@ Je ne dis pas que l'agentique est une mauvaise direction, ni que l'autonomie des
 
 Ce que je dis, c'est plus précis : à force d'optimiser l'autonomie, l'industrie dégrade la collaboration, qui est l'usage le plus riche et le moins bien mesuré. Les deux ne s'opposent pas — mais en l'état des métriques, l'un est acheté avec le budget de l'autre. Et tant qu'aucun classement ne mesurera la qualité d'une collaboration, rien n'obligera les labs à arrêter de payer.
 
+## Ce que cette série a voulu dire
+
+Reste à refermer le dossier, et le mieux est de le faire en une opposition simple, celle qui court sur les cinq épisodes : **le comportement contre la performance**.
+
+La performance, on sait la mesurer. Trop bien, même : les benchmarks la mesurent jusqu'à la saturation, tout le monde est au même plateau, et l'industrie continue d'affiner la mesure sur des tâches de plus en plus extrêmes. Le comportement, lui — la manière qu'a un modèle de cadrer, d'écouter, de dire non, de tenir le fil — n'est mesuré nulle part. Et pourtant c'est lui qui décide de ce qu'on vit : c'est lui qui a fait ma bascule du club de sport, lui qui a cassé ma collaboration avec GLM 5.3, lui que cherchent les utilisateurs d'Opus déçus.
+
+Autrement dit : la performance est devenue un critère de tri grossier — elle élimine les modèles franchement inférieurs, puis ne départage plus rien. Le comportement est devenu le vrai critère de choix — et il est laissé à notre seul ressenti, faute de mesure.
+
+C'est le paradoxe sur lequel je voulais finir : à mesure que les modèles devenaient interchangeables en performance, le choix d'un assistant est devenu entièrement une question de comportement — et c'est précisément le seul aspect que personne, ni les lab ni les classements, ne regarde. Choisir un modèle, aujourd'hui, ce n'est pas choisir le plus performant ; c'est choisir avec qui on travaille bien. Et ça, pour l'instant, personne ne peut le faire à notre place.
+
 *Épisode précédent : tous les labs dressent le même assistant.*
-*Épisode suivant : comment moi, je fais pour évaluer un modèle.*
+*Fin de la série. La suite — comment j'évalue concrètement un modèle avant de le garder — fera l'objet d'une autre série, quand j'aurai assez de matière.*
