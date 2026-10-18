@@ -1,6 +1,11 @@
-# Ajouter un fournisseur et un modèle à son portail IA — brouillon de to-do list
+# Ajouter un fournisseur et un modèle à son portail IA — notre to-do list
 
-> Statut : en cours de rédaction, déroulé en conditions réelles avec OpenRouter le 18/10/2026. Chaque phase est documentée juste après avoir été exécutée. Brouillon de travail — ne pas merger vers main tant que l'article n'est pas finalisé.
+> Statut : brouillon de travail — en cours de rédaction, déroulé en conditions réelles avec OpenRouter le 18/10/2026. Chaque phase est documentée juste après avoir été exécutée. Ne pas merger vers main tant que l'article n'est pas finalisé.
+
+
+# Ajouter un fournisseur et un modèle à son portail IA — notre to-do list
+
+> Statut : en cours de rédaction, déroulé en conditions réelles avec OpenRouter le 18/10/2026. Chaque phase est documentée juste après avoir été exécutée.
 
 ---
 
@@ -32,7 +37,7 @@ Menu **Models & Endpoints → onglet LLM Credentials → + Add Credential** :
 4. **API Key** : la clé du fournisseur, masquée à la saisie, stockée **chiffrée en base** (salt LiteLLM) — jamais en clair dans un YAML.
 5. **Add Credential** pour valider. Le credential apparaît dans la liste de l'onglet.
 
-Pourquoi ça se passe ici : LiteLLM est le goulot unique entre Open WebUI et le fournisseur. La clé vit dans sa base, Open WebUI ne la voit jamais. À ce stade, LiteLLM sait parler au fournisseur, mais **aucun modèle n'est encore exposé**.
+Pourquoi ça se passe ici : LiteLLM est le goulet unique entre Open WebUI et le fournisseur. La clé vit dans sa base, Open WebUI ne la voit jamais. À ce stade, LiteLLM sait parler au fournisseur, mais **aucun modèle n'est encore exposé**.
 
 #### Phase 2 — Ajouter le modèle
 
@@ -67,6 +72,16 @@ Règle : un paramètre à **GARANTIR à 100 %** va en dur dans les `litellm_para
 
 Cas particulier de l'exemple : Nemotron 3 Ultra n'est pas natif du registre LiteLLM → config volontairement minimale au départ, les params utiles seront motivés par le test (montrer la méthode plutôt qu'une config à recopier).
 
+**Le rôle de `drop_params: true` (global, posé dans le `litellm_settings` du YAML)** : LiteLLM retire **silencieusement** tout paramètre non reconnu pour le modèle/fournisseur — c'est lui qui avale `reasoning_effort` sur Mistral Large 3 sans erreur.
+
+Pourquoi on le garde (à expliciter dans le tuto) :
+1. **C'est lui qui rend le portail tolérant** : Open WebUI envoie systématiquement des paquets de params OpenAI (`frequency_penalty`, `logit_bias`, `user`...) selon les réglages de l'utilisateur. Sans lui, chaque modèle qui n'en connaît pas un renverrait une 400 — l'utilisateur verrait des chats planter pour des réglages qu'il ne sait même pas envoyer.
+2. **C'est cohérent avec la doctrine** : quand un paramètre utile est filtré à tort, le réflexe est de l'ajouter à `allowed_openai_params` — ciblé, motivé par un test. Le désactiver globalement inverserait le fardeau : transmettre n'importe quoi à n'importe qui, y compris des paramètres que le fournisseur interpréterait de façon inattendue ou facturée.
+
+Le coût du choix est faible : un paramètre droppé se détecte par le test à valeur invalide (pas d'erreur = avalé), et on décide alors en connaissance de cause. D'où ce test : il rend visible ce que `drop_params` rend invisible en usage normal.
+
+Précision mode DB : même en mode DB, le YAML garde les `litellm_settings` globaux (seul le `model_list` vit en base) — le mentionner dans l'encart.
+
 ##### Test de transmission d'un param (curl, depuis le serveur)
 
 ```bash
@@ -97,7 +112,7 @@ Même curl de transmission, même valeur `bidon` → **réponse normale, aucune 
 
 Même curl, `bidon` → **rejet 422, Mistral énumère son vocabulaire** : `none | minimal | low | medium | high | xhigh | max`. Le paramètre traverse, il est PILOTABLE depuis Open WebUI.
 
-Trois leçons :
+Deux leçons :
 1. Deux modèles du **même fournisseur** peuvent être dans des états différents (Large 3 : droppé ; Small : transmis). On ne vérifie jamais « par fournisseur », on vérifie **par modèle**.
 2. Le vocabulaire évolue : la doctrine d'origine (constatée à l'époque sur Mistral Small 4) disait `none`/`high` seulement ; l'API d'aujourd'hui expose sept niveaux. Dernière preuve que la vérification à l'ajout est la seule méthode pérenne — et que la page officielle du modèle + ce test valent mieux qu'un tableau d'article.
 3. **La passerelle elle-même évolue** : il y a quelques semaines, LiteLLM rejetait `reasoning_effort` sur les modèles Mistral non-Magistral (`UnsupportedParamsError`), et le contournement était `allowed_openai_params: ['reasoning_effort']` sur chaque requête. Corrigé depuis (forwarding sur modèles hybrides, puis acceptation générale). Le même curl a donc changé de verdict sans qu'on touche à rien — le test à l'ajout prime toujours sur la doc ou sur la mémoire. Et `allowed_openai_params` reste dans la boîte à outils : contournement quand un param est bloqué à tort par la passerelle, ça redeviendra vrai pour un autre fournisseur demain.
@@ -124,6 +139,14 @@ Trois leçons :
 
 *(à documenter : le problème des fantômes et la purge SQL)*
 
+---
+
+## Notes de rédaction (ne pas publier)
+
+- Structure = le pense-bête consolidé (canvas `pense-bete-ajout-modele`), enrichi de ce qu'on vit avec OpenRouter.
+- Règle anti-périssable : les valeurs par modèle (reasoning_effort etc.) = exemples d'illustration avec avertissement, pas vérités intemporelles. Doctrine GARANTIR/PILOTER = le socle durable.
+- Cadrage acté : l'article commence après l'obtention de la clé fournisseur. Pas de couverture des procédures d'inscription/crédit par fournisseur.
+- OpenRouter, point spécifique documenté : compte prépayé = le solde est déjà un plafond dur naturel ; limite par clé = sous-plafond (plancher UI à 50 $ constaté, mais 10 $ accepté). La nuance solde/limite-clé vaut 2 phrases dans l'intro des prérequis.
 ---
 
 ## Notes de rédaction (ne pas publier)
