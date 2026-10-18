@@ -27,17 +27,17 @@ Début octobre 2026, OpenAI a publié d'un coup, sur GitHub, des centaines de r�
 
 À notre petit niveau, c'est un peu la même chose. L'intérêt fondamental de l'IA, c'est de permettre à des êtres humains de faire des choses fantastiques. Sinon, à quoi bon ?
 
-## La contradiction, une dernière fois
+## La conclusion de cette série
 
-Ce qu'on a traversé en six épisodes, ce n'est pas une méthode pour évaluer la personnalité d'un modèle. C'est une contradiction.
+Ce qu'on a traversé en six épisodes, ce n'est pas une méthode pour évaluer la personnalité d'un modèle. C'est le diagnostic d'une dérive, et elle tient en trois phrases.
 
-D'un côté, une industrie qui mesure la performance toujours plus finement : benchmarks pointus, classements, chaque gain d'un point se célèbre. De l'autre, ce qu'on vit tous les jours : sur le plateau de performance où tout le monde se tient, ce qui décide réellement de l'expérience, la manière de cadrer, d'écouter, de dire non, de tenir le fil, n'est mesuré nulle part, par personne. L'industrie raffine au microscope un critère qui ne départage plus personne. Et le critère qui départage tout, personne ne le mesure.
+L'industrie raffine au microscope la performance, un critère qui ne départage plus personne : tout le monde est sur le même plateau. Ce qui départage tout, la manière de cadrer, d'écouter, de dire non, de tenir le fil, personne ne le mesure, donc personne ne l'optimise, donc il dérive. Et ce qui dérive ne dérive pas n'importe comment : la fabrication pousse tous les modèles vers le même assistant, formé pour l'utilisateur moyen, dans une poignée de labs qui partagent les mêmes corpus et les mêmes incitations.
 
-Et là, ça dépasse le choix d'un modèle. Les humains ne cherchent pas tous la même chose dans un assistant. Celui qui veut un exécutant rapide n'a rien à voir avec celui qui veut un contradicteur exigeant ; celui qui chatte dix secondes, avec celui qui construit huit heures. Un écosystème sain serait un écosystème de modèles qui se comportent différemment, pour que chacun trouve le sien. Or on a vu le contraire : la fabrication elle-même pousse tout le monde vers le même assistant, une convergence que personne n'a choisie et que personne ne pilote. La diversité comportementale n'est pas un luxe de connaisseur. C'est la condition pour que des publics différents soient servis.
+Il suffirait de si peu, pourtant. Des modèles qui se comportent différemment, pour que celui qui veut un exécutant et celui qui veut un contradicteur trouvent chacun le sien. Des scènes d'entraînement qui ne se ressemblent pas, pour que le répertoire s'élargisse. C'est une des raisons pour lesquelles l'écosystème européen de modèles me semble important, pas pour le patriotisme.
 
-Cette convergence en dit aussi long sur la concentration. Quand la personnalité de nos assistants est façonnée par une poignée de labs, qui partagent les mêmes corpus, les mêmes préférences d'évaluateurs et les mêmes incitations, le répertoire des comportements disponibles est aussi étroit que le nombre de ses producteurs. La solution n'est pas une main meilleure, c'est plus de mains : des modèles affinés ailleurs, par des équipes qui n'ont pas les mêmes réflexes, pour des publics qui n'ont pas les mêmes attentes. Et ce raisonnement en rejoint un autre, qui m'importe. Si la diversité comportementale a de la valeur, alors il y a un intérêt tangible à ce que l'écosystème européen de modèles se développe et perdure. Pas pour le patriotisme : parce que chaque scène d'entraînement qui n'est pas la Silicon Valley est une chance que le répertoire s'élargisse.
+Mais l'exemple des maths, au fond, dit tout. Au sommet de la performance pure — des démonstrations de niveau recherche, produites en quelques semaines, en totale autonomie , hors du monde — le bénéfice pour la pensée humaine est nul. Zéro compréhension, zéro transmission, zéro apprentissage. Si la performance ne sert plus les humains, elle ne sert plus rien. La course à la performance n'est pas une fin : elle n'a de valeur que par ce qu'elle nous permet de faire.
 
-Voilà ce que je voulais montrer. Une industrie qui mesure toujours plus finement un paramètre qui ne fait plus la différence, et qui laisse se dégrader celui qui la fait toute. La suite, comment je m'y prends moi pour choisir, c'est pour une autre série, quand j'aurai assez de recul. En attendant, la question est posée : qu'est-ce qu'on attend, collectivement, de nos assistants ? Parce que pour l'instant, la réponse a été donnée sans nous.
+Voilà ce que je voulais dire depuis le premier épisode. Ce qui compte, ce n'est pas ce que l'IA sait faire, c'est ce qu'on fait avec elle. Et j'ai pas l'impression que l'évolution actuelle des modèles va dans le bon sens, de ce point de vue.
 
-*Épisode précédent : l'optimum relationnel.*
+*Épisode précédent : l'optimum relationnel.*  
 *Fin de la série.*
