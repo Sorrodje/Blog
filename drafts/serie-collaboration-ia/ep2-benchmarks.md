@@ -6,7 +6,7 @@ type: "text/markdown"
 
 # Épisode 2 — Ce qu'un benchmark ne dira jamais de ton assistant
 
-> Note de rédaction (à retirer avant publication) : deuxième réécriture (17 oct, passe « gabarit trame ») — phrases construites sur le gabarit de la trame de Pierre-Olivier, règles dures appliquées : pas de triade d'adjectifs, pas de chaîne de tirets (une apposition max, sinon deux points ou deux phrases), pas de marqueur d'annonce (« Traduit en usage réel », « Résumons ce qu'on a appris » remplacés par du récit), verbes et agents d'abord. Sources à dérouler en notes de bas de page au moment du dépôt. Chiffres à re-vérifier à la publication (saturation = sujet mouvant). Anecdote des 9 modèles anonymisée, à trancher. **Échantillon à faire valider par Pierre-Olivier avant de dérouler la méthode sur les épisodes 3 à 5.**
+> Note de rédaction (à retirer avant publication) : deuxième réécriture (17 oct, passe « gabarit trame ») — phrases construites sur le gabarit de la trame de Pierre-Olivier, règles dures appliquées : pas de triade d'adjectifs, pas de chaîne de tirets (une apposition max, sinon deux points ou deux phrases), pas de marqueur d'annonce (« Traduit en usage réel », « Résumons ce qu'on a appris » remplacés par du récit), verbes et agents d'abord. Sources à dérouler en notes de bas de page au moment du dépôt. Chiffres à re-vérifier à la publication (saturation = sujet mouvant). Anecdote des 9 modèles anonymisée, à trancher.
 
 ---
 
@@ -16,9 +16,9 @@ Dans l'épisode précédent, je racontais ma perplexité face aux benchmarks : d
 
 Commençons par leur rendre justice. Un benchmark, c'est une collection de questions avec des réponses vérifiables. MMLU, le plus célèbre : des milliers de QCM académiques, de la médecine au droit. GSM8K : des problèmes de maths de niveau collège. GPQA : des questions de niveau doctoral en sciences. Un modèle passe le test, on compte les points, on publie le pourcentage.
 
-C'est solide et comparable, et c'est exactement pour ça que le marché s'y accroche. Quand un lab sort un modèle, la note de version commence par le tableau de scores. Quand on choisit un modèle, on regarde le classement. C'est la monnaie commune de l'industrie.
+C'est solide et comparable, et c'est exactement pour ça que le marché s'y accroche. Quand un lab sort un modèle, la note de version commence par le tableau de scores. Quand on choisit un modèle, on regarde le classement. C'est le mètre-étalon commun de l'industrie.
 
-Sauf que cette monnaie ne départage plus personne.
+Sauf que cette mesure ne départage plus personne.
 
 ## Tout le monde a le même niveau
 
@@ -27,6 +27,10 @@ Voici le fait le plus important qu'on ait trouvé, et le moins commenté : sur l
 L'AI Index de Stanford fait référence chaque année sur ces questions. Elle l'a mesuré noir sur blanc : près de la moitié des soixante benchmarks les plus cités sont aujourd'hui « saturés ». Autrement dit, les meilleurs modèles s'y regroupent si près du plafond que les écarts ne veulent plus rien dire. Leur formule est plus parlante que tout : « des évaluations censées rester difficiles pendant des années sont saturées en quelques mois ».
 
 En vrai, demander quel est le modèle le plus intelligent n'a plus de réponse. Ils le sont tous, à peu près, pour ce que les tests mesurent. Le classement dit qui est dans le club, pas qui est le meilleur.
+
+Et le mouvement s'est accéléré, je l'ai vécu de l'intérieur. En mai, pour travailler sérieusement, il fallait un Claude Sonnet ou Opus. En juin, Gemini m'est devenu utilisable. En juillet, Minimax M3 ou Qwen 97B-A17B l'étaient aussi. Aujourd'hui, j'ai entre quinze et vingt options avec lesquelles je ne perçois quasiment plus de différence de performance pure. En six mois, le club est passé de trois membres à une vingtaine.
+
+Or, pendant ce temps, mon besoin, lui, n'a pas bougé. J'ai grosso modo les mêmes usages, la même approche, et surtout le même besoin d'une interaction productive entre l'IA et moi. Les modèles sont devenus plus intelligents ; ce que j'attends d'eux, lui, n'a pas changé d'un iota. Et voilà le point de tout ce papier : parmi ces quinze ou vingt modèles utilisables, tous ne me sont pas aussi agréables ni aussi productifs. Pourquoi j'adore travailler avec Mistral Large 4 et GLM 5.2, et pourquoi GLM 5.3 est devenu désagréable ? Aucun benchmark ne répond à cette question. C'est elle qui va nous occuper.
 
 ## Pourquoi ça sature aussi vite
 
@@ -52,5 +56,5 @@ Résumons ce qu'on a appris. Les benchmarks classiques ne départagent plus les 
 
 Ces questions ont des réponses. Elles sont juste ailleurs que dans les scores. Et il se trouve que ce savoir-être, d'autres que nous le prennent au sérieux, des gens dont c'est le métier. C'est l'objet de l'épisode suivant.
 
-*Épisode précédent : j'ai appris à travailler avec l'IA avant de savoir ce qu'elle valait.*
+*Épisode précédent : j'ai appris à travailler avec l'IA avant de savoir ce qu'elle valait.*  
 *Épisode suivant : la personnalité d'un LLM, ça existe vraiment.*
