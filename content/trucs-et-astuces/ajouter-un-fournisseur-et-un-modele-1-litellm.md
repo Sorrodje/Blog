@@ -42,7 +42,7 @@ curl -s http://localhost:4000/v1/chat/completions \
   -d '{"model":"<alias>","messages":[{"role":"user","content":"Réponds en un mot : ok"}],"<param>":"<valeur-invalide>"}'
 ```
 
-   Erreur du fournisseur = le paramètre traverse (PILOTABLE depuis Open WebUI) ; réponse normale = droppé → diagnostiquer via `/model/info` avant de conclure.
+   Erreur du fournisseur = le paramètre traverse le schéma API ; réponse normale = droppé → diagnostiquer via `/model/info` avant de conclure. Dans les deux cas, l'effet reste à vérifier par runs — transmis ne veut pas encore dire pilotable.
 
 6. **Ne mettre en dur dans `litellm_params` que ce qui doit être garanti à 100 %** — tout le reste se pilote côté utilisateur.
 
@@ -113,7 +113,10 @@ curl -s http://localhost:4000/v1/chat/completions \
   -d '{"model":"<alias>","messages":[{"role":"user","content":"Réponds en un mot : ok"}],"reasoning_effort":"bidon"}'
 ```
 
-Lecture : erreur du fournisseur = le paramètre passe jusqu'au bout (on peut le GARANTIR) ; réponse normale = paramètre droppé (LiteLLM `drop_params`) ou avalé — creuser avant de conclure ; si le param doit passer mais est filtré → `allowed_openai_params`.
+Lecture en deux étapes — c'est le point le plus important de toute la procédure :
+
+1. **Transmission** : erreur du fournisseur = le paramètre traverse jusqu'au bout (le schéma API du fournisseur le connaît) ; réponse normale = paramètre droppé (LiteLLM `drop_params`) ou avalé — creuser avant de conclure ; si le param doit passer mais est filtré → `allowed_openai_params`.
+2. **Effet** : le schéma qui accepte ne prouve pas que le **modèle** gère le paramètre. Seul un test d'effet le prouve : plusieurs runs par niveau de réglage, en comparant ce que le modèle expose (bloc de réflexion, latence, longueur de réponse). Sans effet mesurable, le paramètre est transmis mais non pilotable en pratique.
 
 **Résultat de l'exemple (Nemotron 3 Ultra via OpenRouter)** : le fournisseur refuse `bidon` en énumérant les valeurs valides :
 
@@ -138,7 +141,13 @@ max | xhigh | high | medium | low | minimal | none
 }
 ```
 
-Verdict : le paramètre traverse toute la chaîne, aucune config nécessaire, `reasoning_effort` est PILOTABLE depuis Open WebUI. Leçon : la liste des valeurs valides vient du fournisseur lui-même, pas d'un tableau d'article.
+Verdict : le paramètre traverse toute la chaîne, aucune config nécessaire — mais ça ne dit encore rien de son effet sur le modèle : c'est l'étape 2 qui tranche, et pour Nemotron elle est faite en partie 2 (effet prouvé : réponse fausse sans réflexion, juste avec). Leçon : la liste des valeurs valides vient du fournisseur lui-même, pas d'un tableau d'article.
+
+#### Le piège du schéma : accepté ne veut pas dire géré (Mistral Large 4)
+
+Le cas inverse est arrivé le même jour, et il referme la boucle. Mistral Large 4 **rejette** `bidon` en énumérant ses sept valeurs — le paramètre traverse, le schéma le connaît. Mais en rejouant le même problème de maths aux sept niveaux, un run par niveau : aucun bloc de réflexion exposé, et une courbe de tokens non monotone (220 pour `none`, puis 724, 710, 805, 669, 653, 606 — ni progression ni régularité). Un seul run par niveau, donc pas de conclusion ferme — mais rien ne distingue les six niveaux actifs du bruit, tandis que le test d'effet de la partie 2 sur Nemotron montrait une différence radicale entre deux niveaux.
+
+La leçon à retenir : **le rejet du paramètre invalide prouve la transmission, jamais la gestion**. Entre le schéma API du fournisseur (qui valide le param) et le modèle (qui peut l'ignorer), il y a un étage de plus qu'on ne voit pas en curl. Le verdict « pilotable » se mérite : transmission + effet vérifié par runs.
 
 #### Contre-exemple : le paramètre avalé (Mistral Large 3, provider direct)
 
@@ -168,7 +177,7 @@ Même curl → **rejet 422, Mistral énumère son vocabulaire** :
 none | minimal | low | medium | high | xhigh | max
 ```
 
-Le paramètre traverse, PILOTABLE.
+Le paramètre traverse — l'effet, lui, reste à vérifier par runs avant de le qualifier de pilotable.
 
 Trois leçons :
 
@@ -242,8 +251,8 @@ Le modèle de l'état 2 (best-effort) a une fiche `/model/info` qui ne déclare 
 #### Le protocole de test complet, en résumé
 
 1. **Transmission du canal** : Max Tokens à 128, question à réponse longue, réponse tronquée nette = le canal transmet la famille standard.
-2. **Transmission du paramètre** : valeur invalide pour le fournisseur (`bidon`), erreur renvoyée = le paramètre traverse.
-3. **Effet réel** : plusieurs runs par niveau de réglage, ne jamais conclure sur un run isolé. Si la variance masque l'effet : le paramètre passe, mais l'effet n'est pas mesurable par ce biais — ce n'est pas cassé pour autant.
+2. **Transmission du paramètre** : valeur invalide pour le fournisseur (`bidon`), erreur renvoyée = le paramètre traverse le schéma API. Attention : accepté par le schéma ne veut pas dire géré par le modèle.
+3. **Effet réel** : plusieurs runs par niveau de réglage, ne jamais conclure sur un run isolé. C'est ce test — et lui seul — qui fait passer un paramètre de « transmis » à « pilotable ». Si la variance masque l'effet : le paramètre passe, mais l'effet n'est pas mesurable par ce biais — ce n'est pas cassé pour autant.
 4. **Garantie finale** : un paramètre à garantir à 100 % va en dur dans `litellm_params`. La requête entrante peut toujours le surcharger.
 
 La suite — visibilité du modèle côté Open WebUI, modèle custom, vérification du transfert de configuration, retrait propre — est dans [la partie 2](/trucs-et-astuces/ajouter-un-fournisseur-et-un-modele-2-openwebui/).
