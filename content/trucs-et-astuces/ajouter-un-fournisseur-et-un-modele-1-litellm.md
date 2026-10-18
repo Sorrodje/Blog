@@ -60,7 +60,7 @@ Menu **Models & Endpoints → onglet LLM Credentials → + Add Credential** :
 4. **API Key** : la clé du fournisseur, masquée à la saisie, stockée **chiffrée en base** (salt LiteLLM) — jamais en clair dans un YAML.
 5. **Add Credential** pour valider. Le credential apparaît dans la liste de l'onglet.
 
-![Le formulaire Add New Credential dans le dashboard LiteLLM : openrouter, provider Openrouter, clé masquée](/img/proc-modele/litellm-credential.png)
+[![Le formulaire Add New Credential dans le dashboard LiteLLM : openrouter, provider Openrouter, clé masquée](/img/proc-modele/litellm-credential.png)](/img/proc-modele/litellm-credential.png)
 
 Pourquoi ça se passe ici : LiteLLM est le goulet unique entre Open WebUI et le fournisseur. La clé vit dans sa base, Open WebUI ne la voit jamais. À ce stade, LiteLLM sait parler au fournisseur, mais **aucun modèle n'est encore exposé**.
 
