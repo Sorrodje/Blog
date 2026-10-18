@@ -32,7 +32,7 @@ Une fois le modèle ajouté côté LiteLLM, il apparaît immédiatement dans les
 
 La cause est documentée dans l'interface elle-même : l'option « **Mettre en cache la liste des modèles de base** » (réglages admin) récupère les modèles de base **au démarrage ou lors de la sauvegarde des réglages** — plus rapide, mais elle peut ne pas afficher les modifications récentes.
 
-![Le réglage « Mettre en cache la liste des modèles de base » dans l'admin Open WebUI, avec sa description](/img/proc-modele/owui-cache-toggle.png)
+[![Le réglage « Mettre en cache la liste des modèles de base » dans l'admin Open WebUI, avec sa description](/img/proc-modele/owui-cache-toggle.png)](/img/proc-modele/owui-cache-toggle.png)
 
 Deux remèdes, au choix :
 
@@ -49,7 +49,7 @@ Une fois le modèle visible, notre usage est de l'**invisibiliser** dans la list
 
 On va dans Workspace → Modèles et on crée un nouveau modèle à partir de la base ajoutée en partie 1. L'éditeur permet d'adapter l'intégralité de la configuration — du moindre paramètre au prompt système. On ne détaillera pas la création ici : ce qui nous intéresse, c'est de **vérifier que cette configuration se transfère bien** de Open WebUI vers l'endpoint du fournisseur.
 
-![L'éditeur de modèle du Workspace : nom, description, prompt système, réglages avancés](/img/proc-modele/owui-editeur-modele.png)
+[![L'éditeur de modèle du Workspace : nom, description, prompt système, réglages avancés](/img/proc-modele/owui-editeur-modele.png)](/img/proc-modele/owui-editeur-modele.png)
 
 La responsabilité change de camp, elle ne disparaît pas : en partie 1, on vérifiait que les params du dashboard LiteLLM traversaient vers le fournisseur. Ici, c'est la configuration du custom Open WebUI qui doit traverser — et elle emprunte exactement le même goulet. D'où le même protocole de test, rejoué depuis le chat, sur le custom.
 
@@ -61,7 +61,7 @@ Dans un chat sur le custom, régler Max Tokens à 128, poser une question qui de
 
 Verdict : réponse **tronquée nette**, en plein milieu d'une phrase = le canal transmet la famille standard de paramètres, du custom jusqu'au fournisseur.
 
-![La réponse du modèle coupée en pleine phrase, Max Tokens réglé à 128 dans les réglages du chat](/img/proc-modele/owui-test-128.png)
+[![La réponse du modèle coupée en pleine phrase, Max Tokens réglé à 128 dans les réglages du chat](/img/proc-modele/owui-test-128.png)](/img/proc-modele/owui-test-128.png)
 
 #### Test 2 — le paramètre de raisonnement : transmission ET effet
 
@@ -71,11 +71,11 @@ Le paramètre `reasoning_effort` qu'on a vérifié en partie 1 se règle ici dep
 
 **Run à effort maximal** : le bloc de réflexion est long (douze secondes de réflexion visible), la réponse est juste — croisement à ~14h37:44, à ~30 km de Dijon.
 
-![Le run avec réflexion : bloc de réflexion de douze secondes, réponse juste](/img/proc-modele/owui-trains-avec-reflexion.png)
+[![Le run avec réflexion : bloc de réflexion de douze secondes, réponse juste](/img/proc-modele/owui-trains-avec-reflexion.png)](/img/proc-modele/owui-trains-avec-reflexion.png)
 
 **Run sans réflexion** : pas de bloc de réflexion, réponse quasi immédiate — et **fausse** : ~14h28, à ~11,6 km de Dijon. Le modèle a traité le croisement comme si le second train était immobile.
 
-![Le run sans réflexion : réponse immédiate et fausse](/img/proc-modele/owui-trains-sans-reflexion.png)
+[![Le run sans réflexion : réponse immédiate et fausse](/img/proc-modele/owui-trains-sans-reflexion.png)](/img/proc-modele/owui-trains-sans-reflexion.png)
 
 Ce qu'on vient de prouver, en un seul geste : le paramètre **traverse** (deux comportements radicalement différents sur le même custom, seule variable modifiée = le curseur d'effort) et il a un **effet réel** — pas seulement sur la latence, sur la correction de la réponse.
 
