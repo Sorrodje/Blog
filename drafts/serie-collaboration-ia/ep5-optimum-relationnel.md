@@ -42,7 +42,7 @@ Et là, il faut être précis, parce que l'objection est légitime : est-ce que 
 
 D'où le nom que j'ai donné à cette idée, et qui donne son titre à l'épisode : l'optimum n'est pas au sommet du classement, il est dans la relation. Un système humain + IA produit son meilleur résultat quand le couplage entre les deux est bon, quand l'humain a plus d'idées et de meilleures idées qu'il n'en aurait eu seul. C'est la définition même que je donnais au premier épisode. Le plafond réel d'un système IA, ce n'est pas le score du modèle. C'est la qualité du couplage.
 
-## Une précision avant de conclure
+**Et donc ?** 
 
 Je ne prétends pas que l'agentique est une mauvaise direction, ni que l'autonomie des modèles est un problème en soi. Quand je délègue de la production pure, du code, une tâche bien définie, un lot de travail cadré, j'apprécie qu'un modèle exécute seul et bien. Ce n'est pas le point le plus fascinant pour moi, mais c'est utile, et ce n'est pas en contradiction avec ce qui précède.
 
@@ -50,5 +50,5 @@ Ce que je dis, c'est plus précis : à force d'optimiser l'autonomie, l'industri
 
 Mais ce constat en cache un plus profond. Si l'industrie fabrique des IA qui font tout, seules, il ne reste plus grand-chose à faire pour nous. Et c'est peut-être là que ça devient vraiment sérieux. C'est l'objet du dernier épisode.
 
-*Épisode précédent : tous les labs dressent le même assistant.*
+*Épisode précédent : tous les labs dressent le même assistant.*  
 *Épisode suivant : à quoi bon ?*
