@@ -247,23 +247,33 @@ La méthode de la phase 3 n'est pas propre à `reasoning_effort`. Démonstration
 
 Pré-requis technique du test : un **préfixe commun conséquent** (un system prompt de plusieurs milliers de tokens), identique entre les appels — c'est lui qu'on cache. Un `prompt_cache_key` avec un message de 30 tokens ne prouve rien.
 
+Et un pré-requis de lisibilité : le verdict doit être **dans la sortie**, pas à deviner dans des colonnes de tokens bruts. La commande ci-dessous le rédige pour vous — elle vaut pour tout modèle, seul l'alias change :
+
 ```bash
 PAYLOAD=$(jq -n --arg p "$(for i in $(seq 200); do echo 'Le chemin de fer en Bourgogne relie Dijon a Beaune et dessert Nuits-Saint-Georges, Gevrey-Chambertin et Chenove avant de franchir le canal de Bourgogne.'; done)" \
   '{model:"nvidia/nemotron-3-ultra-550b-a55b:free",
     messages:[{role:"system",content:$p},{role:"user",content:"Raconte en deux phrases."}],
     prompt_cache_key:"test-cache",max_tokens:400}')
 for i in 1 2 3; do
+  echo -n "run $i : "
   curl -s http://localhost:4000/v1/chat/completions \
     -H "Authorization: Bearer $LITELLM_MASTER_KEY" \
     -H "Content-Type: application/json" \
     -d "$PAYLOAD" \
-    | jq '{erreur: .error.message, pt: .usage.prompt_tokens, ct: .usage.prompt_tokens_details.cached_tokens}'
+    | jq -r '
+      .usage as $u
+      | ($u.prompt_tokens_details.cached_tokens // 0) as $ct
+      | $u.prompt_tokens as $pt
+      | if $pt == null then "ERREUR — pas de réponse"
+        elif $ct > 0 then "CACHE LECT — " + ($ct*100/$pt|round|tostring) + "% du préfixe (" + ($ct|tostring) + "/" + ($pt|tostring) + " tokens)"
+        else "PAS DE CACHE — 0 token relu sur " + ($pt|tostring) + " en préfixe"
+        end'
 done
 ```
 
-Le payload est construit par `jq` : zéro risque d'échappement, aucune dépendance à un fichier du serveur. Lecture : dans le `usage` des appels 2 et 3, `prompt_tokens_details.cached_tokens` > 0 = le préfixe est lu dans le cache. Le premier appel écrit, les suivants lisent.
+Le payload est construit par `jq` : zéro risque d'échappement, aucune dépendance à un fichier du serveur. Lecture : le premier run écrit l'entrée de cache (il est normal à 0), les suivants la lisent — `CACHE LECT n%` = le préfixe est relu en cache, `PAS DE CACHE` = rien de relu sur ce run. Et une règle d'asymétrie, apprise de la façon dure (voir l'état best-effort retardé plus bas) : **un verdict positif peut être rapide — trois HIT prouvent que le cache existe — mais trois MISS ne prouvent rien**. L'entrée peut être en cours d'écriture, évincée, ou pas encore installée côté hébergeur. Pour qualifier un cache (taux de hit, fiabilité), c'est la version vingt runs qui décide.
 
-#### Les trois états du prompt caching, observés le même jour
+#### Les états du prompt caching, observés sur le terrain
 
 **État 1 — le cache garanti.** Sur `mistral/zai-glm-5-3` (GLM 5.3 derrière l'API Mistral), dont la fiche `/model/info` déclare `supports_prompt_caching: true` : premier appel à 0, puis les suivants lisent ~99 % du préfixe (9152 tokens cachés sur 9220), à chaque run, stable. Le paramètre traverse sans aucune config.
 
@@ -296,6 +306,10 @@ La leçon : un cache best-effort ne se pilote pas, il se constate. Le taux de hi
 {"pt": 2423, "ct": 0}
 ```
 
+**État 4 — le best-effort retardé : pourquoi trois MISS ne concluent rien.** Le cas le plus instructif, venu d'un comparatif de deux hébergeurs sur le même modèle (DeepSeek V4.1 Flash) : côté TensorX, vingt runs à 95 % du préfixe, stable. Côté Scaleway, six premiers runs étiquetés « PAS DE CACHE » — et vingt minutes plus tard, une série de vingt runs donne **19 hits sur 20, à 99 % du préfixe**, sans qu'on ait rien changé. L'entrée de cache avait simplement mis du temps à s'installer côté hébergeur ; les premiers runs sont tous passés avant qu'elle prenne. Le « PAS DE CACHE » des six premiers runs était un verdict prématuré — un cache peut exister et ne pas s'être encore déclaré. D'où la règle d'asymétrie du protocole : **positif rapide, négatif seulement sur série longue**.
+
+Et la conclusion comparative qui va avec : même modèle, deux hébergeurs, cache garanti à 95 % de l'un, best-effort à 99 % de l'autre — **le prompt caching est une variable d'hébergeur, pas une propriété du modèle**. Seul le prix du modèle voyage, le cache ne se transfère jamais.
+
 #### Le twist : la fiche peut mentir (dans les deux sens)
 
 Le modèle de l'état 2 (best-effort) a une fiche `/model/info` qui ne déclare **aucun** support de cache — comme Nemotron. Et pourtant le cache prend à 80 %. Inversement, une fiche déclarative ne garantit pas que le paramètre passe. Le registre LiteLLM est un **diagnostic**, pas un verdict : le test réel reste le seul juge, et ce jour-là il a déjoué la fiche dans les deux sens — pessimiste pour le best-effort, il aurait pu être optimiste ailleurs.
@@ -309,7 +323,7 @@ Quatre étapes, quel que soit le paramètre, quel que soit le modèle — chaque
 3. **Vocabulaire** — trois sources, aucune autoritaire : la doc du modèle d'abord, l'énumération de l'erreur de rejet ensuite, la chasse par valeurs candidates en dernier. Elles peuvent se contredire dans tous les sens (schéma plus large que le modèle, doc plus large que la réalité, hébergeur qui remappe) — ensemble elles dessinent l'hypothèse.
 4. **Effet** — trois règles, génériques à tout modèle pensant :
    - **Plafond d'abord** : un `max_tokens` large, sinon la réflexion dévore le budget et le test est biaisé — la troncation se lit brutalement (`reasoning_tokens` ≈ plafond, contenu vide — constaté sur Minimax M3.1 Flash à 1024 : trois niveaux impossibles à distinguer, tout saturé ; à 8192, l'écart apparaît).
-   - **Plusieurs runs par niveau, plus un run sans le paramètre** : jamais de conclusion sur un run unique. Le run sans paramètre révèle le **défaut réel du chemin** — Minimax M3.1 Flash : défaut `max` selon la doc, le plus coûteux ; ne pas régler l'effort, c'est payer le maximum à chaque requête.
+   - **Plusieurs runs par niveau, plus un run sans le paramètre** : jamais de conclusion sur un run unique. Le run sans paramètre révèle le **défaut réel du chemin** — Minimax M3.1 Flash : défaut `max` selon la doc, le plus coûteux ; ne pas régler l'effort, c'est payer le maximum à chaque requête. Et pour le cache, la règle d'asymétrie s'ajoute : trois HIT prouvent l'existence, trois MISS ne prouvent rien.
    - **Verdict en quatre états**, indépendant de ce que la doc promettait : *non transmis* (Large 3) ; *transmis non pilotable* — courbe plate ou bruit (Large 4) ; *pilotable conforme à la doc* (Nemotron ; DeepSeek V4.1 Flash via Scaleway : ordre parfait sur six runs, `max` pense ~1,6× plus que `low`, défaut entre les deux) ; *pilotable déviant* — partiel (GLM 5.3 Flash : 7 annoncés, 3 réels), ou remappé (Minimax M3.1 Flash : `low` a pensé dix-huit fois plus que `max` sur un run unique au moment de l'écriture — hypothèse d'inversion chez l'hébergeur, à confirmer par runs multiples, et illustration vivante de pourquoi un run ne conclut rien).
 
 Chaque état a sa décision : GARANTIR en dur si c'est critique, PILOTER en connaissance de l'écart, ou ne pas compter dessus. Et la garantie finale reste la même : un paramètre à garantir à 100 % va en dur dans `litellm_params` — la requête entrante peut toujours le surcharger.
