@@ -42,10 +42,10 @@ curl -s http://localhost:4000/v1/models \
 curl -s http://localhost:4000/v1/chat/completions \
   -H "Authorization: Bearer $LITELLM_MASTER_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"model":"<alias>","messages":[{"role":"user","content":"Réponds en un mot : ok"}],"<param>":"<valeur-invalide>"}'
+  -d '{"model":"minimax/minimax-m3.1-flash","messages":[{"role":"user","content":"Réponds en un mot : ok"}],"reasoning_effort":"bidon"}'
 ```
 
-   Erreur du fournisseur = le paramètre traverse le schéma API ; réponse normale = droppé → diagnostiquer via `/model/info` avant de conclure. Dans les deux cas, l'effet reste à vérifier par runs — transmis ne veut pas encore dire pilotable.
+   (alias et paramètre d'exemple — remplacez par votre modèle et le paramètre à tester). Erreur du fournisseur = le paramètre traverse le schéma API ; réponse normale = droppé → diagnostiquer via `/model/info` avant de conclure. Même tronquée, une erreur de rejet prouve déjà la transmission (voir phase 3). Dans tous les cas, l'effet reste à vérifier par runs — transmis ne veut pas encore dire pilotable.
 
 7. **Ne mettre en dur dans `litellm_params` que ce qui doit être garanti à 100 %** — tout le reste se pilote côté utilisateur.
 
@@ -120,7 +120,7 @@ Le coût du choix est faible : un paramètre droppé se détecte par le test à 
 curl -s http://localhost:4000/v1/chat/completions \
   -H "Authorization: Bearer $LITELLM_MASTER_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"model":"<alias>","messages":[{"role":"user","content":"Réponds en un mot : ok"}],"reasoning_effort":"bidon"}'
+  -d '{"model":"nvidia/nemotron-3-ultra-550b-a55b:free","messages":[{"role":"user","content":"Réponds en un mot : ok"}],"reasoning_effort":"bidon"}'
 ```
 
 Lecture en deux étapes — c'est le point le plus important de toute la procédure :
@@ -128,7 +128,30 @@ Lecture en deux étapes — c'est le point le plus important de toute la procéd
 1. **Transmission** : erreur du fournisseur = le paramètre traverse jusqu'au bout (le schéma API du fournisseur le connaît) ; réponse normale = paramètre droppé (LiteLLM `drop_params`) ou avalé — creuser avant de conclure ; si le param doit passer mais est filtré → `allowed_openai_params`.
 2. **Effet** : le schéma qui accepte ne prouve pas que le **modèle** gère le paramètre. Seul un test d'effet le prouve : plusieurs runs par niveau de réglage, en comparant ce que le modèle expose (bloc de réflexion, latence, longueur de réponse). Sans effet mesurable, le paramètre est transmis mais non pilotable en pratique.
 
+Un cas particulier du point 1, rencontré en réel : **l'erreur tronquée**. Sur un modèle servi par un endpoint OpenAI-compatible, le rejet du `bidon` est parfois remonté par LiteLLM sans son énumération (« 2 validation errors », et rien de plus — constaté sur Minimax M3.1 Flash). Le rejet, même muet, prouve quand même la transmission ; seul le vocabulaire manque, et la chasse aux valeurs ci-dessous le récupère.
+
 Deux garde-fous sur la fiche elle-même, qu'on a vérifiés sur le terrain : une fiche muette ne prédit pas le canal — les handlers `openai` et `openrouter` relaient souvent des params que la fiche ignore (Nemotron : fiche muette, `reasoning_effort` passait quand même) ; et une fiche peuplée ne garantit ni l'effet ni le vocabulaire — `reasoning_effort_levels: null` même chez Gemini natif, les niveaux réels restent à la doc du modèle. La fiche oriente, les tests tranchent.
+
+#### Le vocabulaire du paramètre : trois sources, aucune autoritaire
+
+Quelles valeurs le modèle accepte-t-il vraiment, et lesquelles distingue-t-il ? Trois sources existent, dans l'ordre économique :
+
+1. **La doc du modèle** — d'abord, toujours : c'est elle qui cadre le test. Elle dit ce que l'éditeur promet, le défaut inclus.
+2. **L'énumération dans l'erreur de rejet** — quand elle survit au passage (cas Nemotron ci-dessous), elle donne le vocabulaire du schéma API.
+3. **La chasse par valeurs candidates** — quand les deux autres se taisent ou se contredisent, on tente les valeurs plausibles et on lit le verdict :
+
+```bash
+for v in none minimal low medium high xhigh max off; do
+  echo -n "reasoning_effort=$v : "
+  curl -s http://localhost:4000/v1/chat/completions \
+    -H "Authorization: Bearer $LITELLM_MASTER_KEY" \
+    -H "Content-Type: application/json" \
+    -d "{\"model\":\"minimax/minimax-m3.1-flash\",\"messages\":[{\"role\":\"user\",\"content\":\"Réponds en un mot : ok\"}],\"reasoning_effort\":\"$v\"}" \
+    | jq -r 'if .error then "REFUS" else "passe" end'
+done
+```
+
+Et la règle qui unifie tout : **aucune de ces sources ne fait autorité seule**. Le schéma peut être plus large que le modèle — Minimax M3.1 Flash : le schéma de l'hébergeur accepte `none`, que la doc MiniMax interdit en 400. La doc peut être plus large que la réalité — GLM 5.3 Flash : sept niveaux annoncés au schéma, trois réellement distincts. L'hébergeur peut remapper ce que l'éditeur a défini. Les trois sources ensemble dessinent l'hypothèse ; le test d'effet tranche.
 
 **Résultat de l'exemple (Nemotron 3 Ultra via OpenRouter)** : le fournisseur refuse `bidon` en énumérant les valeurs valides :
 
@@ -211,7 +234,7 @@ Pré-requis technique du test : un **préfixe commun conséquent** (un system pr
 
 ```bash
 PAYLOAD=$(jq -n --arg p "$(for i in $(seq 200); do echo 'Le chemin de fer en Bourgogne relie Dijon a Beaune et dessert Nuits-Saint-Georges, Gevrey-Chambertin et Chenove avant de franchir le canal de Bourgogne.'; done)" \
-  '{model:"<alias>",
+  '{model:"nvidia/nemotron-3-ultra-550b-a55b:free",
     messages:[{role:"system",content:$p},{role:"user",content:"Raconte en deux phrases."}],
     prompt_cache_key:"test-cache",max_tokens:400}')
 for i in 1 2 3; do
@@ -262,11 +285,18 @@ La leçon : un cache best-effort ne se pilote pas, il se constate. Le taux de hi
 
 Le modèle de l'état 2 (best-effort) a une fiche `/model/info` qui ne déclare **aucun** support de cache — comme Nemotron. Et pourtant le cache prend à 80 %. Inversement, une fiche déclarative ne garantit pas que le paramètre passe. Le registre LiteLLM est un **diagnostic**, pas un verdict : le test réel reste le seul juge, et ce jour-là il a déjoué la fiche dans les deux sens — pessimiste pour le best-effort, il aurait pu être optimiste ailleurs.
 
-#### Le protocole de test complet, en résumé
+#### Le protocole générique, en résumé
 
-1. **Transmission du canal** : Max Tokens à 128, question à réponse longue, réponse tronquée nette = le canal transmet la famille standard.
-2. **Transmission du paramètre** : valeur invalide pour le fournisseur (`bidon`), erreur renvoyée = le paramètre traverse le schéma API. Attention : accepté par le schéma ne veut pas dire géré par le modèle.
-3. **Effet réel** : plusieurs runs par niveau de réglage, ne jamais conclure sur un run isolé. C'est ce test — et lui seul — qui fait passer un paramètre de « transmis » à « pilotable ». Si la variance masque l'effet : le paramètre passe, mais l'effet n'est pas mesurable par ce biais — ce n'est pas cassé pour autant.
-4. **Garantie finale** : un paramètre à garantir à 100 % va en dur dans `litellm_params`. La requête entrante peut toujours le surcharger.
+Quatre étapes, quel que soit le paramètre, quel que soit le modèle — chaque cas rencontré dans ce billet s'y range :
+
+1. **État civil** — lire la fiche `/model/info` : `supported_openai_params` peuplé = registre connu, rien à ajouter ; muet = tout ce qui suit décide.
+2. **Transmission** — le `bidon` : rejet amont (même tronqué) = le paramètre traverse ; réponse normale = droppé ou avalé → diagnostic fiche, `allowed_openai_params` si c'est un filtrage à tort, sinon on n'insiste pas.
+3. **Vocabulaire** — trois sources, aucune autoritaire : la doc du modèle d'abord, l'énumération de l'erreur de rejet ensuite, la chasse par valeurs candidates en dernier. Elles peuvent se contredire dans tous les sens (schéma plus large que le modèle, doc plus large que la réalité, hébergeur qui remappe) — ensemble elles dessinent l'hypothèse.
+4. **Effet** — trois règles, génériques à tout modèle pensant :
+   - **Plafond d'abord** : un `max_tokens` large, sinon la réflexion dévore le budget et le test est biaisé — la troncation se lit brutalement (`reasoning_tokens` ≈ plafond, contenu vide — constaté sur Minimax M3.1 Flash à 1024 : trois niveaux impossibles à distinguer, tout saturé ; à 8192, l'écart apparaît).
+   - **Plusieurs runs par niveau, plus un run sans le paramètre** : jamais de conclusion sur un run unique. Le run sans paramètre révèle le **défaut réel du chemin** — Minimax M3.1 Flash : défaut `max` selon la doc, le plus coûteux ; ne pas régler l'effort, c'est payer le maximum à chaque requête.
+   - **Verdict en quatre états**, indépendant de ce que la doc promettait : *non transmis* (Large 3) ; *transmis non pilotable* — courbe plate ou bruit (Large 4) ; *pilotable conforme à la doc* (Nemotron) ; *pilotable déviant* — partiel (GLM 5.3 Flash : 7 annoncés, 3 réels), ou remappé (Minimax M3.1 Flash : `low` a pensé dix-huit fois plus que `max` sur un run unique au moment de l'écriture — hypothèse d'inversion chez l'hébergeur, à confirmer par runs multiples, et illustration vivante de pourquoi un run ne conclut rien).
+
+Chaque état a sa décision : GARANTIR en dur si c'est critique, PILOTER en connaissance de l'écart, ou ne pas compter dessus. Et la garantie finale reste la même : un paramètre à garantir à 100 % va en dur dans `litellm_params` — la requête entrante peut toujours le surcharger.
 
 La suite — visibilité du modèle côté Open WebUI, modèle custom, vérification du transfert de configuration, retrait propre — est dans [la partie 2](/trucs-et-astuces/ajouter-un-fournisseur-et-un-modele-2-openwebui/).
