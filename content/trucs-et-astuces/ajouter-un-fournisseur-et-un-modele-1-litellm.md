@@ -32,8 +32,9 @@ curl -s http://localhost:4000/v1/models \
   -H "Authorization: Bearer $LITELLM_MASTER_KEY" | jq -r '.data[].id'
 ```
 
-4. **Tester le canal** — une requête avec `max_tokens: 128` : réponse tronquée nette = le canal transmet la famille standard de paramètres.
-5. **Tester chaque paramètre utile** — valeur invalide :
+4. **Lire la fiche** — `/model/info` : les params OpenAI déjà intégrés au `supported_openai_params` → rien à ajouter ; fiche muette → les pas suivants décident.
+5. **Tester le canal** — une requête avec `max_tokens: 128` : réponse tronquée nette = le canal transmet la famille standard de paramètres.
+6. **Tester chaque paramètre utile** — valeur invalide :
 
 ```bash
 curl -s http://localhost:4000/v1/chat/completions \
@@ -44,7 +45,7 @@ curl -s http://localhost:4000/v1/chat/completions \
 
    Erreur du fournisseur = le paramètre traverse le schéma API ; réponse normale = droppé → diagnostiquer via `/model/info` avant de conclure. Dans les deux cas, l'effet reste à vérifier par runs — transmis ne veut pas encore dire pilotable.
 
-6. **Ne mettre en dur dans `litellm_params` que ce qui doit être garanti à 100 %** — tout le reste se pilote côté utilisateur.
+7. **Ne mettre en dur dans `litellm_params` que ce qui doit être garanti à 100 %** — tout le reste se pilote côté utilisateur.
 
 ## La procédure — version commentée
 
@@ -93,6 +94,13 @@ Bonus : les modèles attachés à un credential nommé sont tracés dans la page
 
 Règle : un paramètre à **GARANTIR à 100 %** va en dur dans les `litellm_params` (LiteLLM) ; un paramètre à **PILOTER à la main** reste côté Open WebUI, c'est l'utilisateur qui porte la valeur.
 
+**Réflexe n°1 : lire le raw JSON de la fiche.** Dès le modèle créé, sa fiche est visible en JSON brut via `/model/info` filtré sur l'alias (la commande est dans le contre-exemple plus bas). C'est l'état civil du modèle chez LiteLLM, et pour les params OpenAI il n'a que deux allures :
+
+- `supported_openai_params` peuplé — ex. Gemini Flash Lite à sa création : 21 entrées, dont `reasoning_effort` et `thinking`, avec le pricing peuplé dans la foulée. Le modèle est connu du registre LiteLLM : les params transitent nativement, **on n'en rajoute aucun**.
+- liste muette ou absente — ex. Kimi K3.1 Pro, tout juste sorti et hors registre : la fiche ne déclare rien du tout. La seule conclusion à en tirer : **vérifier avant d'en rajouter** — c'est ce que font les pas suivants.
+
+Et la fiche se lit par **nom de modèle**, pas par fournisseur : le même modèle déclaré par deux chemins affiche le même silence. L'état civil ne se devine pas, il se lit — sur l'entrée qu'on vient de créer.
+
 Point de clarté à assumer : les paramètres et leurs valeurs **varient selon le fournisseur et le modèle**. L'article donne la méthode pour vérifier (page du modèle côté fournisseur + protocole de test), pas un tableau intemporel — un tableau serait périmé avant publication.
 
 **Le rôle de `drop_params: true`** (global, posé dans le `litellm_settings`) : LiteLLM retire **silencieusement** tout paramètre non reconnu pour le modèle/fournisseur — c'est lui qui avale `reasoning_effort` sur un modèle sans raisonnement, sans erreur.
@@ -117,6 +125,8 @@ Lecture en deux étapes — c'est le point le plus important de toute la procéd
 
 1. **Transmission** : erreur du fournisseur = le paramètre traverse jusqu'au bout (le schéma API du fournisseur le connaît) ; réponse normale = paramètre droppé (LiteLLM `drop_params`) ou avalé — creuser avant de conclure ; si le param doit passer mais est filtré → `allowed_openai_params`.
 2. **Effet** : le schéma qui accepte ne prouve pas que le **modèle** gère le paramètre. Seul un test d'effet le prouve : plusieurs runs par niveau de réglage, en comparant ce que le modèle expose (bloc de réflexion, latence, longueur de réponse). Sans effet mesurable, le paramètre est transmis mais non pilotable en pratique.
+
+Deux garde-fous sur la fiche elle-même, qu'on a vérifiés sur le terrain : une fiche muette ne prédit pas le canal — les handlers `openai` et `openrouter` relaient souvent des params que la fiche ignore (Nemotron : fiche muette, `reasoning_effort` passait quand même) ; et une fiche peuplée ne garantit ni l'effet ni le vocabulaire — `reasoning_effort_levels: null` même chez Gemini natif, les niveaux réels restent à la doc du modèle. La fiche oriente, les tests tranchent.
 
 **Résultat de l'exemple (Nemotron 3 Ultra via OpenRouter)** : le fournisseur refuse `bidon` en énumérant les valeurs valides :
 
@@ -167,7 +177,9 @@ Même curl, même valeur `bidon` → **réponse normale, aucune erreur**. Le par
 
 **Décision doctrine** : on *pourrait* forcer le passage via `allowed_openai_params`, mais ça ne servirait à rien — le modèle ne supporte pas le paramètre. Rien à GARANTIR, on n'insiste pas.
 
-Et la génération suivante a changé d'état : le même curl sur Mistral Large 4 est rejeté, avec énumération du vocabulaire. Même famille, même fournisseur, un slot de génération d'écart : la conclusion ne se transfère jamais d'un modèle à l'autre.
+Et lu à la création — le réflexe n°1 du début de phase —, ce même JSON aurait montré d'emblée l'absence de `reasoning_effort` : c'est le même geste, fait trop tard. La fiche se lit avant de configurer, pas seulement quand ça coince.
+
+La génération suivante a changé d'état : le même curl sur Mistral Large 4 est rejeté, avec énumération du vocabulaire. Même famille, même fournisseur, un slot de génération d'écart : la conclusion ne se transfère jamais d'un modèle à l'autre.
 
 #### Troisième état : Mistral Small latest — même fournisseur, état différent
 
