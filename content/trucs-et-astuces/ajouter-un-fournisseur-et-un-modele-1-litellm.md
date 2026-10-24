@@ -17,6 +17,8 @@ LiteLLM existe en deux modes : un fichier de configuration YAML, ou une base de 
 
 Prérequis : un portail Open WebUI + LiteLLM opérationnel, et une API key de fournisseur **avec un plafond de dépense**. Comment on obtient la clé et comment on pose le plafond côté fournisseur, ça dépend de chaque fournisseur — c'est hors périmètre ici. Le plafond, lui, n'est pas négociable : il est posé **avant** tout branchement. Précision pour les comptes prépayés type OpenRouter : le solde est déjà un plafond dur naturel ; la limite par clé, elle, vient en sous-plafond.
 
+Et pour tous les curl du billet : la clé admin du proxy (master key LiteLLM) doit vivre dans une variable d'environnement **de la session qui lance les commandes** — `export LITELLM_MASTER_KEY='sk-...'`. Sinon, premier piège, et il est immédiat : une session neuve sans l'export répond `401 "Malformed API Key"` sur toutes les commandes. C'est le shell qui est vide, pas le proxy qui débloque — on ne diagnostique LiteLLM qu'après avoir vérifié la variable (`echo ${LITELLM_MASTER_KEY:+set}` reste muet quand elle n'existe pas).
+
 Exemple déroulé ici : OpenRouter, fournisseur passerelle multi-modèles.
 
 ## La procédure rapide — côté LiteLLM
