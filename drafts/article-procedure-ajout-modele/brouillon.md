@@ -82,6 +82,13 @@ Le coût du choix est faible : un paramètre droppé se détecte par le test à 
 
 Précision mode DB : même en mode DB, le YAML garde les `litellm_settings` globaux (seul le `model_list` vit en base) — le mentionner dans l'encart.
 
+**Tous les modèles ne méritent pas la même approche — la fourche registre / hors registre** (doctrine issue du terrain, à intégrer en tête de phase 3) : le `/model/info` renseigne d'abord **l'état civil du modèle chez LiteLLM**.
+- **Modèle connu du registre LiteLLM** (ex. `zai-glm-5-3`) : `supported_openai_params` auto-peuplé (dont `reasoning_effort`), pricing auto, routing natif → **pas de whitelist**, config minimale.
+- **Modèle hors registre** (ex. GLM 5.3 Flash, Nemotron) : fiche muette (`supported_openai_params` vide ou minimal, `pricing_overrides` à remplir) → workarounds : `allowed_openai_params` **ciblé sur les seuls params prouvés utiles par le test**, `extra_body` côté Open WebUI pour ce qu'il ne sait pas envoyer nativement (`prompt_cache_key` passe par là — **jamais en whitelist**), coûts déclarés à la main.
+- Illustration extrême : même famille, même hébergeur — la GLM 5.3 est native, la Flash dehors. La fourche se tranche par modèle, pas par fournisseur ni par famille.
+
+**Piège schéma ≠ modèle** (découvert le 23/10 sur la Flash) : le vocabulaire énuméré dans l'erreur du curl `bidon` (ex. 422 Mistral : `none|minimal|low|medium|high|xhigh|max`) est celui du **schéma API**, pas les niveaux réels du modèle — la Flash ne distingue en vrai que `low`/`high`/`max`, défaut `max`, sans interrupteur off. L'énumération prouve la **transmission**, pas les **niveaux effectifs** : croiser avec la doc du modèle avant d'écrire quoi que ce soit en dur. Conséquence connexe : un modèle qui pense par défaut consomme son plafond `max_tokens` en réflexion (le test de troncation se lit dans `completion_tokens_details.reasoning_tokens`, pas dans le texte). LiteLLM tague ces comportements dans `provider_specific_fields` (`text_but_should_think`, `only_thinking`) — un diagnostic au-delà du `/model/info`.
+
 ##### Test de transmission d'un param (curl, depuis le serveur)
 
 ```bash
@@ -94,7 +101,7 @@ curl -s http://localhost:4000/v1/chat/completions \
 
 Lecture : erreur du fournisseur = le paramètre passe jusqu'au bout (on peut le GARANTIR) ; réponse normale = paramètre droppé (LiteLLM `drop_params`) ou avalé (OpenRouter) — creuser avant de conclure ; si le param doit passer mais est filtré → `allowed_openai_params`.
 
-**Résultat de l'exemple (Nemotron 3 Ultra via OpenRouter)** : le fournisseur refuse `bidon` en énumérant les valeurs valides — `max | xhigh | high | medium | low | minimal | none`. Verdict : le paramètre traverse toute la chaîne, aucune config `litellm_params` nécessaire, `reasoning_effort` est PILOTABLE depuis Open WebUI. Leçon pour le lecteur : la liste des valeurs valides vient du fournisseur lui-même, pas d'un tableau d'article — c'est la méthode qui compte, chaque modèle/fournisseur a sa liste.
+**Résultat de l'exemple (Nemotron 3 Ultra via OpenRouter)** : le fournisseur refuse `bidon` en énumérant les valeurs valides — `max | xhigh | high | medium | low | minimal | none`. Verdict : le paramètre traverse toute la chaîne, aucune config `litellm_params` nécessaire, `reasoning_effort` est PILOTABLE depuis Open WebUI. Leçon pour le lecteur : la liste des valeurs valides vient du fournisseur lui-même, pas d'un tableau d'article — c'est la méthode qui compte, chaque modèle/fournisseur a sa liste. ⚠️ Nuance (leçon Flash du 23/10) : cette énumération = vocabulaire du schéma API, les niveaux réels du modèle peuvent être plus restreints — à croiser avec la page du modèle avant d'exploiter.
 
 ##### Contre-exemple : quand ça ne marche pas (Mistral Large 3, provider direct Mistral)
 
@@ -156,3 +163,4 @@ Deux leçons :
 - Cadrage acté : l'article commence après l'obtention de la clé fournisseur. Pas de couverture des procédures d'inscription/crédit par fournisseur.
 - OpenRouter, point spécifique documenté : compte prépayé = le solde est déjà un plafond dur naturel ; limite par clé = sous-plafond (plancher UI à 50 $ constaté, mais 10 $ accepté). La nuance solde/limite-clé vaut 2 phrases dans l'intro des prérequis.
 - Cadrage des exemples (18 oct) : deux exemples déroulés dans le corps (Nemotron = fil conducteur complet ; Mistral Large 3 = contre-exemple du paramètre droppé), Mistral Small en une parenthèse de la phase 3 (même fournisseur, état différent + évolution de la passerelle).
+- Update 24/10 (doctrine Flash) : fourche registre/hors-registre en tête de phase 3, piège schéma ≠ modèle (l'énumération du curl = schéma API, pas niveaux réels), prompt_cache_key jamais en whitelist (extra_body), thinking par défaut qui consomme max_tokens.
