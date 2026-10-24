@@ -103,7 +103,7 @@ Bonus : les modèles attachés à un credential nommé sont tracés dans la page
 
 Règle : un paramètre à **GARANTIR à 100 %** va en dur dans les `litellm_params` (LiteLLM) ; un paramètre à **PILOTER à la main** reste côté Open WebUI, c'est l'utilisateur qui porte la valeur.
 
-**Réflexe n°1 : lire le raw JSON de la fiche.** Dès le modèle créé, sa fiche est visible en JSON brut via `/model/info` filtré sur l'alias (la commande est dans le contre-exemple plus bas). C'est l'état civil du modèle chez LiteLLM, et pour les params OpenAI il n'a que deux allures :
+**Réflexe n°1 : lire le raw JSON de la fiche.** Dès le modèle créé, sa fiche est visible en JSON brut — la commande complète est dans le contre-exemple plus bas. C'est l'état civil du modèle chez LiteLLM, et pour les params OpenAI il n'a que deux allures :
 
 - `supported_openai_params` peuplé — ex. Gemini Flash Lite à sa création : 21 entrées, dont `reasoning_effort` et `thinking`, avec le pricing peuplé dans la foulée. Le modèle est connu du registre LiteLLM : les params transitent nativement, **on n'en rajoute aucun**.
 - liste muette ou absente — ex. Kimi K3.1 Pro, tout juste sorti et hors registre : la fiche ne déclare rien du tout. La seule conclusion à en tirer : **vérifier avant d'en rajouter** — c'est ce que font les pas suivants.
@@ -135,7 +135,7 @@ Lecture en deux étapes — c'est le point le plus important de toute la procéd
 1. **Transmission** : erreur du fournisseur = le paramètre traverse jusqu'au bout (le schéma API du fournisseur le connaît) ; réponse normale = paramètre droppé (LiteLLM `drop_params`) ou avalé — creuser avant de conclure ; si le param doit passer mais est filtré → `allowed_openai_params`.
 2. **Effet** : le schéma qui accepte ne prouve pas que le **modèle** gère le paramètre. Seul un test d'effet le prouve : plusieurs runs par niveau de réglage, en comparant ce que le modèle expose (bloc de réflexion, latence, longueur de réponse). Sans effet mesurable, le paramètre est transmis mais non pilotable en pratique.
 
-Un cas particulier du point 1, rencontré en réel : **l'erreur tronquée**. Sur un modèle servi par un endpoint OpenAI-compatible, le rejet du `bidon` est parfois remonté par LiteLLM sans son énumération (« 2 validation errors », et rien de plus — constaté sur Minimax M3.1 Flash). Le rejet, même muet, prouve quand même la transmission ; seul le vocabulaire manque, et la chasse aux valeurs ci-dessous le récupère.
+Un cas particulier du point 1, rencontré en réel : **l'erreur tronquée**. Le rejet du `bidon` remonte parfois sans son énumération (« 2 validation errors », et rien de plus — constaté sur Minimax M3.1 Flash via TensorX). Ce n'est pas LiteLLM qui coupe : c'est le **format d'erreur de l'hébergeur** qui décide si l'énumération survit au passage — preuve inversée observée le même jour, DeepSeek V4.1 Flash via Scaleway : même proxy, rejet avec énumération complète des sept valeurs. Le rejet, même muet, prouve quand même la transmission ; seul le vocabulaire manque, et la chasse aux valeurs ci-dessous le récupère.
 
 Deux garde-fous sur la fiche elle-même, qu'on a vérifiés sur le terrain : une fiche muette ne prédit pas le canal — les handlers `openai` et `openrouter` relaient souvent des params que la fiche ignore (Nemotron : fiche muette, `reasoning_effort` passait quand même) ; et une fiche peuplée ne garantit ni l'effet ni le vocabulaire — `reasoning_effort_levels: null` même chez Gemini natif, les niveaux réels restent à la doc du modèle. La fiche oriente, les tests tranchent.
 
@@ -202,7 +202,15 @@ Même curl, même valeur `bidon` → **réponse normale, aucune erreur**. Le par
 }
 ```
 
-**Diagnostic** : `curl /model/info` filtré sur le modèle, deux choses à regarder dans `model_info` :
+**Diagnostic — le réflexe n°1 rejoué, la commande complète** :
+
+```bash
+curl -s http://localhost:4000/model/info \
+  -H "Authorization: Bearer $LITELLM_MASTER_KEY" \
+  | jq '.data[] | select(.model_name=="<votre-alias>")'
+```
+
+Attention au chemin : c'est `/model/info`, pas `/v1/model/info` — le préfixe `/v1` renvoie une erreur et jq tombe sur `null`. Deux choses à regarder ensuite dans `model_info` :
 
 - `supported_openai_params` : les params OpenAI que LiteLLM accepte de transmettre. Pour Mistral Large : pas de `reasoning_effort` → c'est LiteLLM qui l'a droppé.
 - `supports_reasoning` / `reasoning_effort_levels` : `null` → le modèle n'expose aucun raisonnement pilotable.
@@ -302,7 +310,7 @@ Quatre étapes, quel que soit le paramètre, quel que soit le modèle — chaque
 4. **Effet** — trois règles, génériques à tout modèle pensant :
    - **Plafond d'abord** : un `max_tokens` large, sinon la réflexion dévore le budget et le test est biaisé — la troncation se lit brutalement (`reasoning_tokens` ≈ plafond, contenu vide — constaté sur Minimax M3.1 Flash à 1024 : trois niveaux impossibles à distinguer, tout saturé ; à 8192, l'écart apparaît).
    - **Plusieurs runs par niveau, plus un run sans le paramètre** : jamais de conclusion sur un run unique. Le run sans paramètre révèle le **défaut réel du chemin** — Minimax M3.1 Flash : défaut `max` selon la doc, le plus coûteux ; ne pas régler l'effort, c'est payer le maximum à chaque requête.
-   - **Verdict en quatre états**, indépendant de ce que la doc promettait : *non transmis* (Large 3) ; *transmis non pilotable* — courbe plate ou bruit (Large 4) ; *pilotable conforme à la doc* (Nemotron) ; *pilotable déviant* — partiel (GLM 5.3 Flash : 7 annoncés, 3 réels), ou remappé (Minimax M3.1 Flash : `low` a pensé dix-huit fois plus que `max` sur un run unique au moment de l'écriture — hypothèse d'inversion chez l'hébergeur, à confirmer par runs multiples, et illustration vivante de pourquoi un run ne conclut rien).
+   - **Verdict en quatre états**, indépendant de ce que la doc promettait : *non transmis* (Large 3) ; *transmis non pilotable* — courbe plate ou bruit (Large 4) ; *pilotable conforme à la doc* (Nemotron ; DeepSeek V4.1 Flash via Scaleway : ordre parfait sur six runs, `max` pense ~1,6× plus que `low`, défaut entre les deux) ; *pilotable déviant* — partiel (GLM 5.3 Flash : 7 annoncés, 3 réels), ou remappé (Minimax M3.1 Flash : `low` a pensé dix-huit fois plus que `max` sur un run unique au moment de l'écriture — hypothèse d'inversion chez l'hébergeur, à confirmer par runs multiples, et illustration vivante de pourquoi un run ne conclut rien).
 
 Chaque état a sa décision : GARANTIR en dur si c'est critique, PILOTER en connaissance de l'écart, ou ne pas compter dessus. Et la garantie finale reste la même : un paramètre à garantir à 100 % va en dur dans `litellm_params` — la requête entrante peut toujours le surcharger.
 
